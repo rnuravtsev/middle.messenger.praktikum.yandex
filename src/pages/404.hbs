@@ -1,0 +1,20 @@
+---
+bodyClass:
+scripts:
+- ../index.js
+stylesheets:
+- ../scss/main.scss
+title: Чат
+---
+{{#extend "base"}}
+    {{#content "main"}}
+        <main class="page-error">
+            <div class="container">
+                {{> page-title class="page-error__title" text="404"}}
+                {{> subtitle class="page-error__subtitle" text="Не туда попали"}}
+
+                {{> link class="page-error__link" href="./chat.hbs" text="Назад к чатам"}}
+            </div>
+        </main>
+    {{/content}}
+{{/extend}}
