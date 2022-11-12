@@ -1,0 +1,45 @@
+---
+bodyClass:
+scripts:
+- ../index.js
+stylesheets:
+- ../scss/main.scss
+title: Профиль
+fields: [
+{
+text: 'Старый пароль',
+type: 'password',
+name: 'oldPassword'
+},
+{
+text: 'Новый пароль',
+type: 'password',
+name: 'newPassword'
+},
+{
+text: 'Повторите новый пароль',
+type: 'password',
+name: 'repeatedNewPassword'
+}
+]
+---
+{{#extend "base"}}
+    {{#content "main"}}
+        <main class="123">
+            <div class="container">
+                {{> img
+                        imgClass="profile__img"
+                        width="130"
+                        height="130"
+                        src="../static/images/userpic-male.svg"
+                }}
+                {{>form
+                        formClass="form_profile"
+                        fields=fields
+                        hideSubmitButton=true
+                }}
+                {{> button class="profile__button" buttonText="Сохранить"}}
+            </div>
+        </main>
+    {{/content}}
+{{/extend}}

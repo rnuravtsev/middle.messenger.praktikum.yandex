@@ -1,0 +1,27 @@
+---
+bodyclass: index
+scripts:
+- ./index.js
+stylesheets:
+- ./scss/main.scss
+title: Index
+---
+
+{{#extend "base"}}
+    {{#content "main"}}
+        <main class="welcome">
+            <div class="container">
+                <h1>Добро пожаловать</h1>
+                <p>Выберите страницу</p>
+                <div class="welcome__links">
+                    {{> link text="Регистрация" href="./pages/sign-up.hbs"}}
+                    {{> link text="Вход" href="./pages/login.hbs"}}
+                    {{> link text="Профиль" href="pages/profile.hbs"}}
+                    {{> link text="Изменить профиль" href="pages/edit-profile.hbs" }}
+                    {{> link text="Изменить пароль" href="pages/edit-profile-pass.hbs" }}
+                    {{> link text="Чат" href="pages/chat.hbs" }}
+                </div>
+            </div>
+        </main>
+    {{/content}}
+{{/extend}}

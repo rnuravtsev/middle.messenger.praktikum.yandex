@@ -1,0 +1,27 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+// Normalize.css
+@import "../../node_modules/normalize.css/normalize.css";
+
+// Variables and mixins
+@import "./variables";
+@import "./mixins";
+
+// Base components styles
+@import "./app";
+
+// Components
+@import "./components/welcome";
+@import "./components/container";
+@import "./components/img";
+@import "./components/button";
+@import "./components/paper";
+@import "./components/subtitle";
+@import "./components/link";
+@import "./components/form";
+@import "components/field";
+@import "components/profile";
+@import "components/table";
+@import "components/chat";
+@import "components/login";
