@@ -1,0 +1,70 @@
+---
+bodyClass:
+scripts:
+- ../index.js
+stylesheets:
+- ../scss/main.scss
+title: Профиль
+userName: Иван
+userGender: Мужской
+fields: [
+    {
+        labelClass: 'field__label_row',
+        inputValue: 'abs@gmail.com',
+        text: 'Почта',
+        type: 'email',
+        name: 'email'
+    },
+    {
+        labelClass: 'field__label_row',
+        inputValue: 'kReal',
+        text: 'Логин',
+        name: 'login'
+    },
+    {
+        labelClass: 'field__label_row',
+        inputValue: 'Кирилл',
+        text: 'Имя',
+        name: 'first_name'
+    },
+    {
+        labelClass: 'field__label_row',
+        inputValue: 'Фомин',
+        text: 'Фамилия',
+        name: 'second_name'
+    },
+    {
+        labelClass: 'field__label_row',
+        inputValue: 'kReal',
+        text: 'Имя в чате',
+        name: 'display_name'
+    },
+    {
+        labelClass: 'field__label_row',
+        inputValue: '7 (917) 234 54 23',
+        text: 'Телефон',
+        type: 'tel',
+        name: 'phone'
+    },
+]
+---
+{{#extend "base"}}
+    {{#content "main"}}
+        <main>
+            {{> img
+                    imgClass="profile__img"
+                    width="130"
+                    height="130"
+                    src="../static/images/userpic-male.svg"
+                    alt="Аватар профиля"
+            }}
+            {{>subtitle class="profile__subtitle" text=userName }}
+            {{>form
+                    formClass="form_profile"
+                    fields=fields
+                    hideSubmitButton=true
+            }}
+            {{> button class="profile__button" buttonText="Сохранить"}}
+        </main>
+    {{/content}}
+{{/extend}}
