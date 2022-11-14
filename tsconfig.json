@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es2018",
+    "declaration": false,
+    "allowJs": true,
+    "module": "esnext",
+    "strictNullChecks": true,
+    "sourceMap": true
+  }
+}
