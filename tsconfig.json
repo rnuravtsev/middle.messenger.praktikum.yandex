@@ -5,7 +5,13 @@
     "declaration": false,
     "allowJs": true,
     "module": "esnext",
-    "strictNullChecks": true,
-    "sourceMap": true
+    // FIXME: Перед сдачей поменять на true
+    "strictNullChecks": false,
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    // FIXME: Перед сдачей поменять на true
+    "noImplicitAny": false,
+    "noUnusedParameters": true,
   }
 }
+
