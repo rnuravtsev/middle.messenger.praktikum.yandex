@@ -5,13 +5,15 @@
     "declaration": false,
     "allowJs": true,
     "module": "esnext",
+    "moduleResolution": "node",
     // FIXME: Перед сдачей поменять на true
     "strictNullChecks": false,
     "sourceMap": true,
     "noUnusedLocals": true,
     // FIXME: Перед сдачей поменять на true
     "noImplicitAny": false,
-    "noUnusedParameters": true,
+    // FIXME: Перед сдачей поменять на true
+    "noUnusedParameters": false,
   }
 }
 
