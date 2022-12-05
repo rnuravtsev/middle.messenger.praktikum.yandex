@@ -1,20 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const inputs = document.querySelectorAll('.field__input')
+// import LoginPage from './components/Login/Login';
+// import SignUp from './components/SignUp/SignUp';
+// import ChatPage from './components/Chat/Chat';
+// import Page404 from './components/Page404/Page404';
+import Chat from "./components/Chat/Chat";
+import { registerComponent } from "./utils/registerComponent";
+import Button from "./components/Button/Button";
+import './index.scss';
 
-    const toggleLabelClass = (input, label, className = 'field__label_shrink') => {
-        if (input.value || document.activeElement === input) {
-            label.classList.add(className)
-        } else {
-            label.classList.remove(className)
-        }
-    }
+const root = document.querySelector('#root');
 
-    const shrinkInputLabel = ({ target }) => {
-        const label = target.parentElement
-        toggleLabelClass(target, label)
-    }
+registerComponent('Button', Button);
+const chatPage = new Chat({})
 
-    inputs.forEach((el) => el.addEventListener('input', shrinkInputLabel))
-    inputs.forEach((el) => el.addEventListener('blur', shrinkInputLabel))
-    inputs.forEach((el) => el.addEventListener('focus', shrinkInputLabel))
-})
+root.append(chatPage.getContent());
+
+// const location = window.location.pathname.split('/')[1];
+//
+// if (root instanceof HTMLElement) {
+//   switch (location) {
+//     case '':
+//     case 'login':
+//       new LoginPage(root);
+//       break;
+//     case 'sign-up':
+//       new SignUp(root);
+//       break;
+//     case 'chat':
+//       new ChatPage(root);
+//       break;
+//     default:
+//       new Page404(root);
+//       break;
+//   }
+// }

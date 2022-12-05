@@ -1,4 +1,5 @@
 import { EventBus } from './EventBus';
+import Handlebars from 'handlebars';
 import { nanoid } from 'nanoid';
 
 type BlockEvents<P = any> = {
@@ -23,15 +24,14 @@ class Block<P extends Record<string, unknown> = any> {
   public children: Record<string, Block>;
   private eventBus: () => EventBus<BlockEvents<Props<P>>>;
   private _element: HTMLElement | null = null;
-  private readonly _meta: { tagName: string; props: any; };
+  private readonly _meta: { props: any; };
 
-  protected constructor(tagName = 'div', propsWithChildren: Props<P> = {} as Props<P>) {
+  constructor(propsWithChildren: Props<P> = {} as Props<P>) {
     const eventBus = new EventBus<BlockEvents<Props<P>>>();
 
-    const {props, children} = this._getChildrenAndProps(propsWithChildren);
+    const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
     this._meta = {
-      tagName,
       props
     };
 
@@ -57,11 +57,11 @@ class Block<P extends Record<string, unknown> = any> {
       }
     });
 
-    return {props: props as Props<P>, children};
+    return { props: props as Props<P>, children };
   }
 
   _addEvents() {
-    const {events = {}} = this.props;
+    const { events = {} } = this.props;
 
     Object.keys(events).forEach(eventName => {
       this._element?.addEventListener(eventName, events[eventName]);
@@ -75,20 +75,17 @@ class Block<P extends Record<string, unknown> = any> {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources() {
-    const {tagName} = this._meta;
-    this._element = this._createDocumentElement(tagName);
-  }
+  // _createResources() {
+  // }
 
   private _init() {
-    this._createResources();
-
     this.init();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  protected init() {};
+  protected init() {
+  };
 
   _componentDidMount() {
     this.componentDidMount();
@@ -126,31 +123,30 @@ class Block<P extends Record<string, unknown> = any> {
   }
 
   private _render() {
-    const fragment = this.render();
+    const template = this.render();
 
-    this._element!.innerHTML = '';
+    const fragment = this.compile(template, { ...this.props, children: this.children });
 
-    this._element!.append(fragment);
+    const newElement = fragment.firstElementChild as HTMLElement;
+
+    this._element?.replaceWith(newElement);
+
+    this._element = newElement;
 
     this._addEvents();
   }
 
-  protected compile(template: (context: any) => string, context: any) {
-    const contextAndStubs = {...context};
+  protected compile(template: string, context: any) {
+    const contextAndStubs = { ...context };
 
-    Object.entries(this.children).forEach(([name, component]) => {
-      contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
-    });
-
-    const html = template(contextAndStubs);
+    const compiled = Handlebars.compile(template);
 
     const temp = document.createElement('template');
 
-    temp.innerHTML = html;
+    temp.innerHTML = compiled(contextAndStubs);
 
     Object.entries(this.children).forEach(([_, component]) => {
       const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-
       if (!stub) {
         return;
       }
@@ -164,8 +160,8 @@ class Block<P extends Record<string, unknown> = any> {
     return temp.content;
   }
 
-  protected render(): DocumentFragment {
-    return new DocumentFragment();
+  protected render(): string {
+    return ``;
   }
 
   getContent() {
@@ -181,7 +177,7 @@ class Block<P extends Record<string, unknown> = any> {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
-        const oldTarget = {...target}
+        const oldTarget = { ...target }
 
         target[prop as keyof Props<P>] = value;
 

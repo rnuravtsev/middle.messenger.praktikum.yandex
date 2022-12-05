@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "parcel build src/index.hbs",
-    "dev": "parcel src/index.hbs --no-cache --port 3000 --open",
+    "dev": "parcel index.html --no-cache --port 3000 --open",
     "start": "npm run build && node ./server.js"
   },
   "repository": {
@@ -18,8 +18,9 @@
   },
   "homepage": "https://github.com/rnuravtsev/messenger#readme",
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
     "@parcel/transformer-sass": "2.7.0",
+    "@types/hbs": "4.0.1",
     "@typescript-eslint/eslint-plugin": "5.43.0",
     "@typescript-eslint/parser": "5.43.0",
     "eslint": "8.27.0",

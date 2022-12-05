@@ -6,6 +6,7 @@
     "allowJs": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     // FIXME: Перед сдачей поменять на true
     "strictNullChecks": false,
     "sourceMap": true,
@@ -13,7 +14,7 @@
     // FIXME: Перед сдачей поменять на true
     "noImplicitAny": false,
     // FIXME: Перед сдачей поменять на true
-    "noUnusedParameters": false,
+    "noUnusedParameters": false
   }
 }
 
