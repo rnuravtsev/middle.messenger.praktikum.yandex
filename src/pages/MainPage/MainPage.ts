@@ -9,11 +9,12 @@ class MainPage extends Block {
   }
 
   render() {
+    // TODO: Добавить иконку
     // language=hbs
     return `
         <div class="main-page">
             {{{Sidebar className="main-page__sidebar"}}}
-            {{{ChooseChat}}}
+            {{{ChatPage author="Alex"}}}
         </div>`
   }
 }

@@ -2,14 +2,20 @@ import Block from "core/Block";
 import './button.scss';
 
 type ButtonProps = {
+  className: string,
+  color: string,
   label: string,
   onClick: () => unknown,
+  icon: string,
 }
 
 class Button extends Block {
-  constructor({ label, onClick }: ButtonProps) {
+  constructor({ className, icon, color, label, onClick }: ButtonProps) {
     super({
       label,
+      className,
+      icon,
+      color,
       onClick,
     });
   }
@@ -17,7 +23,12 @@ class Button extends Block {
   render() {
     // language=hbs
     return `
-        <button class="btn btn_{{#if color}}{{color}}{{else}}primary{{/if}} {{class}}">{{label}}</button>
+        <button class="{{className}} btn btn_{{#if color}}{{color}}{{else}}primary{{/if}}">
+            {{#if icon}}
+                <i class="icon {{icon}}"/>
+            {{/if}}
+            {{label}}
+        </button>
     `
   }
 }

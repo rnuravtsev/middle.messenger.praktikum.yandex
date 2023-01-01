@@ -9,7 +9,8 @@ import Login from "../components/Login/Login";
 import Input from "../components/Input/Input";
 import Message from "../components/Message/Message";
 import Sidebar from "../components/Sidebar/Sidebar";
-import ChooseChat from "../components/ChooseChat/ChooseChat";
+import ChooseChat from "../pages/ChooseChat/ChooseChat";
+import ChatPage from "../pages/ChatPage/ChatPage";
 
 registerComponent(Layout);
 registerComponent(Button);
@@ -21,3 +22,4 @@ registerComponent(Input);
 registerComponent(Message);
 registerComponent(Sidebar);
 registerComponent(ChooseChat);
+registerComponent(ChatPage);

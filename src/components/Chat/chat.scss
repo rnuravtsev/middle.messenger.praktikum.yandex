@@ -1,4 +1,5 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
 
 .chat {
   padding-top: 12px;
@@ -13,10 +14,7 @@
 }
 
 .chat__avatar {
-  border-radius: 50px;
-  width: 47px;
-  height: 47px;
-  background-color: #efefef;
+  @include avatar-circle(47);
   grid-column: 1 / 2;
 }
 

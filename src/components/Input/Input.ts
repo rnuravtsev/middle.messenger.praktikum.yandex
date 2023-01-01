@@ -18,13 +18,11 @@ class Input extends Block {
   render() {
     // language=hbs
     return `
-        <div class="input-wrapper">
-            <input
-                    class="{{className}}"
-                    type="{{#if type}}{{type}}{{else}}text{{/if}}"
-                    placeholder="{{placeholder}}"
-            >
-        </div>
+        <input
+                class="{{className}} input"
+                type="{{#if type}}{{type}}{{else}}text{{/if}}"
+                placeholder="{{placeholder}}"
+        >
     `
   }
 }

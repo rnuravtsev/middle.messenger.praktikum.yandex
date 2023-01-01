@@ -1,4 +1,24 @@
-.button {
-  color: white;
-  background-color: #1e1e1e;
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.btn {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: block;
+  font-size: 13px;
+  line-height: 1;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: $radius-default;
+  cursor: pointer;
+  transition: $transition-default;
+
+  &_primary {
+    @include btn-color($white, $primary, $primary-light, $primary-dark);
+  }
+
+  &_tertiary {
+    @include btn-color($primary, transparent, $primary-light, $primary-dark);
+  }
 }

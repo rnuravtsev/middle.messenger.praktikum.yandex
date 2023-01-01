@@ -10,3 +10,11 @@
     background-color: $bg-focus;
   }
 }
+
+@mixin avatar-circle($size) {
+  width: #{$size}px;
+  height: #{$size}px;
+  display: block;
+  background-color: #efefef;
+  border-radius: 50%;
+}
