@@ -13,9 +13,9 @@ import "./scss/main.scss";
 
 
 import renderDOM from "core/renderDOM";
-import Main from "./pages/Main/Main";
+import Main from "./pages/MainPage/MainPage";
 import Sidebar from "./components/Sidebar/Sidebar";
-import main from "./pages/Main/Main";
+import main from "./pages/MainPage/MainPage";
 
 // const chatPage = new Chat({});
 const mainPage = new Main();

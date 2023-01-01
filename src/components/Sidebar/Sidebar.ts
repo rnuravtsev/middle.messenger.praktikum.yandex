@@ -2,7 +2,7 @@ import Block from "core/Block";
 import './sidebar.scss';
 
 type SidebarProps = {
-
+  className: string,
 }
 
 
@@ -14,7 +14,7 @@ class Sidebar extends Block {
   render() {
     // language=hbs
     return `
-        <aside class="sidebar">
+        <aside class="{{className}} sidebar">
             <a class="sidebar__link" href="#">Профиль &gt;</a>
             {{{Input
                     className="sidebar__search input input_type_search"

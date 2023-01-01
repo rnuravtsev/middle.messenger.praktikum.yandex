@@ -1,11 +1,11 @@
 @import "../../scss/variables";
 
 .sidebar {
-  padding: 20px 10px 0;
+  padding: 20px 15px 0 10px;
   display: flex;
   flex-direction: column;
-  width: 310px;
   border-right: 1px solid $gray-light;
+  overflow: auto;
 }
 
 .sidebar__link {
