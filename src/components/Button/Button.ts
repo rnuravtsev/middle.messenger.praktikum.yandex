@@ -1,22 +1,24 @@
-import Block from "../../utils/Block";
-import template from './button.hbs';
+import Block from "core/Block";
 import './button.scss';
 
+type ButtonProps = {
+  label: string,
+  onClick: () => unknown,
+}
+
 class Button extends Block {
-  constructor(props) {
+  constructor({ label, onClick }: ButtonProps) {
     super({
-      label: props.label,
-      events: {
-        click: props.onClick
-      },
+      label,
+      onClick,
     });
   }
 
   render() {
     // language=hbs
-    return `<button>
-        {{label}}
-    </button>`
+    return `
+        <button class="btn btn_{{#if color}}{{color}}{{else}}primary{{/if}} {{class}}">{{label}}</button>
+    `
   }
 }
 

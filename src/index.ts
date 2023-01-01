@@ -2,17 +2,27 @@
 // import SignUp from './components/SignUp/SignUp';
 // import ChatPage from './components/Chat/Chat';
 // import Page404 from './components/Page404/Page404';
-import Chat from "./components/Chat/Chat";
-import { registerComponent } from "./utils/registerComponent";
-import Button from "./components/Button/Button";
 import './index.scss';
+import 'normalize.css/normalize.css'
 
-const root = document.querySelector('#root');
+// Чтобы не засорять файл регистрацией
+import './utils/register'
 
-registerComponent('Button', Button);
-const chatPage = new Chat({})
+// FIXME: Подключаю временно стилевой файл, подключать отдельно в компоненты
+import "./scss/main.scss";
 
-root.append(chatPage.getContent());
+
+import renderDOM from "core/renderDOM";
+import Main from "./pages/Main/Main";
+
+// const chatPage = new Chat({});
+const mainPage = new Main();
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderDOM(mainPage)
+})
+
+// TODO: Router
 
 // const location = window.location.pathname.split('/')[1];
 //

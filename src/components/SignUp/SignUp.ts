@@ -1,4 +1,4 @@
-import Block from "../../utils/Block";
+import Block from "../../core/Block";
 import './sign-up.scss';
 
 class SignUp extends Block {

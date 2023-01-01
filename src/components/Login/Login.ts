@@ -1,13 +1,20 @@
-import Block from "../../utils/Block";
+import Block from "core/Block";
 import './login.scss';
 
+type LoginProps = {
+
+}
+
 class Login extends Block {
-  constructor(props) {
-    super(null, props);
+  constructor(props: LoginProps) {
+    super(props);
   }
 
   render() {
-    return document.createDocumentFragment()
+    // language=hbs
+    return `<div class="login__paper">
+
+    </div>`
   }
 }
 

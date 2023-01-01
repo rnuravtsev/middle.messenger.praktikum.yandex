@@ -7,6 +7,12 @@
     "dev": "parcel index.html --no-cache --port 3000 --open",
     "start": "npm run build && node ./server.js"
   },
+  "alias": {
+    "core": "./src/core",
+    "components": "./src/components",
+    "helpers": "./src/helpers",
+    "pages": "./src/pages"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/rnuravtsev/messenger.git"
