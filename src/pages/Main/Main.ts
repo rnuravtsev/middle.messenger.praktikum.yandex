@@ -12,7 +12,7 @@ class Main extends Block {
     // language=hbs
     return `
         <div class="major">
-            {{{ ChatList }}}
+            {{{Sidebar}}}
         </div>`
   }
 }

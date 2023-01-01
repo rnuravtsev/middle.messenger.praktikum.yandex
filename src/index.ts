@@ -14,9 +14,12 @@ import "./scss/main.scss";
 
 import renderDOM from "core/renderDOM";
 import Main from "./pages/Main/Main";
+import Sidebar from "./components/Sidebar/Sidebar";
+import main from "./pages/Main/Main";
 
 // const chatPage = new Chat({});
 const mainPage = new Main();
+// const sidebar = new Sidebar({});
 
 document.addEventListener("DOMContentLoaded", () => {
   renderDOM(mainPage)

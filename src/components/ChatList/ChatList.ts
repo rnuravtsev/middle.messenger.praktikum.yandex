@@ -18,7 +18,7 @@ class ChatList extends Block {
   render() {
     // language=hbs
     return `
-        <ul class="major__chats">
+        <ul class="chat-list">
             {{#each chats}}
                 {{{Chat
                         avatar=avatar
