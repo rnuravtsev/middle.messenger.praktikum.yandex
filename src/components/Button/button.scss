@@ -14,11 +14,16 @@
   cursor: pointer;
   transition: $transition-default;
 
-  &_primary {
+  &_color_primary {
     @include btn-color($white, $primary, $primary-light, $primary-dark);
   }
 
-  &_tertiary {
+  &_color_tertiary {
     @include btn-color($primary, transparent, $primary-light, $primary-dark);
+  }
+
+  &_type_icon {
+    padding: 0;
+    @include btn-color($gray-light, transparent, transparent, transparent, true)
   }
 }

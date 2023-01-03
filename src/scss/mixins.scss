@@ -1,13 +1,19 @@
-@mixin btn-color($color, $bg, $bg-hover, $bg-focus) {
+@mixin btn-color($color, $bg, $bg-hover, $bg-focus, $opacity: false) {
   color: $color;
   background-color: $bg;
 
   &:hover {
     background-color: $bg-hover;
+    @if $opacity {
+      opacity: 0.75;
+    }
   }
 
-  &:focus {
+  &:focus-within {
     background-color: $bg-focus;
+    @if $opacity {
+      opacity: 0.75;
+    }
   }
 }
 

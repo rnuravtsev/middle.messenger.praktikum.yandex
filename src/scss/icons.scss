@@ -1,0 +1,25 @@
+i[class^="icon-"], i[class*=" icon-"] {
+  display: block;
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.icon-clip {
+  font-size: 2rem;
+  color: $gray;
+}
+
+
+// fantasticon некорректно собирает некоторые иконки, имеющие evenodd
+.icon-loupe {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("../static/icons/loupe.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:before {
+    display: none;
+  }
+}

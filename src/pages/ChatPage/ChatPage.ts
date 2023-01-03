@@ -20,20 +20,22 @@ class ChatPage extends Block {
             <header class="chat-page__header">
                 <img class="chat-page__img" src="#" alt="Аватар профиля">
                 <h3 class="chat-page__title">{{author}}</h3>
-                {{{Button className="chat-page__extra" icon="123"}}}
+                {{{Button type="icon" icon="menu" className="chat-page__extra"}}}
             </header>
             <div class="chat-page__chat">
-                Основа
             </div>
             <footer class="chat-page__footer">
                 <form class="chat-page__form">
-                    <i class="icon"></i>
+                    {{{Button
+                            type="icon"
+                            icon="clip"
+                    }}}
                     {{{Input
                             className="chat-page__input"
                             placeholder="Сообщение"
                     }}}
                     {{{Button
-                            className="chat-page__button chat-page__button_submit"
+                            className="chat-page__submit"
                             label="->"
                     }}}
                 </form>
