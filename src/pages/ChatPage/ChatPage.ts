@@ -6,14 +6,12 @@ type ChatPageProps = {
   author: string,
 }
 
-
 class ChatPage extends Block {
   constructor(props: ChatPageProps) {
     super(props);
   }
 
   render() {
-    // TODO: Добавить иконку
     // language=hbs
     return `
         <section class="chat-page {{className}}">
@@ -23,6 +21,7 @@ class ChatPage extends Block {
                 {{{Button type="icon" icon="menu" className="chat-page__extra"}}}
             </header>
             <div class="chat-page__chat">
+                {{{Chat}}}
             </div>
             <footer class="chat-page__footer">
                 <form class="chat-page__form">
@@ -32,6 +31,7 @@ class ChatPage extends Block {
                     }}}
                     {{{Input
                             className="chat-page__input"
+                            name="message"
                             placeholder="Сообщение"
                     }}}
                     {{{Button

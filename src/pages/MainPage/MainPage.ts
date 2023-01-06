@@ -9,7 +9,6 @@ class MainPage extends Block {
   }
 
   render() {
-    // TODO: Добавить иконку
     // language=hbs
     return `
         <div class="main-page">

@@ -1,12 +1,13 @@
 // import LoginPage from './components/Login/Login';
 // import SignUp from './components/SignUp/SignUp';
-// import ChatPage from './components/Chat/Chat';
+// import ChatPage from './components/ChatPreview/ChatPreview';
 // import Page404 from './components/Page404/Page404';
 import './index.scss';
 import 'normalize.css/normalize.css'
 
 // Чтобы не засорять файл регистрацией
 import './utils/register'
+import './utils/handlebarsHelpers'
 
 // FIXME: Подключаю временно стилевой файл, подключать отдельно в компоненты
 import "./scss/main.scss";
@@ -14,10 +15,10 @@ import "./scss/main.scss";
 
 import renderDOM from "core/renderDOM";
 import Main from "./pages/MainPage/MainPage";
-import Sidebar from "./components/Sidebar/Sidebar";
-import main from "./pages/MainPage/MainPage";
+// import Sidebar from "./components/Sidebar/Sidebar";
+// import main from "./pages/MainPage/MainPage";
 
-// const chatPage = new Chat({});
+// const chatPage = new ChatPreview({});
 const mainPage = new Main();
 // const sidebar = new Sidebar({});
 

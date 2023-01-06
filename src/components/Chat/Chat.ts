@@ -1,28 +1,42 @@
 import Block from "core/Block";
 import './chat.scss';
-import { TChat } from "./type";
+
+type ChatProps = {
+  className: string,
+}
+
 class Chat extends Block {
-  constructor({ avatar, title, message, time, count }: TChat) {
-    super({ avatar, title, message, time, count });
+  constructor({ className }: ChatProps) {
+    super({ className });
   }
 
   render() {
     // language=hbs
     return `
-        <div class="chat">
-            <img class="chat__avatar" src="{{avatar}}" alt="Аватар профиля">
-            {{{Message
-                    className="chat__message"
-                    title=title
-                    message=message
-            }}}
-            <div class="chat__additional">
-                <span class="chat__time">{{time}}</span>
-                <span class="chat__counter">{{count}}</span>
+        <div class="chat {{className}}">
+            <time datetime="2022-06-19" class="chat__day">19 июня</time>
+            <div class="chat__messages">
+                {{{Message
+                        className="chat__message"
+                        text="Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
+Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро."
+                        time="10:17"
+                }}}
+                {{{Message
+                        className="chat__message"
+                        image="https://m.media-amazon.com/images/I/81Ong-2+m2L._RI_.jpg"
+                        time="10:17"
+                }}}
+                {{{Message
+                        className="chat__message"
+                        owner="true"
+                        text="Хорошо"
+                        time="10:17"
+                }}}
             </div>
         </div>
     `
   }
 }
 
-export default Chat
+export default Chat;

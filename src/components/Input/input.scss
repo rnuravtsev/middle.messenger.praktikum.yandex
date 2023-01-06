@@ -3,14 +3,16 @@
 .input {
   padding: 10px 20px;
   width: 100%;
-  color: $gray;
+  color: $main;
   font-size: 12px;
   line-height: 12px;
+  font-weight: 500;
   background-color: $gray-light;
   border: none;
   border-radius: 5px;
 
   &::placeholder {
     text-align: center;
+    color: $gray;
   }
 }

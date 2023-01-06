@@ -1,26 +1,62 @@
-@import "../../scss/variables";
+@import "src/scss/variables";
 
-.message__title {
-  margin-top: 0;
-  margin-bottom: 4px;
-  font-size: 13px;
-  line-height: 13px;
+.message {
+  margin-bottom: 21px;
+  min-width: 103px;
+  max-width: 402px;
+  background-color: $gray-light;
+  border-radius: 12px;
 }
 
-.message__text-wrapper {
-  margin-top: 0;
-  margin-bottom: 0;
+.message_owner {
+  background-color: $primary-weak;
+  border-radius: 12px 12px 0 12px;
+
+  .message__time {
+    color: $primary;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 11px;
+      height: 5px;
+      background-image: url("../../static/icons/2check.svg");
+      background-repeat: no-repeat;
+    }
+  }
 }
 
-.message__prefix {
+.message__content {
+  position: relative;
+  margin-top: 0;
   font-size: 12px;
   line-height: 15px;
+}
+
+.message__img {
+  border-radius: 5px;
 }
 
 .message__text {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 12px;
-  line-height: 15px;
+  margin: 0;
+  padding: 11px;
+}
+
+.message__time {
+  padding-top: 5px;
+  padding-left: 13px;
+  float: right;
+  font-size: 9px;
+  line-height: 9px;
   color: $gray;
+}
+
+.message__time_dark {
+  position: absolute;
+  bottom: 11px;
+  right: 11px;
+  padding: 2px 7px;
+  color: $white;
+  background-color: $gray-dark;
+  border-radius: 30px;
 }

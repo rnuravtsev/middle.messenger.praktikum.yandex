@@ -3,31 +3,33 @@ import './message.scss';
 
 type MessageProps = {
   className: string,
-  title: string,
-  message: {
-    prefix: boolean,
-    text: string,
-  }
+  text: string,
+  time: string,
+  image: {},
+  owner: boolean,
 }
 
 
 class Message extends Block {
-  constructor(props: MessageProps) {
-    super(props);
+  constructor({ text, time, className, image, owner }: MessageProps) {
+    super({ text, time, className, image, owner });
   }
 
   render() {
     // language=hbs
     return `
-        <div class="{{className}} message">
-            <h4 class="message__title">{{title}}</h4>
-            <p class="message__text-wrapper">
-                {{#if message.prefix}}
-                    <span class="message__prefix">
-                        Вы:
-                    </span>
+        <div class="message {{className}}{{#if owner}} message_owner{{/if}}">
+            <div class="message__content">
+                {{#if text}}
+                    <p class="message__text">
+                        {{text}}
+                        <span class="message__time">{{time}}</span>
+                    </p>
+                {{else if image}}
+                    <img class="message__img" src="{{image}}" alt="{{image}}">
+                    <span class="message__time message__time_dark">{{time}}</span>
                 {{/if}}
-                <span class="message__text">{{message.text}}</span>
+            </div>
         </div>
     `
   }

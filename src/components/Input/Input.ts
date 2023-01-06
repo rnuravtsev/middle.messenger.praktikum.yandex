@@ -1,11 +1,10 @@
 import Block from "core/Block";
 import './input.scss';
-// TODO: Добавить иконку лупы
-// import '../../'
 
 type InputProps = {
   type: string,
   className: string,
+  name: string,
   placeholder?: string,
 }
 
@@ -21,6 +20,7 @@ class Input extends Block {
         <input
                 class="{{className}} input"
                 type="{{#if type}}{{type}}{{else}}text{{/if}}"
+                name="{{name}}"
                 placeholder="{{placeholder}}"
         >
     `
