@@ -15,15 +15,17 @@ import "./scss/main.scss";
 
 import renderDOM from "core/renderDOM";
 import Main from "./pages/MainPage/MainPage";
+import LoginPage from "./pages/Login/LoginPage";
 // import Sidebar from "./components/Sidebar/Sidebar";
 // import main from "./pages/MainPage/MainPage";
 
 // const chatPage = new ChatPreview({});
-const mainPage = new Main();
+// const mainPage = new Main();
+const loginPage = new LoginPage({});
 // const sidebar = new Sidebar({});
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderDOM(mainPage)
+  renderDOM(loginPage)
 })
 
 // TODO: Router

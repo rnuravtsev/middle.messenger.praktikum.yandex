@@ -13,9 +13,11 @@ import MessagePreview from "components/MessagePreview/MessagePreview";
 import Sidebar from "components/Sidebar/Sidebar";
 import ChooseChat from "pages/ChooseChat/ChooseChat";
 import ChatPage from "pages/ChatPage/ChatPage";
+import Link from "../components/Link/Link";
 
 registerComponent(Layout);
 registerComponent(Button);
+registerComponent(Link);
 registerComponent(ChatList);
 registerComponent(ChatView);
 registerComponent(Chat);
