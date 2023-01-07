@@ -1,20 +1,23 @@
 import Block from "core/Block";
 import './login-page.scss';
+import { fields as mockFields } from "../../mock/fields";
 
 type LoginPageProps = {
-
+  fields: unknown[],
 }
 
 
 class LoginPage extends Block {
-  constructor(props: LoginPageProps) {
-    super(props);
+  constructor({ fields }: LoginPageProps) {
+    // FIXME: Временное решение, не передавал в компонет напрямую,
+    //  а использую по умолчанию
+    super({ fields: mockFields });
   }
 
   render() {
     // language=hbs
     return `
-        <div>
+        <div class="container">
             <main class="login">
                 <div class="container">
                     <div class="paper paper_auth login__paper">
@@ -22,17 +25,17 @@ class LoginPage extends Block {
                                 class="paper__subtitle subtitle">
                             Вход
                         </h3>
-                        {{form
+                        {{{Form
                                 fields=fields
-                                formClass="paper__form"
+                                className="paper__form"
                                 buttonText="Авторизоваться"
-                        }}
-                        {{link class="link paper__link" href="./signup.hbs" text="Нет аккаунта?"}}
+                        }}}
+                        {{{Link class="link paper__link" href="./signup.html" text="Нет аккаунта?"}}}
                     </div>
                 </div>
             </main>
         </div>
-      `
+    `
   }
 }
 

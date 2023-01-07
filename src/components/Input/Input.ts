@@ -2,8 +2,8 @@ import Block from "core/Block";
 import './input.scss';
 
 type InputProps = {
-  type: string,
   className: string,
+  type: string,
   name: string,
   placeholder?: string,
 }

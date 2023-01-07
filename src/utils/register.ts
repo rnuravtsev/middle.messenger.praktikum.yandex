@@ -14,6 +14,8 @@ import Sidebar from "components/Sidebar/Sidebar";
 import ChooseChat from "pages/ChooseChat/ChooseChat";
 import ChatPage from "pages/ChatPage/ChatPage";
 import Link from "../components/Link/Link";
+import Form from "../components/Form/Form";
+import Field from "../components/Field/Field";
 
 registerComponent(Layout);
 registerComponent(Button);
@@ -29,3 +31,6 @@ registerComponent(Message);
 registerComponent(Sidebar);
 registerComponent(ChooseChat);
 registerComponent(ChatPage);
+registerComponent(Form);
+registerComponent(Field);
+registerComponent(Link);
