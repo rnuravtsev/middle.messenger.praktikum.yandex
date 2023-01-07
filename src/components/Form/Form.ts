@@ -4,7 +4,8 @@ import './form.scss';
 type FormProps = {
   className: string,
   isSubmitButtonHide: boolean,
-  fields: unknown[]
+  fields: unknown[],
+  buttonText: string,
 }
 
 
@@ -29,7 +30,7 @@ class Form extends Block {
             {{else}}
                 {{{Button
                         className="form__button"
-                        label="Войти"
+                        label=buttonText
                 }}}
             {{/if}}
         </form>

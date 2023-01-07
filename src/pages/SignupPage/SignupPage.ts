@@ -1,17 +1,18 @@
 import Block from "core/Block";
-import './login-page.scss';
-import { fields as mockFields } from "../../mock/fields";
+import './signup-page.scss';
+import { signUpFields } from "../../mock/fields";
 
-type LoginPageProps = {
+type SignupPageProps = {
+  className: string,
   fields: unknown[],
 }
 
 
-class LoginPage extends Block {
-  constructor({ fields }: LoginPageProps) {
-    // FIXME: Временное решение, не передавал в компонет напрямую,
-    //  а использую по умолчанию
-    super({ fields: mockFields });
+class SignupPage extends Block {
+  // FIXME: Временное решение, не передавал в компонет напрямую,
+  //  а использую по умолчанию
+  constructor({ fields }: SignupPageProps) {
+    super({ fields: signUpFields });
   }
 
   render() {
@@ -28,15 +29,15 @@ class LoginPage extends Block {
                         {{{Form
                                 fields=fields
                                 className="paper__form"
-                                buttonText="Авторизоваться"
+                                buttonText="Зарегистрироваться"
                         }}}
-                        {{{Link class="link paper__link" href="./signup.html" text="Нет аккаунта?"}}}
+                        {{{Link class="link paper__link" href="./login.html" text="Войти"}}}
                     </div>
                 </div>
             </main>
         </div>
-    `
+      `
   }
 }
 
-export default LoginPage;
+export default SignupPage;
