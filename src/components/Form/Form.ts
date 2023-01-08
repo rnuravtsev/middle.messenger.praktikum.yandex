@@ -12,16 +12,29 @@ type FormProps = {
 class Form extends Block {
   constructor(props: FormProps) {
     super(props);
+
+    this.setProps({
+      handleButtonSubmit: (evt: Event) => this.handleButtonSubmit(evt)
+    })
+  }
+
+  handleButtonSubmit(evt: Event) {
+    evt.preventDefault();
+    const formData = new FormData(document.forms[0]);
+
+    console.log('911.', formData)
   }
 
   render() {
     // language=hbs
     return `
-        <form class="form {{className}}" method="post">
+        <form id="form" class="form {{className}}">
             {{#each fields}}
                 {{{Field
                         className=this.className
                         labelText=this.labelText
+                        name=this.name
+                        placeholder=this.placeholder
                         type=this.type
                         validationText=this.validationText
                 }}}
@@ -31,6 +44,7 @@ class Form extends Block {
                 {{{Button
                         className="form__button"
                         label=buttonText
+                        onClick=handleButtonSubmit
                 }}}
             {{/if}}
         </form>

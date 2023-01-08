@@ -6,6 +6,8 @@ type FieldProps = {
   className: string,
   labelClassName: string,
   labelText: string,
+  placeholder: string,
+  name:string,
   validationText: string,
   /** Тип инпута*/
   type: string,
@@ -45,7 +47,12 @@ class Field extends Block {
         <div class="field {{className}}">
             <label class="field__label {{labelClassName}}">
                 <span class="field__text">{{labelText}}</span>
-                {{{Input type=type className="field__input input_bg_transparent"}}}
+                {{{Input
+                        className="field__input input_bg_transparent"
+                        placeholder=placeholder
+                        name=name
+                        type=type
+                }}}
             </label>
             <span class="field__validation-text">{{validationText}}</span>
         </div>
