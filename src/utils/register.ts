@@ -15,6 +15,7 @@ import ChatPage from "pages/ChatPage/ChatPage";
 import Link from "../components/Link/Link";
 import Form from "../components/Form/Form";
 import Field from "../components/Field/Field";
+import InputError from "../components/InputError/InputError";
 
 registerComponent(Layout);
 registerComponent(Button);
@@ -32,3 +33,4 @@ registerComponent(ChatPage);
 registerComponent(Form);
 registerComponent(Field);
 registerComponent(Link);
+registerComponent(InputError);

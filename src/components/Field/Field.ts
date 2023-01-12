@@ -1,47 +1,58 @@
 import Block from "core/Block";
 import './field.scss';
-// import './animate';
+import { validateField } from "../../utils/validateForm";
 
 type FieldProps = {
   className: string,
   labelClassName: string,
   labelText: string,
   placeholder: string,
-  name:string,
-  validationText: string,
-  /** Тип инпута*/
+  name: string,
+  /** Тип ошибки при валидации формы по Submit */
+  validationType: string,
+  /** Сообщение ошибки при валидации формы по Submit */
+  validationError: string,
+  /** Тип инпута */
   type: string,
+  /** Сообщение ошибки при валидации поля по Focus/Blur */
+  errorMessages: string,
 }
 
 
 class Field extends Block {
   constructor(props: FieldProps) {
-    super(props);
+    super({
+      ...props,
+      onBlur: (evt: Event) => this.onBlur(evt),
+      onFocus: (evt: Event) => this.onFocus(evt),
+    });
   }
 
-  componentDidMount() {
-    // FIXME: Сделать через рефы
-      const inputs = document.querySelectorAll('.field__input')
+  onBlur(evt: Event) {
+    const input = evt.target as HTMLInputElement;
+    this.validate(input)
+  }
 
-      const toggleLabelClass = (input: HTMLInputElement, label: HTMLLabelElement, className = 'field__label_shrink') => {
-        if (input.value || document.activeElement === input) {
-          label.classList.add(className)
-        } else {
-          label.classList.remove(className)
-        }
-      }
+  onFocus(evt: Event) {
+    const input = evt.target as HTMLInputElement;
+    this.validate(input)
+  }
 
-      const shrinkInputLabel = ({ target }: any) => {
-        const label = target.parentElement
-        toggleLabelClass(target, label)
-      }
-
-      inputs.forEach((el) => el.addEventListener('input', shrinkInputLabel))
-      inputs.forEach((el) => el.addEventListener('blur', shrinkInputLabel))
-      inputs.forEach((el) => el.addEventListener('focus', shrinkInputLabel))
+  validate(input: HTMLInputElement) {
+    const error = validateField(input)
+    this.refs.errorRef.setProps({ errorMessage: error[0].value })
   }
 
   render() {
+    const { errorMessage, validationError, validationType, name } = this.props
+    const renderError = (): string => {
+      if (validationType === name && validationError) {
+        return validationError
+      } else {
+        return errorMessage || ''
+      }
+    }
+
     // language=hbs
     return `
         <div class="field {{className}}">
@@ -49,12 +60,16 @@ class Field extends Block {
                 <span class="field__text">{{labelText}}</span>
                 {{{Input
                         className="field__input input_bg_transparent"
+                        ref="inputRef"
                         placeholder=placeholder
                         name=name
                         type=type
+                        onInput=onInput
+                        onFocus=onFocus
+                        onBlur=onBlur
                 }}}
             </label>
-            <span class="field__validation-text">{{validationText}}</span>
+            {{{ InputError ref="errorRef" errorMessage="${renderError()}" }}}
         </div>
     `
   }

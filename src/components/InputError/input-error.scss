@@ -1,0 +1,7 @@
+@import "src/scss/variables";
+
+.input-error {
+  font-weight: 400;
+  font-size: .5rem;
+  color: $negative;
+}

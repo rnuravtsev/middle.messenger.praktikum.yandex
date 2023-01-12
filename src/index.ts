@@ -2,7 +2,6 @@
 // import SignUp from './components/SignUp/SignUp';
 // import ChatPage from './components/ChatPreview/ChatPreview';
 // import Page404 from './components/Page404/Page404';
-import './index.scss';
 import 'normalize.css/normalize.css'
 
 // Чтобы не засорять файл регистрацией
@@ -14,8 +13,7 @@ import "./scss/main.scss";
 
 
 import renderDOM from "core/renderDOM";
-import Main from "./pages/MainPage/MainPage";
-import LoginPage from "./pages/Login/LoginPage";
+// import Main from "./pages/MainPage/MainPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 // import Sidebar from "./components/Sidebar/Sidebar";
 // import main from "./pages/MainPage/MainPage";

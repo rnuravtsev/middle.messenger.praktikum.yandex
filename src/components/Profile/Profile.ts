@@ -1,9 +1,23 @@
-import Block from "../../core/Block";
+import Block from "core/Block";
 import './profile.scss';
 
+type ProfileProps = {
+  className: string,
+}
+
+
 class Profile extends Block {
-  constructor(props) {
-    super(null, props);
+  constructor(props: ProfileProps) {
+    super(props);
+  }
+  
+  render() {
+    // language=hbs
+    return `
+        <div>
+          
+        </div>
+      `
   }
 }
 

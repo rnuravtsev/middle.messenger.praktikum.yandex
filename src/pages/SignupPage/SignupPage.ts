@@ -9,10 +9,12 @@ type SignupPageProps = {
 
 
 class SignupPage extends Block {
-  // FIXME: Временное решение, не передавал в компонет напрямую,
-  //  а использую по умолчанию
-  constructor({ fields }: SignupPageProps) {
-    super({ fields: signUpFields });
+  constructor(props: SignupPageProps) {
+    super(props);
+
+    this.setProps({
+      fields: signUpFields,
+    })
   }
 
   render() {
@@ -27,8 +29,8 @@ class SignupPage extends Block {
                             Вход
                         </h3>
                         {{{Form
-                                fields=fields
                                 className="paper__form"
+                                fields=fields
                                 buttonText="Зарегистрироваться"
                         }}}
                         {{{Link class="link paper__link" href="./login.html" text="Войти"}}}

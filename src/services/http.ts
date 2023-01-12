@@ -13,7 +13,7 @@ interface IOptions {
 }
 
 
-function queryStringify(data) {
+function queryStringify(data: any) {
   if (typeof data !== 'object') {
     throw new Error('Data must be object');
   }
@@ -25,24 +25,24 @@ function queryStringify(data) {
 }
 
 class HTTPTransport {
-  get = (url, options: IOptions = {} as IOptions) => {
+  get = (url: string, options: IOptions = {} as IOptions) => {
 
     return this.request(url, {...options, method: METHODS.GET}, options.timeout);
   };
 
-  post = (url, options: IOptions = {} as IOptions) => {
+  post = (url: string, options: IOptions = {} as IOptions) => {
     return this.request(url, {...options, method: METHODS.POST}, options.timeout);
   };
 
-  put = (url, options: IOptions = {} as IOptions) => {
+  put = (url: string, options: IOptions = {} as IOptions) => {
     return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
   };
 
-  delete = (url, options: IOptions = {} as IOptions) => {
+  delete = (url: string, options: IOptions = {} as IOptions) => {
     return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
   };
 
-  request = (url, options: IOptions = {} as IOptions, timeout = 5000) => {
+  request = (url: string, options: IOptions = {} as IOptions, timeout = 5000) => {
     const {headers = {}, method, data} = options;
 
     return new Promise(function(resolve, reject) {
@@ -61,7 +61,7 @@ class HTTPTransport {
           : url,
       );
 
-      Object.keys(headers).forEach(key => {
+      Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);
       });
 
