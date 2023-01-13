@@ -16,16 +16,17 @@ import renderDOM from "core/renderDOM";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import Page404 from "./pages/ErrorPages/404/Page404";
 import Page500 from "./pages/ErrorPages/500/Page500";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 // import Sidebar from "./components/Sidebar/Sidebar";
 // import main from "./pages/MainPage/MainPage";
 
 // const chatPage = new ChatPreview({});
 // const mainPage = new Main();
-const errorPage = new Page500({} as any);
+const profilePage = new ProfilePage({} as any);
 // const sidebar = new Sidebar({});
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderDOM(errorPage)
+  renderDOM(profilePage)
 })
 
 // TODO: Router

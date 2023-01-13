@@ -1,6 +1,21 @@
-.profile__img {
+@import "src/scss/variables";
+@import "src/scss/mixins";
+
+.profile__icon-wrapper {
   margin: 60px auto 20px;
+  display: grid;
+  place-items: center;
+  @include avatar-circle(130);
 }
+
+.profile__icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-image: url("../../static/icons/avatar.svg");
+  background-repeat: no-repeat;
+}
+
 
 .profile__subtitle {
   margin-bottom: 60px;

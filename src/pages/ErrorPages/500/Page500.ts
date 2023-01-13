@@ -20,14 +20,13 @@ class Page500 extends Block {
                             class="subtitle page-error__subtitle">
                         Мы уже фиксим
                     </h3>
-                    <a
-                            class="link page-error__link"
-                            href="./main.html"
+                    {{{Link
+                            className="page-error__link"
+                            href="/"
                             target="_self"
                             rel="noopener nofollow"
-                    >
-                        Назад к чатам
-                    </a>
+                            text="Назад к чатам"
+                    }}}
                 </div>
             </main>
       `

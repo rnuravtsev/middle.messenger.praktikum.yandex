@@ -18,6 +18,10 @@ import Field from "components/Field/Field";
 import InputError from "components/InputError/InputError";
 import Page404 from "pages/ErrorPages/404/Page404";
 import Page500 from "pages/ErrorPages/500/Page500";
+import Table from "../components/Table/Table";
+import Img from "../components/Img/Img";
+import Subtitle from "../components/Subtitle/Subtitle";
+import PageTitle from "../components/PageTitle/PageTitle";
 
 registerComponent(Layout);
 registerComponent(Button);
@@ -38,3 +42,7 @@ registerComponent(Link);
 registerComponent(InputError);
 registerComponent(Page404);
 registerComponent(Page500);
+registerComponent(Table);
+registerComponent(Img);
+registerComponent(Subtitle);
+registerComponent(PageTitle)

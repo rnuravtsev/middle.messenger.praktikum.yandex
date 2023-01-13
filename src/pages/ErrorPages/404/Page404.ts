@@ -20,14 +20,13 @@ class Page404 extends Block {
                             class="subtitle page-error__subtitle">
                         Не туда попали
                     </h3>
-                    <a
-                            class="link page-error__link"
-                            href="./main.html"
-                            target="_self"
-                            rel="noopener nofollow"
-                    >
-                        Назад к чатам
-                    </a>
+                    {{{Link
+                        className="page-error__link"
+                        href="/"
+                        target="_self"
+                        rel="noopener nofollow"
+                        text="Назад к чатам"
+                    }}}
                 </div>
             </main>
       `
