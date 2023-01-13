@@ -15,16 +15,17 @@ import "./scss/main.scss";
 import renderDOM from "core/renderDOM";
 // import Main from "./pages/MainPage/MainPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
+import Page404 from "./pages/ErrorPages/404/Page404";
 // import Sidebar from "./components/Sidebar/Sidebar";
 // import main from "./pages/MainPage/MainPage";
 
 // const chatPage = new ChatPreview({});
 // const mainPage = new Main();
-const loginPage = new SignupPage({});
+const errorPage = new Page404({} as any);
 // const sidebar = new Sidebar({});
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderDOM(loginPage)
+  renderDOM(errorPage)
 })
 
 // TODO: Router
