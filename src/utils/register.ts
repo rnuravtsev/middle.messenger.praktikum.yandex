@@ -16,7 +16,8 @@ import Link from "components/Link/Link";
 import Form from "components/Form/Form";
 import Field from "components/Field/Field";
 import InputError from "components/InputError/InputError";
-import Page404 from "../pages/ErrorPages/404/Page404";
+import Page404 from "pages/ErrorPages/404/Page404";
+import Page500 from "pages/ErrorPages/500/Page500";
 
 registerComponent(Layout);
 registerComponent(Button);
@@ -36,3 +37,4 @@ registerComponent(Field);
 registerComponent(Link);
 registerComponent(InputError);
 registerComponent(Page404);
+registerComponent(Page500);

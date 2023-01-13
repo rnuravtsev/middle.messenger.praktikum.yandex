@@ -1,7 +1,6 @@
 // import LoginPage from './components/LoginPage/LoginPage';
 // import SignUp from './components/SignUp/SignUp';
 // import ChatPage from './components/ChatPreview/ChatPreview';
-// import Page404 from './components/Page404/Page404';
 import 'normalize.css/normalize.css'
 
 // Чтобы не засорять файл регистрацией
@@ -16,12 +15,13 @@ import renderDOM from "core/renderDOM";
 // import Main from "./pages/MainPage/MainPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import Page404 from "./pages/ErrorPages/404/Page404";
+import Page500 from "./pages/ErrorPages/500/Page500";
 // import Sidebar from "./components/Sidebar/Sidebar";
 // import main from "./pages/MainPage/MainPage";
 
 // const chatPage = new ChatPreview({});
 // const mainPage = new Main();
-const errorPage = new Page404({} as any);
+const errorPage = new Page500({} as any);
 // const sidebar = new Sidebar({});
 
 document.addEventListener("DOMContentLoaded", () => {
