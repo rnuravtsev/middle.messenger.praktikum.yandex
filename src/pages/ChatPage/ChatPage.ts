@@ -1,4 +1,4 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './chat-page.scss';
 
 type ChatPageProps = {
@@ -41,7 +41,7 @@ class ChatPage extends Block {
                 </form>
             </footer>
         </section>
-    `
+    `;
   }
 }
 

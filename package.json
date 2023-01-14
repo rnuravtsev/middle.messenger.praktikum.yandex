@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "parcel build src/index.hbs",
+    "build": "parcel build src/index.html",
     "dev": "parcel index.html --no-cache --port 3000 --open",
     "start": "yarn build && node ./server.js",
     "generate-icons": "yarn run fantasticon"
@@ -32,6 +32,7 @@
     "@typescript-eslint/parser": "5.43.0",
     "eslint": "8.27.0",
     "eslint-config-airbnb": "19.0.4",
+    "eslint-plugin-jsx-a11y": "6.7.1",
     "fantasticon": "2.0.0",
     "handlebars": "4.7.7",
     "parcel": "2.7.0",
