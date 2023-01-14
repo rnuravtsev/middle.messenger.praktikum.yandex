@@ -22,6 +22,7 @@ import Table from "../components/Table/Table";
 import Img from "../components/Img/Img";
 import Subtitle from "../components/Subtitle/Subtitle";
 import PageTitle from "../components/PageTitle/PageTitle";
+import ProfileIcon from "../components/ProfileIcon/ProfileIcon";
 
 registerComponent(Layout);
 registerComponent(Button);
@@ -45,4 +46,5 @@ registerComponent(Page500);
 registerComponent(Table);
 registerComponent(Img);
 registerComponent(Subtitle);
-registerComponent(PageTitle)
+registerComponent(PageTitle);
+registerComponent(ProfileIcon);

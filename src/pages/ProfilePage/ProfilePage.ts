@@ -21,9 +21,7 @@ class ProfilePage extends Block {
     return `
         <main>
             <div class="profile container">
-                <div class="profile__icon-wrapper">
-                    <i class="profile__icon"></i>
-                </div>
+                {{{ProfileIcon}}}
                 {{{Subtitle
                         className="profile__subtitle"
                         text="Иван Иванов"

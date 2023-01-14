@@ -1,3 +1,5 @@
+@import "src/scss/variables";
+
 .form {
   display: flex;
   flex-direction: column;
@@ -6,6 +8,32 @@
 
   &_auth {
     flex-grow: 1;
+  }
+
+  &_type_table {
+    .form__field {
+      margin-bottom: 10px;
+    }
+
+    .field__label {
+      flex-direction: row;
+      justify-content: space-between;
+
+      &:after {
+        bottom: -5px;
+        background-color: $gray-light;
+      }
+    }
+
+    .field__text {
+      width: max-content;
+      transform: none;
+    }
+
+    .field__input {
+      text-align: right;
+      width: max-content;
+    }
   }
 }
 

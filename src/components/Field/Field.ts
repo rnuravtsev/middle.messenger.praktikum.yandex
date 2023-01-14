@@ -16,6 +16,8 @@ type FieldProps = {
   type: string,
   /** Сообщение ошибки при валидации поля по Focus/Blur */
   errorMessages: string,
+  /** Значение инпута */
+  value: string,
 }
 
 
@@ -64,6 +66,7 @@ class Field extends Block {
                         placeholder=placeholder
                         name=name
                         type=type
+                        value=value
                         onInput=onInput
                         onFocus=onFocus
                         onBlur=onBlur

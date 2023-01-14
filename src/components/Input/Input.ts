@@ -46,27 +46,30 @@ class Input extends Block {
 
   }
 
-  toggleLabelClass() {
+  toggleLabelClass(evt: FocusEvent) {
     const input = this._element as HTMLInputElement;
     const label = input.parentElement;
+    const form = input.form;
 
-    if (input.value || document.activeElement === input) {
-      label?.classList.add(LABEL_CLASS_NAME_SHRINK);
-    } else {
-      label?.classList.remove(LABEL_CLASS_NAME_SHRINK);
+    if (form?.classList.contains('form_type_shrink')) {
+      if (input.value || document.activeElement === input) {
+        label?.classList.add(LABEL_CLASS_NAME_SHRINK);
+      } else {
+        label?.classList.remove(LABEL_CLASS_NAME_SHRINK);
+      }
     }
   }
 
   onFocus(evt: FocusEvent) {
     // FIXME: Так как мы перезаписываем событие focus, то нужно вызывать его вручную
     this.focusCallback(evt);
-    this.toggleLabelClass();
+    this.toggleLabelClass(evt);
   }
 
   onBlur(evt: FocusEvent) {
     // FIXME: Так как мы перезаписываем событие blur, то нужно вызывать его вручную
     this.focusCallback(evt);
-    this.toggleLabelClass()
+    this.toggleLabelClass(evt);
   }
 
   render() {

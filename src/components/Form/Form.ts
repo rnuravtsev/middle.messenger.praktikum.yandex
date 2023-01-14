@@ -5,6 +5,7 @@ import { validateForm, ValidateRuleType } from "../../utils/validateForm";
 type FormProps = {
   className: string,
   isSubmitButtonHide: boolean,
+  type: 'table' | 'shrink',
   fields: unknown[],
   buttonText: string,
 }
@@ -51,7 +52,7 @@ class Form extends Block {
     const { firstValidationError } = this.props;
     // language=hbs
     return `
-        <form id="form" class="form {{className}}">
+        <form id="form" class="form form_type_{{#if type}}{{type}}{{else}}shrink{{/if}}{{className}}">
             {{#each fields}}
             {{{Field
                     className="form__field"
@@ -59,6 +60,7 @@ class Form extends Block {
                     name=this.name
                     placeholder=this.placeholder
                     type=this.type
+                    value=this.value
                     validationType="${firstValidationError?.type}"
                     validationError="${firstValidationError?.value}"
             }}}
