@@ -16,11 +16,15 @@ img {
   height: auto;
 }
 
-body:has(main.login),
-body:has(main.page-error),
-body:has(main.sign-in) {
+#app:has(main.login),
+#app:has(main.page-error),
+#app:has(main.sign-in) {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+}
+
+#app:has(main.profile) {
   min-height: 100vh;
 }

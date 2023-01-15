@@ -1,8 +1,27 @@
 @import "src/scss/variables";
 @import "src/scss/mixins";
 
-.profile__subtitle {
+.profile {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  min-height: 100vh;
+}
+
+.profile__sidebar {
+  grid-column: 1;
+}
+
+.profile__content {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  grid-column: 2;
+}
+
+.profile__subtitle-wrapper {
   margin-bottom: 60px;
+  display: flex;
 }
 
 .profile__button {
@@ -41,4 +60,8 @@
   font-size: 13px;
   line-height: 13px;
   border-bottom: 1px solid $gray-light;
+}
+
+.profile__form .form__button {
+  margin-bottom: 153px;
 }

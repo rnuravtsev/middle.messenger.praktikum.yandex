@@ -23,6 +23,7 @@ import Img from "../components/Img/Img";
 import Subtitle from "../components/Subtitle/Subtitle";
 import PageTitle from "../components/PageTitle/PageTitle";
 import ProfileIcon from "../components/ProfileIcon/ProfileIcon";
+import SidebarReturn from "../components/SidebarReturn/SidebarReturn";
 
 registerComponent(Layout);
 registerComponent(Button);
@@ -48,3 +49,4 @@ registerComponent(Img);
 registerComponent(Subtitle);
 registerComponent(PageTitle);
 registerComponent(ProfileIcon);
+registerComponent(SidebarReturn);

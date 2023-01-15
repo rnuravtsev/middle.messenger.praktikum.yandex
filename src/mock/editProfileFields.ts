@@ -1,33 +1,35 @@
+import { ValidateRuleType } from "../utils/validateForm";
+
 export const editProfileFields = [
   {
     type: 'email',
-    name: 'email',
+    name: ValidateRuleType.Email,
     labelText: 'Почта',
     value: 'pochta@yandex.ru',
   },
   {
-    name: 'login',
+    name: ValidateRuleType.Login,
     labelText: 'Логин',
     value: 'ivanivanov',
   },
   {
-    name: 'first_name',
+    name: ValidateRuleType.FirstName,
     labelText: 'Имя',
     value: 'Иван',
   },
   {
-    name: 'second_name',
+    name: ValidateRuleType.SecondName,
     labelText: 'Фамилия',
     value: 'Иванов',
   },
   {
-    name: 'chat_name',
+    name: ValidateRuleType.FirstName,
     labelText: 'Имя в чате',
     value: 'Иван',
   },
   {
     type: 'tel',
-    name: 'phone',
+    name: ValidateRuleType.Phone,
     labelText: 'Телефон',
     value: '+7 (909) 967 30 30',
   }

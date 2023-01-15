@@ -26,4 +26,11 @@
     padding: 0;
     @include btn-color($gray-light, transparent, transparent, transparent, true)
   }
+
+  &_type_round {
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+  }
 }

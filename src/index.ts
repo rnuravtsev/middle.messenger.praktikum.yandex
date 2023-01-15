@@ -16,18 +16,19 @@ import renderDOM from "core/renderDOM";
 // import SignupPage from "./pages/SignupPage/SignupPage";
 // import Page404 from "./pages/ErrorPages/404/Page404";
 // import Page500 from "./pages/ErrorPages/500/Page500";
-// import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+// import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
+// import ProfileEditPass from "./pages/ProfileEditPass/ProfileEditPass";
 // import Sidebar from "./components/Sidebar/Sidebar";
 // import main from "./pages/MainPage/MainPage";
 
 // const chatPage = new ChatPreview({});
 // const mainPage = new Main();
-const editProfilePage = new ProfileEditPage({} as any);
+const editProfilePassPage = new ProfilePage({} as any);
 // const sidebar = new Sidebar({});
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderDOM(editProfilePage)
+  renderDOM(editProfilePassPage)
 })
 
 // TODO: Router

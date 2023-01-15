@@ -1,32 +1,34 @@
+import { ValidateRuleType } from "../utils/validateForm";
+
 export const profileFields = [
   {
     title: 'Почта',
     text: 'abs@gmail.com',
-    name: 'email'
+    name: ValidateRuleType.Email
   },
   {
     title: 'Логин',
     text: 'kReal',
-    name: 'login'
+    name: ValidateRuleType.Login
   },
   {
     title: 'Имя',
     text: 'Кирилл',
-    name: 'first_name'
+    name: ValidateRuleType.FirstName
   },
   {
     title: 'Фамилия',
     text: 'Фомин',
-    name: 'second_name'
+    name: ValidateRuleType.SecondName
   },
   {
     title: 'Имя в чате',
     text: 'kReal',
-    name: 'display_name'
+    name: ValidateRuleType.FirstName
   },
   {
     title: 'Телефон',
     text: '7 (917) 234 54 23',
-    name: 'phone'
+    name: ValidateRuleType.Phone
   },
 ]

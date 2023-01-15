@@ -1,18 +1,17 @@
-import Block from 'core/Block';
-import './profile-edit.scss';
-import { editProfileFields } from "../../mock/editProfileFields";
+import Block from "core/Block";
+import './profile-edit-pass.scss';
+import { editProfilePassFields } from "../../mock/editProfilePassFields";
 
-type ProfileEditProps = {
+type EditProfilePassProps = {
   className: string,
-  fields: unknown[],
 }
 
-class ProfileEditPage extends Block {
-  constructor(props: ProfileEditProps) {
+class ProfileEditPass extends Block {
+  constructor(props: EditProfilePassProps) {
     super(props);
 
     this.setProps({
-      fields: editProfileFields
+      fields: editProfilePassFields
     })
   }
 
@@ -26,14 +25,14 @@ class ProfileEditPage extends Block {
                 <div class="profile__subtitle-wrapper"></div>
                 {{{Form
                         className="profile__form"
-                        fields=fields
                         gridType="row"
-                        buttonText="Cохранить"
+                        fields=fields
+                        buttonText="Сохранить"
                 }}}
             </div>
         </main>
-    `;
+    `
   }
 }
 
-export default ProfileEditPage;
+export default ProfileEditPass;

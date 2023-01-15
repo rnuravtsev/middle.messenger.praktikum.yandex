@@ -19,13 +19,15 @@ class ProfilePage extends Block {
   render() {
     // language=hbs
     return `
-        <main>
-            <div class="profile container">
+        <main class="profile">
+            {{{SidebarReturn className="profile__sidebar"}}}
+            <div class="profile__content container">
                 {{{ProfileIcon}}}
-                {{{Subtitle
-                        className="profile__subtitle"
-                        text="Иван Иванов"
-                }}}
+                <div class="profile__subtitle-wrapper">
+                    {{{Subtitle
+                            text="Иван Иванов"
+                    }}}
+                </div>
                 {{{Table className="profile__table" data=fields}}}
                 <div class="profile__links">
                     {{{Link className="profile__link" href="/profile/edit" text="Изменить данные"}}}

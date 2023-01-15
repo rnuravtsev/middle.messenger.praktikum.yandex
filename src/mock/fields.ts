@@ -1,3 +1,5 @@
+import { ValidateRuleType } from "../utils/validateForm";
+
 export const fields = [
   {
     id: 1,
@@ -14,34 +16,34 @@ export const fields = [
 export const signUpFields = [
   {
     type: 'email',
-    name: 'email',
+    name: ValidateRuleType.Email,
     labelText: 'Почта',
   },
   {
-    name: 'login',
+    name: ValidateRuleType.Login,
     labelText: 'Логин',
   },
   {
-    name: 'first_name',
+    name: ValidateRuleType.FirstName,
     labelText: 'Имя',
   },
   {
-    name: 'second_name',
+    name: ValidateRuleType.SecondName,
     labelText: 'Фамилия',
   },
   {
     type: 'tel',
-    name: 'phone',
+    name: ValidateRuleType.Phone,
     labelText: 'Телефон',
   },
   {
     type: 'password',
-    name: 'password',
+    name: ValidateRuleType.Password,
     labelText: 'Пароль',
   },
   {
     type: 'password',
-    name: 'password',
+    name: ValidateRuleType.Password,
     labelText: 'Подтвердите пароль',
   }
 ]

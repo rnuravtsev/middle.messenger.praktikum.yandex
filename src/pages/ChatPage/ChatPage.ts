@@ -35,7 +35,7 @@ class ChatPage extends Block {
                             placeholder="Сообщение"
                     }}}
                     {{{Button
-                            className="chat-page__submit"
+                            type="round"
                             label="->"
                     }}}
                 </form>

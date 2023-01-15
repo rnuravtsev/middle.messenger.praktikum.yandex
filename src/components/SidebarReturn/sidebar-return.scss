@@ -1,0 +1,11 @@
+@import "src/scss/variables";
+
+.sidebar-return {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fbfbfb;
+  border-right: 1px solid $gray-light;
+  overflow: auto;
+}
