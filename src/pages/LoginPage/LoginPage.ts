@@ -1,17 +1,15 @@
 import Block from "core/Block";
 import './login-page.scss';
 import { fields as mockFields } from "../../mock/fields";
-
-type LoginPageProps = {
-  fields: unknown[],
-}
-
+import { LoginPageProps } from "./types";
 
 class LoginPage extends Block {
-  constructor({ fields }: LoginPageProps) {
-    // FIXME: Временное решение, не передавал в компонет напрямую,
-    //  а использую по умолчанию
-    super({ fields: mockFields });
+  constructor(props: LoginPageProps = {} as LoginPageProps) {
+    super(props);
+    
+    this.setProps({
+      fields: mockFields
+    })
   }
 
   render() {

@@ -1,15 +1,11 @@
 import Block from "core/Block";
 import './signup-page.scss';
 import { signUpFields } from "../../mock/fields";
-
-type SignupPageProps = {
-  className: string,
-  fields: unknown[],
-}
+import { SignUpPageProps } from "./types";
 
 
-class SignupPage extends Block {
-  constructor(props: SignupPageProps) {
+class SignUpPage extends Block {
+  constructor(props: SignUpPageProps = {} as SignUpPageProps) {
     super(props);
 
     this.setProps({
@@ -42,4 +38,4 @@ class SignupPage extends Block {
   }
 }
 
-export default SignupPage;
+export default SignUpPage;

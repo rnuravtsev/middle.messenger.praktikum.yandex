@@ -1,14 +1,11 @@
 import Block from "core/Block";
 import './profile-page.scss';
 import { profileFields } from "../../mock/profileFields";
-
-type ProfileProps = {
-  className: string,
-}
+import { ProfilePageProps } from "./types";
 
 
 class ProfilePage extends Block {
-  constructor(props: ProfileProps) {
+  constructor(props: ProfilePageProps = {} as ProfilePageProps) {
     super(props);
 
     this.setProps({

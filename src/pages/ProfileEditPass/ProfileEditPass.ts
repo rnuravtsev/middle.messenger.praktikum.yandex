@@ -1,13 +1,10 @@
 import Block from "core/Block";
 import './profile-edit-pass.scss';
 import { editProfilePassFields } from "../../mock/editProfilePassFields";
-
-type EditProfilePassProps = {
-  className: string,
-}
+import { EditProfilePassProps } from "./types";
 
 class ProfileEditPass extends Block {
-  constructor(props: EditProfilePassProps) {
+  constructor(props: EditProfilePassProps = {} as EditProfilePassProps) {
     super(props);
 
     this.setProps({

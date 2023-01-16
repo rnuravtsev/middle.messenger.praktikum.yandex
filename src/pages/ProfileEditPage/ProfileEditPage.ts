@@ -1,14 +1,10 @@
 import Block from 'core/Block';
 import './profile-edit.scss';
 import { editProfileFields } from "../../mock/editProfileFields";
-
-type ProfileEditProps = {
-  className: string,
-  fields: unknown[],
-}
+import { ProfileEditProps } from "./types";
 
 class ProfileEditPage extends Block {
-  constructor(props: ProfileEditProps) {
+  constructor(props: ProfileEditProps = {} as ProfileEditProps) {
     super(props);
 
     this.setProps({

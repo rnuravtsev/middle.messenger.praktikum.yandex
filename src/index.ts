@@ -13,7 +13,7 @@ import "./scss/main.scss";
 
 import renderDOM from "core/renderDOM";
 // import Main from "./pages/MainPage/MainPage";
-// import SignupPage from "./pages/SignupPage/SignupPage";
+// import SignUpPage from "./pages/SignUpPage/SignUpPage";
 // import Page404 from "./pages/ErrorPages/404/Page404";
 // import Page500 from "./pages/ErrorPages/500/Page500";
 // import ProfilePage from "./pages/ProfilePage/ProfilePage";
@@ -24,7 +24,7 @@ import ProfileEditPass from "./pages/ProfileEditPass/ProfileEditPass";
 
 // const chatPage = new ChatPreview({});
 // const mainPage = new Main();
-const editProfilePassPage = new ProfileEditPass({} as never);
+const editProfilePassPage = new ProfileEditPass();
 // const sidebar = new Sidebar({});
 
 document.addEventListener("DOMContentLoaded", () => {

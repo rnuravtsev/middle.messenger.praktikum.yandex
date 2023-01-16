@@ -1,13 +1,8 @@
 import Block from 'core/Block';
 import './chat-page.scss';
-
-type ChatPageProps = {
-  className: string,
-  author: string,
-}
-
+import { ChatPageProps } from './types';
 class ChatPage extends Block {
-  constructor(props: ChatPageProps) {
+  constructor(props: ChatPageProps = {} as ChatPageProps) {
     super(props);
   }
 

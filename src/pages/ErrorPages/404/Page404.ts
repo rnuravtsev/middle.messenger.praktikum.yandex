@@ -1,9 +1,5 @@
 import Block from "core/Block";
-
-type Page404Props = {
-  className: string,
-}
-
+import { Page404Props } from "./types";
 
 class Page404 extends Block {
   constructor(props: Page404Props) {
@@ -13,23 +9,23 @@ class Page404 extends Block {
   render() {
     // language=hbs
     return `
-            <main class="page-error">
-                <div class="container">
-                    <h1 class="page-title page-error__title">404</h1>
-                    <h3
-                            class="subtitle page-error__subtitle">
-                        Не туда попали
-                    </h3>
-                    {{{Link
+        <main class="page-error">
+            <div class="container">
+                <h1 class="page-title page-error__title">404</h1>
+                <h3
+                        class="subtitle page-error__subtitle">
+                    Не туда попали
+                </h3>
+                {{{Link
                         className="page-error__link"
                         href="/"
                         target="_self"
                         rel="noopener nofollow"
                         text="Назад к чатам"
-                    }}}
-                </div>
-            </main>
-      `
+                }}}
+            </div>
+        </main>
+    `
   }
 }
 
