@@ -1,17 +1,17 @@
 /* Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap";
 
 /* Normalize.css */
-@import url("../../node_modules/normalize.css/normalize.css");
+@import "../../node_modules/normalize.css/normalize.css";
 
 /* Variables and mixins */
-@import url("./variables");
-@import url("./mixins");
+@import "./variables";
+@import "./mixins";
 
 /* Base components styles */
-@import url("./app");
-@import url("./icons");
+@import "./app";
+@import "./icons";
 
 /* Common components */
-@import url("./components/container");
-@import url("./components/paper");
+@import "./components/container";
+@import "./components/paper";
