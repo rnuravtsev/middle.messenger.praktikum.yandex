@@ -1,4 +1,4 @@
-@import "variables";
+@import url("variables");
 
 @mixin btn-color($color, $bg, $bg-hover, $bg-focus, $opacity: false) {
   color: $color;
@@ -6,6 +6,7 @@
 
   &:hover {
     background-color: $bg-hover;
+
     @if $opacity {
       opacity: 0.75;
     }
@@ -13,6 +14,7 @@
 
   &:focus-within {
     background-color: $bg-focus;
+
     @if $opacity {
       opacity: 0.75;
     }
