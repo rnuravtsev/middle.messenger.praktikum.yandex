@@ -20,7 +20,6 @@ class Page500 extends Block {
                 {{{Link
                         className="page-error__link"
                         href="/"
-                        target="_self"
                         rel="noopener nofollow"
                         text="Назад к чатам"
                 }}}

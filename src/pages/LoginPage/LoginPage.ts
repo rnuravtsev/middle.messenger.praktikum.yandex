@@ -30,7 +30,7 @@ class LoginPage extends Block {
                         }}}
                         {{{Link
                                 className="link paper__link"
-                                href="./signup.html"
+                                href="/sign-up"
                                 text="Нет аккаунта?"}}}
                     </div>
                 </div>

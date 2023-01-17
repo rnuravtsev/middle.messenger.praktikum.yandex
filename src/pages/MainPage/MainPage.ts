@@ -12,7 +12,7 @@ class MainPage extends Block {
     return `
         <div class="main-page">
             {{{Sidebar className="main-page__sidebar"}}}
-            {{{ChatPage author="Alex"}}}
+            {{{MainChat author="Alex"}}}
         </div>`
   }
 }

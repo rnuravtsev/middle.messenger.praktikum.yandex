@@ -1,8 +1,8 @@
 import Block from 'core/Block';
-import './chat-page.scss';
+import './main-chat.scss';
 import { ChatPageProps } from './types';
 import { chatFields } from "../../mock/chatFields";
-class ChatPage extends Block {
+class MainChat extends Block {
   constructor(props: ChatPageProps = {} as ChatPageProps) {
     super(props);
 
@@ -39,4 +39,4 @@ class ChatPage extends Block {
   }
 }
 
-export default ChatPage;
+export default MainChat;
