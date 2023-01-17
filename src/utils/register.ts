@@ -1,4 +1,3 @@
-// register
 import registerComponent from "core/registerComponent";
 import Layout from "components/Layout/Layout";
 import Button from "components/Button/Button";

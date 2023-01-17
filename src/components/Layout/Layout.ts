@@ -1,8 +1,9 @@
 import Block from '../../core/Block';
-
 import './layout.css';
 
-interface LayoutProps {}
+interface LayoutProps {
+  className: string,
+}
 
 export default class Layout extends Block<LayoutProps> {
   protected render(): string {
