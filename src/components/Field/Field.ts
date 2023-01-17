@@ -5,6 +5,7 @@ import { validateField } from "../../utils/validateForm";
 type FieldProps = {
   className: string,
   labelClassName: string,
+  inputClassName: string,
   labelText: string,
   placeholder: string,
   name: string,
@@ -46,7 +47,7 @@ class Field extends Block {
   }
 
   render() {
-    const { errorMessage, validationError, validationType, name } = this.props
+    const { errorMessage, validationError, validationType, name, inputClassName } = this.props
     const renderError = (): string => {
       if (validationType === name && validationError) {
         return validationError
@@ -61,7 +62,7 @@ class Field extends Block {
             <label class="field__label {{labelClassName}}">
                 <span class="field__text">{{labelText}}</span>
                 {{{Input
-                        className="field__input input_bg_transparent"
+                        className="field__input input_bg_transparent ${inputClassName ? inputClassName : ''}"
                         ref="inputRef"
                         placeholder=placeholder
                         name=name

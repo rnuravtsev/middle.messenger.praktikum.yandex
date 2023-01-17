@@ -1,9 +1,14 @@
 import Block from 'core/Block';
 import './chat-page.scss';
 import { ChatPageProps } from './types';
+import { chatFields } from "../../mock/chatFields";
 class ChatPage extends Block {
   constructor(props: ChatPageProps = {} as ChatPageProps) {
     super(props);
+
+    this.setProps({
+      fields: chatFields,
+    })
   }
 
   render() {
@@ -19,21 +24,15 @@ class ChatPage extends Block {
                 {{{Chat}}}
             </div>
             <footer class="chat-page__footer">
-                <form class="chat-page__form">
-                    {{{Button
-                            type="icon"
-                            icon="clip"
-                    }}}
-                    {{{Input
-                            className="chat-page__input"
-                            name="message"
-                            placeholder="Сообщение"
-                    }}}
-                    {{{Button
-                            type="round"
-                            label="->"
-                    }}}
-                </form>
+                {{{Form
+                        className="chat-page__form"
+                        inputClassName="chat-page__input"
+                        fields=fields
+                        gridType="row"
+                        submitButtonClassname="chat-page__submit"
+                        submitButtonType="round"
+                        buttonText="->"
+                }}}
             </footer>
         </section>
     `;

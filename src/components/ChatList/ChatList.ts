@@ -1,6 +1,6 @@
 import Block from "core/Block";
 import './chat-list.scss';
-import { TChat } from "../ChatPreview/type";
+import { TChat } from "../ChatPreview/types";
 import {chats as mockChats} from "../../mock/chats";
 
 
@@ -9,10 +9,12 @@ type ChatListProps = {
 }
 
 class ChatList extends Block {
-  constructor({ chats }: ChatListProps) {
-    // FIXME: Временное решение, не передавал в компонет напрямую,
-    //  а использую по умолчанию
-    super({ chats: mockChats });
+  constructor(props: ChatListProps) {
+    super(props);
+
+    this.setProps({
+      chats: mockChats
+    })
   }
 
   render() {

@@ -1,16 +1,16 @@
 import Block from "core/Block";
 import './input.scss';
-
-const LABEL_CLASS_NAME_SHRINK = 'field__label_shrink';
+import { LABEL_CLASS_NAME_SHRINK } from "./consts";
+import { FORM_GRID_COLUMN_CSS_CLASS } from "../Form/consts";
 
 type InputProps = {
   className?: string,
   type?: string,
   name?: string,
   placeholder?: string,
-  onInput?: (evt: Event) => void,
-  onFocus?: (evt: Event) => void,
-  onBlur?: (evt: Event) => void,
+  onInput?: (evt: FocusEvent) => void,
+  onFocus?: (evt: FocusEvent) => void,
+  onBlur?: (evt: FocusEvent) => void,
 }
 
 
@@ -18,11 +18,10 @@ class Input extends Block {
   private readonly focusCallback: (evt: FocusEvent) => void;
   private readonly blurCallback: (evt: FocusEvent) => void;
 
-  constructor({ onInput, onBlur, onFocus, ...props }: InputProps) {
+  constructor({ onBlur, onFocus, ...props }: InputProps) {
     super({
       ...props,
       events: {
-        input: onInput,
         focus: onFocus,
         blur: onBlur,
       },
@@ -34,7 +33,6 @@ class Input extends Block {
 
     this.setProps({
       events: {
-        input: () => this.onInput(),
         // FIXME: Здесь мы перезаписываем событие focus, чтобы добавить свою логику
         focus: (e: FocusEvent) => this.onFocus(e),
         blur: (e: FocusEvent) => this.onBlur(e),
@@ -42,16 +40,12 @@ class Input extends Block {
     })
   }
 
-  onInput() {
-
-  }
-
-  toggleLabelClass(evt: FocusEvent) {
+  toggleLabelClass() {
     const input = this._element as HTMLInputElement;
     const label = input.parentElement;
     const form = input.form;
 
-    if (form?.classList.contains('form_type_shrink')) {
+    if (form?.classList.contains(FORM_GRID_COLUMN_CSS_CLASS)) {
       if (input.value || document.activeElement === input) {
         label?.classList.add(LABEL_CLASS_NAME_SHRINK);
       } else {
@@ -61,15 +55,15 @@ class Input extends Block {
   }
 
   onFocus(evt: FocusEvent) {
-    // FIXME: Так как мы перезаписываем событие focus, то нужно вызывать его вручную
+    // FIXME: Вызов события focus, приходящего из родителя
     this.focusCallback(evt);
-    this.toggleLabelClass(evt);
+    this.toggleLabelClass();
   }
 
   onBlur(evt: FocusEvent) {
-    // FIXME: Так как мы перезаписываем событие blur, то нужно вызывать его вручную
-    this.focusCallback(evt);
-    this.toggleLabelClass(evt);
+    // FIXME: Вызов события focus, приходящего из родителя
+    this.blurCallback(evt);
+    this.toggleLabelClass();
   }
 
   render() {

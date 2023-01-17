@@ -12,6 +12,8 @@ class ChatView extends Block {
   }
 
   render() {
+    //FIXME: add active chat view
+
     // language=hbs
     return `
         {{#if activeChat}}

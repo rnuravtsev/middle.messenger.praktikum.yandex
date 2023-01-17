@@ -12,9 +12,10 @@ class Sidebar extends Block {
   }
 
   render() {
+    //TODO: застилизовать скроллбар
     // language=hbs
     return `
-        <aside class="{{className}} sidebar">
+        <aside class="sidebar {{className}}">
             <a class="sidebar__link" href="#">Профиль &gt;</a>
             {{{Input
                     className="sidebar__search input input_type_search"

@@ -14,17 +14,19 @@ import "./scss/main.scss";
 import renderDOM from "core/renderDOM";
 // import Main from "./pages/MainPage/MainPage";
 // import SignUpPage from "./pages/SignUpPage/SignUpPage";
+// import ChatPage from "./pages/ChatPage/ChatPage";
+import MainPage from "./pages/MainPage/MainPage";
 // import Page404 from "./pages/ErrorPages/404/Page404";
 // import Page500 from "./pages/ErrorPages/500/Page500";
 // import ProfilePage from "./pages/ProfilePage/ProfilePage";
 // import ProfileEditPage from "./pages/ProfileEditPage/ProfileEditPage";
-import ProfileEditPass from "./pages/ProfileEditPass/ProfileEditPass";
+// import ProfileEditPass from "./pages/ProfileEditPass/ProfileEditPass";
 // import Sidebar from "./components/Sidebar/Sidebar";
 // import main from "./pages/MainPage/MainPage";
 
 // const chatPage = new ChatPreview({});
 // const mainPage = new Main();
-const editProfilePassPage = new ProfileEditPass();
+const editProfilePassPage = new MainPage();
 // const sidebar = new Sidebar({});
 
 document.addEventListener("DOMContentLoaded", () => {

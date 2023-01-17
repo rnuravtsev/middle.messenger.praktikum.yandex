@@ -6,6 +6,8 @@ export enum ValidateRuleType {
   FirstName = 'first_name',
   SecondName = 'second_name',
   Message = 'message',
+  //TODO: Временное решение, доработать в 3 спринте
+  File = 'file',
 }
 
 export type ValidateRule = {
@@ -68,6 +70,9 @@ const validates = {
     }
 
     return '';
+  },
+  [ValidateRuleType.File]: (str = '') => {
+    return str;
   },
 }
 

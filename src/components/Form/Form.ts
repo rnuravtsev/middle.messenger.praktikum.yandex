@@ -4,7 +4,10 @@ import { validateForm, ValidateRuleType } from "../../utils/validateForm";
 
 type FormProps = {
   className: string,
+  inputClassName: string,
   isSubmitButtonHide: boolean,
+  submitButtonClassname: string,
+  submitButtonType: string,
   gridType: 'row' | 'column',
   fields: unknown[],
   buttonText: string,
@@ -36,26 +39,29 @@ class Form extends Block {
 
     const firstValidationError = validationErrors.find(({ value }) => value !== '');
 
+    const isEmptyError = validationErrors.every(({ value }) => value === '');
+
     if (firstValidationError) {
       this.setProps({
         firstValidationError: firstValidationError,
       })
     }
 
-    if (!validationErrors.length) {
+    if (isEmptyError) {
       //TODO: Доработать в 3 спринте
       console.log(Object.fromEntries([...formData]))
     }
   }
 
   render() {
-    const { firstValidationError } = this.props;
+    const { firstValidationError, submitButtonClassname, submitButtonType, inputClassName } = this.props;
     // language=hbs
     return `
         <form id="form" class="form form_grid_{{#if gridType}}{{gridType}}{{else}}column{{/if}} {{className}}">
             {{#each fields}}
             {{{Field
                     className="form__field"
+                    inputClassName="${inputClassName ? inputClassName : ''}"
                     labelText=this.labelText
                     name=this.name
                     placeholder=this.placeholder
@@ -68,7 +74,8 @@ class Form extends Block {
             {{#if isSubmitButtonHide}}
             {{else}}
                 {{{Button
-                        className="form__button"
+                        className="form__button ${submitButtonClassname ? submitButtonClassname : ''}"
+                        type="${submitButtonType ? submitButtonType : ''}"
                         label=buttonText
                         onClick=handleButtonSubmit
                 }}}

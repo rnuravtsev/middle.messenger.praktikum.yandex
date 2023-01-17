@@ -1,9 +1,9 @@
 import Block from "core/Block";
 import './chat-preview.scss';
-import { TChat } from "./type";
+import { TChat } from "./types";
 class ChatPreview extends Block {
-  constructor({ avatar, title, message, time, count }: TChat) {
-    super({ avatar, title, message, time, count });
+  constructor(props: TChat) {
+    super(props);
   }
 
   render() {
