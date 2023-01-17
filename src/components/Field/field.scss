@@ -2,7 +2,7 @@
 
 .field {
   margin-top: 0;
-  min-height: $form-filed-min-height;
+  min-height: $form-field-min-height;
   width: 100%;
 
   &:last-child {
@@ -16,7 +16,7 @@
   flex-direction: column;
   font-size: 13px;
   line-height: 13px;
-  color: $gray;
+  color: $gray-500;
 
   &:after {
     content: "";
@@ -25,11 +25,11 @@
     left: 0;
     height: 1px;
     width: 100%;
-    background-color: $gray;
+    background-color: $gray-500;
   }
 
   &:focus-within:after {
-    background-color: $primary;
+    background-color: $primary-300;
   }
 
   &_shrink {
@@ -50,7 +50,7 @@
     }
 
     .field__input {
-      color: $gray;
+      color: $gray-500;
       text-align: right;
     }
   }

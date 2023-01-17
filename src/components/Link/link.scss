@@ -3,15 +3,15 @@
 .link {
   font-size: 11px;
   line-height: 11px;
-  color: $primary;
+  color: $primary-300;
   text-decoration: none;
 
   &:hover {
-    color: $primary-light;
+    color: $primary-200;
   }
 
   &:active {
-    color: $primary-dark;
+    color: $primary-400;
   }
 
   &_negative {

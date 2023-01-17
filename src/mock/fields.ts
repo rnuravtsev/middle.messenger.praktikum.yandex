@@ -4,12 +4,13 @@ export const fields = [
   {
     id: 1,
     labelText: "Логин",
-    validationText: "OOOps"
+    name: "login",
   },
   {
     id: 2,
     labelText: "Пароль",
     type: "password",
+    name: "password",
   },
 ]
 

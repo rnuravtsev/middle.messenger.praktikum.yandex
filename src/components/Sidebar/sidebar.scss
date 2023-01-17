@@ -4,7 +4,7 @@
   padding: 20px 15px 0 10px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid $gray-light;
+  border-right: 1px solid $gray-400;
   overflow: auto;
 }
 
@@ -13,7 +13,7 @@
   align-self: flex-end;
   font-size: 12px;
   line-height: 12px;
-  color: $gray;
+  color: $gray-500;
   text-decoration: none;
 
   &:hover {

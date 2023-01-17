@@ -15,16 +15,16 @@
   transition: $transition-default;
 
   &_color_primary {
-    @include btn-color($white, $primary, $primary-light, $primary-dark);
+    @include btn-color($white, $primary-300, $primary-200, $primary-400);
   }
 
   &_color_tertiary {
-    @include btn-color($primary, transparent, $primary-light, $primary-dark);
+    @include btn-color($primary-300, transparent, $primary-200, $primary-400);
   }
 
   &_type_icon {
     padding: 0;
-    @include btn-color($gray-light, transparent, transparent, transparent, true)
+    @include btn-color($gray-400, transparent, transparent, transparent, true)
   }
 
   &_type_round {

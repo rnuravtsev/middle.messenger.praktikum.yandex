@@ -37,8 +37,8 @@
 
 .chat-page__chat {
   padding-top: 48px;
-  border-top: 1px solid $gray-light;
-  border-bottom: 1px solid $gray-light;
+  border-top: 1px solid $gray-400;
+  border-bottom: 1px solid $gray-400;
 }
 
 .chat-page__form.form {
@@ -62,7 +62,7 @@
     padding: 10px 20px;
     width: 100%;
     text-align: left;
-    background-color: #efefef;
+    background-color: $gray-300;
   }
 
   .field__input::file-selector-button {

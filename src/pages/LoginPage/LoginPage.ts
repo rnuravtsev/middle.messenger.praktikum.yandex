@@ -6,7 +6,7 @@ import { LoginPageProps } from "./types";
 class LoginPage extends Block {
   constructor(props: LoginPageProps = {} as LoginPageProps) {
     super(props);
-    
+
     this.setProps({
       fields: mockFields
     })
@@ -19,16 +19,19 @@ class LoginPage extends Block {
             <main class="login">
                 <div class="container">
                     <div class="paper paper_auth login__paper">
-                        <h3
-                                class="paper__subtitle subtitle">
-                            Вход
-                        </h3>
+                        {{{Subtitle
+                                className="paper__subtitle"
+                                text="Вход"
+                        }}}
                         {{{Form
                                 fields=fields
                                 className="paper__form"
                                 buttonText="Войти"
                         }}}
-                        {{{Link class="link paper__link" href="./signup.html" text="Нет аккаунта?"}}}
+                        {{{Link
+                                className="link paper__link"
+                                href="./signup.html"
+                                text="Нет аккаунта?"}}}
                     </div>
                 </div>
             </main>

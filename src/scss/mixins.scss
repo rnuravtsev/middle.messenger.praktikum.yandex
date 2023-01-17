@@ -1,3 +1,5 @@
+@import "variables";
+
 @mixin btn-color($color, $bg, $bg-hover, $bg-focus, $opacity: false) {
   color: $color;
   background-color: $bg;
@@ -20,6 +22,6 @@
 @mixin avatar-circle($size) {
   width: #{$size}px;
   height: #{$size}px;
-  background-color: #efefef;
+  background-color: $gray-300;
   border-radius: 50%;
 }

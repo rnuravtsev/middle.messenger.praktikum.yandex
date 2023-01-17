@@ -1,11 +1,13 @@
+import { ValidateRuleType } from "../utils/validateForm";
+
 export const chatFields = [
   {
     icon: 'clip',
-    name: 'file',
+    name: ValidateRuleType.File,
     type: 'file',
   },
   {
     placeholder: 'Сообщение',
-    name: 'message',
+    name: ValidateRuleType.Message,
   }
 ]

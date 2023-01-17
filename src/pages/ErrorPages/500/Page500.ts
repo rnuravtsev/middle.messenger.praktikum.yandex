@@ -1,4 +1,5 @@
 import Block from "core/Block";
+import '../page-error.scss';
 import { Page500Props } from "./types";
 
 class Page500 extends Block {

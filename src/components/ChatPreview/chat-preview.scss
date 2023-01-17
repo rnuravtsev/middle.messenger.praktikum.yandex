@@ -6,15 +6,15 @@
   padding-bottom: 12px;
   display: grid;
   grid-template-columns: 47px 1fr minmax(auto, 47px);
-  border-bottom: 1px solid $gray-light;
+  border-bottom: 1px solid $gray-400;
 
   &:first-child {
-    border-top: 1px solid $gray-light;
+    border-top: 1px solid $gray-400;
   }
 
   &_active {
-    background-color: $primary-weak;
-    box-shadow: 0 0 0 100vmax $primary-weak;
+    background-color: $primary-100;
+    box-shadow: 0 0 0 100vmax $primary-100;
     clip-path: inset(0 -100vmax);
   }
 }
@@ -42,7 +42,7 @@
   display: block;
   font-size: 9px;
   line-height: 13px;
-  color: $gray;
+  color: $gray-500;
 }
 
 .chat-preview__counter {
@@ -53,6 +53,6 @@
   width: 20px;
   height: 20px;
   color: $white;
-  background-color: $primary;
+  background-color: $primary-300;
   border-radius: 50%;
 }

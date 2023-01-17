@@ -29,7 +29,7 @@ class SignUpPage extends Block {
                                 fields=fields
                                 buttonText="Зарегистрироваться"
                         }}}
-                        {{{Link class="link paper__link" href="./login.html" text="Войти"}}}
+                        {{{Link className="link paper__link" href="./login.html" text="Войти"}}}
                     </div>
                 </div>
             </main>
