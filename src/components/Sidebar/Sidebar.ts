@@ -11,7 +11,9 @@ class Sidebar extends Block {
     super(props);
   }
 
-  render() {
+  static componentName = 'Sidebar';
+
+    render() {
     //TODO: застилизовать скроллбар
     // language=hbs
     return `

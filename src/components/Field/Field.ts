@@ -31,6 +31,8 @@ class Field extends Block {
     });
   }
 
+  static componentName = 'Field';
+
   onBlur(evt: Event) {
     const input = evt.target as HTMLInputElement;
     this.validate(input)

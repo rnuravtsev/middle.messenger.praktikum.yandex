@@ -11,6 +11,8 @@ class ChatView extends Block {
     super(props);
   }
 
+  static componentName = 'ChatView';
+
   render() {
     //FIXME: add active chat view
 

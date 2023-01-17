@@ -15,7 +15,9 @@ class Message extends Block {
     super({ text, time, className, image, owner });
   }
 
-  render() {
+  static componentName = 'Message';
+
+    render() {
     // language=hbs
     return `
         <div class="message {{className}}{{#if owner}} message_owner{{/if}}">

@@ -23,7 +23,9 @@ class Form extends Block {
     })
   }
 
-  handleButtonSubmit(evt: Event) {
+  static componentName = 'Form';
+
+    handleButtonSubmit(evt: Event) {
     evt.preventDefault();
     const formEl = this._element as HTMLFormElement;
     const formData = new FormData(formEl);

@@ -12,7 +12,9 @@ class InputError extends Block {
     super(props);
   }
 
-  render() {
+  static componentName = 'InputError';
+
+    render() {
     // language=hbs
     return `
         <span class="input-error {{className}}">{{errorMessage}}</span>

@@ -12,7 +12,9 @@ class PageTitle extends Block {
     super(props);
   }
 
-  render() {
+  static componentName = 'PageTitle';
+
+    render() {
     // language=hbs
     return `
         <h1 class="page-title {{className}}">{{text}}</h1>

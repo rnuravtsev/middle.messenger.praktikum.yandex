@@ -14,7 +14,9 @@ class Img extends Block {
     super(props);
   }
 
-  render() {
+  static componentName = 'Img';
+
+    render() {
     // language=hbs
     return `
         <img

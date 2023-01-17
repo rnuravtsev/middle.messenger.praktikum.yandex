@@ -11,7 +11,9 @@ class MainChat extends Block {
     })
   }
 
-  render() {
+  static componentName = 'MainChat';
+
+    render() {
     // language=hbs
     return `
         <section class="chat-page {{className}}">

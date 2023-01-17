@@ -6,6 +6,8 @@ class ChatPreview extends Block {
     super(props);
   }
 
+  static componentName = 'ChatPreview';
+
   render() {
     // language=hbs
     return `

@@ -12,7 +12,9 @@ class Table extends Block {
     super(props);
   }
 
-  render() {
+  static componentName = 'Table';
+
+    render() {
     // language=hbs
     return `
         <table class="table {{className}}">

@@ -23,6 +23,7 @@ class Button extends Block {
       type,
     });
   }
+  static componentName = 'Button';
 
   render() {
     // language=hbs

@@ -7,7 +7,8 @@ type ProfileIconProps = {
 
 
 class ProfileIcon extends Block<ProfileIconProps> {
-  render() {
+  static componentName = 'ProfileIcon';
+    render() {
     // language=hbs
     return `
         <div class="profile__icon-wrapper {{class}}">

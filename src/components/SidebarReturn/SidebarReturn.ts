@@ -15,7 +15,9 @@ class SidebarReturn extends Block {
     })
   }
 
-  handleButtonClick() {
+  static componentName = 'SidebarReturn';
+
+    handleButtonClick() {
     window.history.back();
   }
 

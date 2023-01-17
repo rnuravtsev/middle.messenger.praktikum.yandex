@@ -16,7 +16,9 @@ class MessagePreview extends Block {
     super(props);
   }
 
-  render() {
+  static componentName = 'MessagePreview';
+
+    render() {
     // language=hbs
     return `
         <div class="{{className}} message-preview">

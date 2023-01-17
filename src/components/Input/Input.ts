@@ -27,9 +27,11 @@ class Input extends Block {
       },
     });
 
-    // FIXME: Создаю ссылку на событие focus, приходящее из родителя
-    this.focusCallback = this.props.events.focus;
-    this.blurCallback = this.props.events.blur;
+      // FIXME: Создаю ссылку на событие focus, приходящее из родителя
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    this.focusCallback = this.props.events.focus || (() => {});
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    this.blurCallback = this.props.events.blur || (() => {});
 
     this.setProps({
       events: {
@@ -40,7 +42,9 @@ class Input extends Block {
     })
   }
 
-  toggleLabelClass() {
+  static componentName = 'Input';
+
+    toggleLabelClass() {
     const input = this._element as HTMLInputElement;
     const label = input.parentElement;
     const form = input.form;

@@ -17,6 +17,8 @@ class ChatList extends Block {
     })
   }
 
+  static componentName = 'ChatList';
+
   render() {
     // language=hbs
     return `

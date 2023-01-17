@@ -12,7 +12,9 @@ class Subtitle extends Block {
     super(props);
   }
 
-  render() {
+  static componentName = 'Subtitle';
+
+    render() {
     // language=hbs
     return `
         <h3

@@ -6,7 +6,8 @@ interface LayoutProps {
 }
 
 export default class Layout extends Block<LayoutProps> {
-  protected render(): string {
+  static componentName = 'Layout';
+    protected render(): string {
     // language=hbs
     return `
       <div class="screen screen_theme_full {{className}}">

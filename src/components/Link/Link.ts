@@ -15,7 +15,9 @@ class Link extends Block {
     super(props);
   }
 
-  render() {
+  static componentName = 'Link';
+
+    render() {
     // language=hbs
     return `
         <a

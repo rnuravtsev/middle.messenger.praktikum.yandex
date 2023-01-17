@@ -10,6 +10,8 @@ class Chat extends Block {
     super({ className });
   }
 
+  static componentName = 'Chat';
+
   render() {
     // language=hbs
     return `
