@@ -5,7 +5,7 @@ type MessageProps = {
   className: string,
   text: string,
   time: string,
-  image: {},
+  image: string,
   owner: boolean,
 }
 

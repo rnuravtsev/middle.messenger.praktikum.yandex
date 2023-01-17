@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "parcel build src/index.html",
+    "build": "parcel build index.html",
     "dev": "parcel index.html --no-cache --port 3000 --open",
+    "test:ts": "eslint src --ext .ts,.js --fix",
+    "test:style": "stylelint src/**/*.scss --fix",
     "start": "yarn build && node ./server.js",
     "generate-icons": "yarn run fantasticon"
   },

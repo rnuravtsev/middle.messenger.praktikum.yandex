@@ -7,6 +7,7 @@ const METHODS = {
 
 interface IOptions {
   method: string,
+  // eslint-disable-next-line @typescript-eslint/ban-types
   headers?: {},
   data?: XMLHttpRequestBodyInit,
   timeout?: number
@@ -62,6 +63,8 @@ class HTTPTransport {
       );
 
       Object.keys(headers).forEach((key) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         xhr.setRequestHeader(key, headers[key]);
       });
 

@@ -1,6 +1,5 @@
 import 'normalize.css/normalize.css'
 import './utils/register'
-import './utils/handlebarsHelpers'
 import "./scss/main.scss";
 import renderDOM from "core/renderDOM";
 import Block from 'core/Block';

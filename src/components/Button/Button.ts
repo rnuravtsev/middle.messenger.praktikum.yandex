@@ -28,7 +28,9 @@ class Button extends Block {
     // language=hbs
     return `
         <button
-                class="{{className}} btn btn_color_{{#if color}}{{color}}{{else}}primary{{/if}} {{#if type}}btn_type_{{type}}{{/if}}"
+                class="{{className}}
+                 btn btn_color_{{#if color}}{{color}}{{else}}primary{{/if}}
+                {{#if type}}btn_type_{{type}}{{/if}}"
                 type="button"
         >
             {{#if icon}}

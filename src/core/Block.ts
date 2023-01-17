@@ -58,6 +58,8 @@ export default class Block<P extends object = any> {
     this._element = this._createDocumentElement('div');
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-ignore
   protected getStateFromProps(props: any): void {
     this.state = {};
   }
@@ -71,7 +73,9 @@ export default class Block<P extends object = any> {
     this.componentDidMount(props);
   }
 
+  // TODO: Поправить eslint
   componentDidMount(props: P) {
+    console.log('componentDidMount', props);
   }
 
   _componentDidUpdate(oldProps: P, newProps: P) {
@@ -82,6 +86,8 @@ export default class Block<P extends object = any> {
     this._render();
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //@ts-ignore
   componentDidUpdate(oldProps: P, newProps: P) {
     return true;
   }
@@ -136,6 +142,7 @@ export default class Block<P extends object = any> {
   }
 
   _makePropsProxy(props: any): any {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
     return new Proxy(props as unknown as object, {

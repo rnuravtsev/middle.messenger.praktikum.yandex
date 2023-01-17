@@ -5,7 +5,7 @@ interface IBlockConstructable<Props = any> {
   new(props: Props): Block;
 }
 
-export default function registerComponent<Props extends any>(Component: IBlockConstructable<Props>) {
+export default function registerComponent<Props>(Component: IBlockConstructable<Props>) {
   Handlebars.registerHelper(Component.name, function (this: Props, { hash: { ref, ...hash }, data, fn }: HelperOptions) {
     if (!data.root.children) {
       data.root.children = {};
@@ -23,6 +23,7 @@ export default function registerComponent<Props extends any>(Component: IBlockCo
      */
     (Object.keys(hash) as any).forEach((key: keyof Props) => {
       if (this[key] && typeof this[key] === 'string') {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         hash[key] = hash[key].replace(new RegExp(`{{${key}}}`, 'i'), this[key]);
       }

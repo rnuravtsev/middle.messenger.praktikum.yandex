@@ -9,6 +9,6 @@
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",
     "max-len": [1, 105],
-    "max-params": [2, 3]
+    "max-params": [2, 4]
   }
 }

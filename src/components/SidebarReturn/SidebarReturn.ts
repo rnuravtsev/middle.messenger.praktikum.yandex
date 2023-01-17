@@ -9,6 +9,14 @@ type SidebarReturnProps = {
 class SidebarReturn extends Block {
   constructor(props: SidebarReturnProps) {
     super(props);
+
+    this.setProps({
+      handleButtonClick: () => this.handleButtonClick(),
+    })
+  }
+
+  handleButtonClick() {
+    window.history.back();
   }
 
   render() {
@@ -18,6 +26,7 @@ class SidebarReturn extends Block {
             {{{Button
                     type="round"
                     label="<-"
+                    onClick=handleButtonClick
             }}}
         </div>
       `
