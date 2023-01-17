@@ -1,0 +1,26 @@
+@import "src/scss/variables";
+
+.sidebar {
+  padding: 20px 15px 0 10px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid $gray-400;
+  overflow: auto;
+}
+
+.sidebar__link {
+  margin-bottom: 23px;
+  align-self: flex-end;
+  font-size: 12px;
+  line-height: 12px;
+  color: $gray-500;
+  text-decoration: none;
+
+  &:hover {
+    opacity: .85;
+  }
+}
+
+.sidebar__search {
+  margin-bottom: 14px;
+}

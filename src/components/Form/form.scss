@@ -1,0 +1,47 @@
+@import "src/scss/variables";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  &_auth {
+    flex-grow: 1;
+  }
+
+  &_grid_row {
+    .form__field {
+      margin-bottom: 10px;
+    }
+
+    .field__label {
+      flex-direction: row;
+      justify-content: space-between;
+
+      &:after {
+        bottom: -5px;
+        background-color: $gray-400;
+      }
+    }
+
+    .field__text {
+      width: max-content;
+      transform: none;
+    }
+
+    .field__input {
+      text-align: right;
+      width: max-content;
+    }
+  }
+}
+
+.form__field {
+  margin-bottom: 8px;
+}
+
+.form__button {
+  margin-top: auto;
+  width: 100%;
+}

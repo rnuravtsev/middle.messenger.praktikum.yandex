@@ -1,12 +1,29 @@
-@mixin btn-color($color, $bg, $bg-hover, $bg-focus) {
+@import "src/scss/variables";
+
+@mixin btn-color($color, $bg, $bg-hover, $bg-focus, $opacity: false) {
   color: $color;
   background-color: $bg;
 
   &:hover {
     background-color: $bg-hover;
+
+    @if $opacity {
+      opacity: 0.75;
+    }
   }
 
-  &:focus {
+  &:focus-within {
     background-color: $bg-focus;
+
+    @if $opacity {
+      opacity: 0.75;
+    }
   }
+}
+
+@mixin avatar-circle($size) {
+  width: #{$size}px;
+  height: #{$size}px;
+  background-color: $gray-300;
+  border-radius: 50%;
 }

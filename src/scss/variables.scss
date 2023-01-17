@@ -1,18 +1,23 @@
-// Colors
-$primary: #3369f3;
-$primary-light: #5680f9;
-$primary-dark: #0d4acc;
-$gray: #999999;
-$gray-light: #eaeaea;
-$white: #ffffff;
+/* Colors */
+$primary-100: #e4edfd;
+$primary-200: #5680f9;
+$primary-300: #3369f3;
+$primary-400: #0d4acc;
+$gray-100: #f8f8f8;
+$gray-200: #fbfbfb;
+$gray-300: #efefef;
+$gray-400: #eaeaea;
+$gray-500: #999;
+$gray-600: #525252;
+$white: #fff;
 $negative: #ff2f2f;
 $main: #1e1e1e;
 
-// Border
+/* Border */
 $radius-default: 8px;
 
-// Field
-$form-filed-min-height: 50px;
+/* Field */
+$form-field-min-height: 50px;
 
-// Animation
-$transition-default: all .25s ease;
+/* Animation */
+$transition-default: all 0.25s ease;
