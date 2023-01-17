@@ -9,7 +9,7 @@ export default class Layout extends Block<LayoutProps> {
   protected render(): string {
     // language=hbs
     return `
-      <div class="screen screen_theme_full">
+      <div class="screen screen_theme_full {{className}}">
         <div class="screen__header">
           <div class="screen__title">
             {{title}}
