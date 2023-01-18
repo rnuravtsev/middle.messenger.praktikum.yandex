@@ -23,7 +23,7 @@ export const editProfileFields = [
     value: 'Иванов',
   },
   {
-    name: ValidateRuleType.FirstName,
+    name: ValidateRuleType.DisplayName,
     labelText: 'Имя в чате',
     value: 'Иван',
   },

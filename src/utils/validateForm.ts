@@ -6,6 +6,7 @@ export enum ValidateRuleType {
   FirstName = 'first_name',
   SecondName = 'second_name',
   Message = 'message',
+  DisplayName = 'display_name',
   //TODO: Временное решение, доработать в 3 спринте
   File = 'file',
 }
@@ -57,6 +58,14 @@ const validates = {
     return '';
   },
   [ValidateRuleType.SecondName]: (value: string) => {
+    const regExp = /^[А-ЯЁA-Z][а-яёa-z-]+$/;
+    if (!regExp.test(value)) {
+      return 'От 2 до 20 символов, только буквы, первая заглавная, может содержать дефис'
+    }
+
+    return '';
+  },
+  [ValidateRuleType.DisplayName]: (value: string) => {
     const regExp = /^[А-ЯЁA-Z][а-яёa-z-]+$/;
     if (!regExp.test(value)) {
       return 'От 2 до 20 символов, только буквы, первая заглавная, может содержать дефис'

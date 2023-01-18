@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "parcel build index.html",
-    "dev": "parcel index.html --no-cache --port 3000",
+    "dev": "parcel index.html --no-cache --port 3000 --open",
     "test:ts": "eslint src --ext .ts,.js --fix",
     "test:style": "stylelint src/**/*.scss --fix",
     "start": "yarn build && node ./server.js",
