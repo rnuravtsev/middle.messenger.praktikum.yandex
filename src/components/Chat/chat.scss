@@ -1,0 +1,20 @@
+@import "src/scss/variables";
+
+.chat__day {
+  margin-bottom: 30px;
+  display: inline-block;
+  width: 100%;
+  font-size: 12px;
+  line-height: 12px;
+  color: $gray-500;
+  text-align: center;
+}
+
+.chat__messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat__message.message_owner {
+  align-self: flex-end;
+}

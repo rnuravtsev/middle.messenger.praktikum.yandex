@@ -1,0 +1,10 @@
+{
+  "inputDir": "./src/static/icons",
+  "outputDir": "./src/static/icons-output",
+  "normalize": "true",
+  "fontTypes": [
+    "ttf",
+    "woff",
+    "woff2"
+  ]
+}
