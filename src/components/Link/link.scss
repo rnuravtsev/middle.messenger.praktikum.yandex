@@ -1,0 +1,20 @@
+@import "src/scss/variables";
+
+.link {
+  font-size: 11px;
+  line-height: 11px;
+  color: $primary-300;
+  text-decoration: none;
+
+  &:hover {
+    color: $primary-200;
+  }
+
+  &:active {
+    color: $primary-400;
+  }
+
+  &_negative {
+    color: $negative;
+  }
+}

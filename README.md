@@ -2,7 +2,7 @@
 
 ### Описание
 ___
-Веб-приложение мессенджер на JS
+Веб-приложение-мессенджер на TS
 
 Развёрнутый проект в [Netlify](https://dancing-bavarois-ce034b.netlify.app)
 
@@ -19,4 +19,8 @@ ___
 **npm run dev** — приложение будет развёрнуто с помощью Parcel в dev режиме
 
 **npm run start** — приложение будет развёрнуто с помощью Parcel и NodeJS в production режиме
+
+**npm run test:ts** — запуск статистического анализа для TypeScript файлов
+
+**npm run test:style** — запуск статистического анализа для SCSS файлов
 

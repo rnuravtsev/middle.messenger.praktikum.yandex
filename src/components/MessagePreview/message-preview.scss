@@ -1,0 +1,26 @@
+@import "src/scss/variables";
+
+.message-preview__title {
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.message-preview__text-wrapper {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.message-preview__prefix {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.message-preview__text {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  line-height: 15px;
+  color: $gray-500;
+}
