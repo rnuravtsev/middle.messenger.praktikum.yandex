@@ -1,4 +1,3 @@
-import Block from "./Block";
 import Route from "./Route";
 
 class Router {
@@ -20,7 +19,7 @@ class Router {
     Router._instance = this;
   }
 
-  use(pathname: string, Block: Block) {
+  use(pathname: string, Block: BlockInstance) {
     const route = new Route(pathname, Block, {rootQuery: this._rootQuery});
 
     this.routes?.push(route);
