@@ -1,4 +1,4 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './onboard.scss';
 import { OnboardProps } from './types'
 

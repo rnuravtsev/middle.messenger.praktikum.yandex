@@ -1,13 +1,13 @@
 import render from './renderDOM';
 import Block from './Block';
-import { isEqual } from "../utils/isEqual";
+import { isEqual } from '../utils/isEqual';
 
 export default class Route {
   private _pathname: string;
-  private readonly _blockClass: Block;
+  private readonly _blockClass: BlockClass;
   protected block: Nullable<Block>;
   private readonly _props: any;
-  constructor(pathname: string, view: Block, props: any) {
+  constructor(pathname: string, view: BlockClass, props: any) {
     this._pathname = pathname;
     this._blockClass = view;
     this.block = null;

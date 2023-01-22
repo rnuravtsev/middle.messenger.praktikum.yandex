@@ -1,4 +1,4 @@
 export type ProfileEditProps = {
-  className: string,
+  className?: string,
   fields: unknown[],
 }

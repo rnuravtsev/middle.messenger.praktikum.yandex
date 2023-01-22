@@ -1,7 +1,7 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './signup-page.scss';
-import { signUpFields } from "../../mock/fields";
-import { SignUpPageProps } from "./types";
+import { signUpFields } from '../../mock/fields';
+import { SignUpPageProps } from './types';
 
 
 class SignUpPage extends Block {

@@ -1,6 +1,6 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './field.scss';
-import { validateField } from "../../utils/validateForm";
+import { validateField } from '../../utils/validateForm';
 
 type FieldProps = {
   className: string,

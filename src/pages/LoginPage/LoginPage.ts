@@ -1,7 +1,7 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './login-page.scss';
-import { fields as mockFields } from "../../mock/fields";
-import { LoginPageProps } from "./types";
+import { fields as mockFields } from '../../mock/fields';
+import { LoginPageProps } from './types';
 
 class LoginPage extends Block {
   constructor(props: LoginPageProps = {} as LoginPageProps) {

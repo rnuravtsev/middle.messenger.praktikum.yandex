@@ -1,4 +1,4 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './profile-icon.scss';
 
 type ProfileIconProps = {

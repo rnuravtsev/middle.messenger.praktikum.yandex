@@ -6,14 +6,12 @@ const METHODS = {
 };
 
 interface IOptions {
-  method: string,
+  method?: string,
   // eslint-disable-next-line @typescript-eslint/ban-types
   headers?: {},
-  data?: XMLHttpRequestBodyInit,
+  data?: any,
   timeout?: number
 }
-
-type HTTPMethod = (url: string, options?: IOptions) => Promise<unknown>;
 
 function queryStringify(data: any) {
   if (typeof data !== 'object') {
@@ -26,24 +24,37 @@ function queryStringify(data: any) {
   }, '?');
 }
 
-class HTTPTransport {
-  get: HTTPMethod = (url, options) => {
-    return this.request(url, { ...options, method: METHODS.GET }, options?.timeout);
-  };
+export default class HTTPTransport {
+  static API_URL = 'https://ya-praktikum.tech/api/v2';
+  protected endpoint: string;
 
-  post: HTTPMethod = (url, options) => {
-    return this.request(url, { ...options, method: METHODS.POST }, options?.timeout);
-  };
+  constructor(endpoint: string) {
+    this.endpoint = endpoint;
+  }
 
-  put: HTTPMethod = (url, options) => {
-    return this.request(url, { ...options, method: METHODS.PUT }, options?.timeout);
-  };
+  public get<Response>(url = '/'): Promise<Response> {
+    return this.request(`${this.endpoint}${url}`);
+  }
 
-  delete: HTTPMethod = (url, options) => {
-    return this.request(url, { ...options, method: METHODS.DELETE }, options?.timeout);
-  };
+  public post<Response>(url: string, options = {} as IOptions): Promise<Response> {
+    return this.request(`${this.endpoint}${url}`, {
+      ...options,
+      method: METHODS.POST
+    }, options?.timeout);
+  }
 
-  request = (url: string, options: IOptions = {} as IOptions, timeout = 5000) => {
+  public put<Response>(url: string, options = {} as IOptions): Promise<Response> {
+    return this.request(`${this.endpoint}${url}`, { ...options, method: METHODS.PUT }, options?.timeout);
+  }
+
+  public delete<Response>(url: string, options = {} as IOptions): Promise<Response> {
+    return this.request(`${this.endpoint}${url}`, {
+      ...options,
+      method: METHODS.DELETE
+    }, options?.timeout);
+  }
+
+  private request<Response>(url: string, options: IOptions = {} as IOptions, timeout = 5000): Promise<Response> {
     const { headers = {}, method, data } = options;
 
     return new Promise(function (resolve, reject) {
@@ -68,15 +79,21 @@ class HTTPTransport {
         xhr.setRequestHeader(key, headers[key]);
       });
 
-      xhr.onload = function () {
-        resolve(xhr);
-      };
-
-      xhr.onabort = reject;
-      xhr.onerror = reject;
-
+      xhr.onload = () => resolve(xhr.response);
       xhr.timeout = timeout;
-      xhr.ontimeout = reject;
+
+      xhr.onabort = () => reject({ reason: 'abort' });
+      xhr.onerror = () => reject({ reason: 'error' });
+      xhr.ontimeout = () => reject({ reason: 'timeout' });
+
+
+      // TODO: Но не работает для картинок, нужно написать проверку
+      if (!(data instanceof FormData)) {
+        xhr.setRequestHeader('Content-Type', 'application/json');
+      }
+
+      xhr.withCredentials = true;
+      xhr.responseType = 'json';
 
       if (isGet || !data) {
         xhr.send();
@@ -84,5 +101,5 @@ class HTTPTransport {
         xhr.send(data);
       }
     });
-  };
+  }
 }

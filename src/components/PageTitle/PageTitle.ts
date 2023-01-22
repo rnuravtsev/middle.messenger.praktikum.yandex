@@ -1,4 +1,4 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './page-title.scss';
 
 type PageTitleProps = {

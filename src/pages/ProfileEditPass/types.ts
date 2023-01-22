@@ -1,3 +1,3 @@
-export type EditProfilePassProps = {
-  className: string,
+export type ProfileEditPassProps = {
+  className?: string,
 }

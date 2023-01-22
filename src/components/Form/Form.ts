@@ -1,6 +1,6 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './form.scss';
-import { validateForm, ValidateRuleType } from "../../utils/validateForm";
+import { validateForm, ValidateRuleType } from '../../utils/validateForm';
 
 type FormProps = {
   className: string,

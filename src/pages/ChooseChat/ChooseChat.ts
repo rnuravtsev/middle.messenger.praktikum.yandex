@@ -1,6 +1,6 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './choose-chat.scss';
-import { ChooseChatProps } from "./types";
+import { ChooseChatProps } from './types';
 
 
 class ChooseChat extends Block {

@@ -1,4 +1,6 @@
-import Route from "./Route";
+import Route from './Route';
+
+const APP_ROOT_SELECTOR = '#app';
 
 class Router {
   public readonly routes: Route[] | undefined;
@@ -19,7 +21,7 @@ class Router {
     Router._instance = this;
   }
 
-  use(pathname: string, Block: BlockInstance) {
+  use(pathname: string, Block: BlockClass) {
     const route = new Route(pathname, Block, {rootQuery: this._rootQuery});
 
     this.routes?.push(route);
@@ -49,7 +51,7 @@ class Router {
     route.render();
   }
 
-  go(pathname: string) {
+  public go(pathname: string) {
     this._history?.pushState({}, '', pathname);
     this._onRoute(pathname);
   }
@@ -59,4 +61,4 @@ class Router {
   }
 }
 
-export default Router;
+export default new Router(APP_ROOT_SELECTOR);

@@ -1,7 +1,7 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './input.scss';
-import { LABEL_CLASS_NAME_SHRINK } from "./consts";
-import { FORM_GRID_COLUMN_CSS_CLASS } from "../Form/consts";
+import { LABEL_CLASS_NAME_SHRINK } from './consts';
+import { FORM_GRID_COLUMN_CSS_CLASS } from '../Form/consts';
 
 type InputProps = {
   className?: string,

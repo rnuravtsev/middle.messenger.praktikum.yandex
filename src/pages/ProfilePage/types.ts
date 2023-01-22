@@ -1,4 +1,4 @@
 export type ProfilePageProps = {
-  className: string,
+  className?: string,
   fields: unknown[]
 }

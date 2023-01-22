@@ -1,7 +1,7 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './profile-page.scss';
-import { profileFields } from "../../mock/profileFields";
-import { ProfilePageProps } from "./types";
+import { profileFields } from '../../mock/profileFields';
+import { ProfilePageProps } from './types';
 
 
 class ProfilePage extends Block {

@@ -1,6 +1,6 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './main-page.scss';
-import { MainPageProps } from "./types";
+import { MainPageProps } from './types';
 
 class MainPage extends Block {
   constructor(props: MainPageProps = {} as MainPageProps) {

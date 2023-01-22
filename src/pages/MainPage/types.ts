@@ -1,3 +1,3 @@
 export type MainPageProps = {
-  className: string,
+  className?: string,
 }

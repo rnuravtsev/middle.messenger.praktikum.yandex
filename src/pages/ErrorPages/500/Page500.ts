@@ -1,6 +1,6 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import '../page-error.scss';
-import { Page500Props } from "./types";
+import { Page500Props } from './types';
 
 class Page500 extends Block {
   constructor(props: Page500Props = {} as Page500Props) {

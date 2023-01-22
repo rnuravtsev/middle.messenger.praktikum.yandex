@@ -6,6 +6,7 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "quotes": ["error", "single"],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",
     "max-len": [1, 105],

@@ -1,6 +1,6 @@
-import Block from "core/Block";
+import Block from 'core/Block';
 import './chat-preview.scss';
-import { TChat } from "./types";
+import { TChat } from './types';
 class ChatPreview extends Block {
   constructor(props: TChat) {
     super(props);

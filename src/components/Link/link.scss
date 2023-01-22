@@ -5,6 +5,9 @@
   line-height: 11px;
   color: $primary-300;
   text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 
   &:hover {
     color: $primary-200;
