@@ -11,7 +11,7 @@ import ProfileEditPage from './pages/ProfileEditPage/ProfileEditPage';
 import ProfileEditPass from './pages/ProfileEditPass/ProfileEditPass';
 import Router from 'core/Router';
 
-enum Routes {
+export enum Routes {
   Onboard = '/',
   Login = '/login',
   SignUp = '/sign-up',
