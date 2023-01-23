@@ -8,6 +8,7 @@ type FormProps = {
   isSubmitButtonHide: boolean,
   submitButtonClassname: string,
   submitButtonType: string,
+  onSubmit: (data: unknown) => void,
   gridType: 'row' | 'column',
   fields: unknown[],
   buttonText: string,
@@ -25,8 +26,10 @@ class Form extends Block {
 
   static componentName = 'Form';
 
-    handleButtonSubmit(evt: Event) {
+  handleButtonSubmit(evt: Event) {
+    const { onSubmit } = this.props;
     evt.preventDefault();
+
     const formEl = this._element as HTMLFormElement;
     const formData = new FormData(formEl);
     const inputs = [...formEl.querySelectorAll('input')];
@@ -50,8 +53,8 @@ class Form extends Block {
     }
 
     if (isEmptyError) {
-      //TODO: Доработать в 3 спринте
-      console.log(Object.fromEntries([...formData]))
+      const data = Object.fromEntries(formData);
+      onSubmit(data);
     }
   }
 
@@ -59,20 +62,21 @@ class Form extends Block {
     const { firstValidationError, submitButtonClassname, submitButtonType, inputClassName } = this.props;
     // language=hbs
     return `
-        <form id="form" class="form form_grid_{{#if gridType}}{{gridType}}{{else}}column{{/if}} {{className}}">
+        <form id="form"
+              class="form form_grid_{{#if gridType}}{{gridType}}{{else}}column{{/if}} {{className}}">
             {{#each fields}}
-            {{{Field
-                    className="form__field"
-                    inputClassName="${inputClassName ? inputClassName : ''}"
-                    labelText=this.labelText
-                    name=this.name
-                    placeholder=this.placeholder
-                    type=this.type
-                    value=this.value
-                    validationType="${firstValidationError?.type}"
-                    validationError="${firstValidationError?.value}"
-            }}}
-        {{/each}}
+                {{{Field
+                        className="form__field"
+                        inputClassName="${inputClassName ? inputClassName : ''}"
+                        labelText=this.labelText
+                        name=this.name
+                        placeholder=this.placeholder
+                        type=this.type
+                        value=this.value
+                        validationType="${firstValidationError?.type}"
+                        validationError="${firstValidationError?.value}"
+                }}}
+            {{/each}}
             {{#if isSubmitButtonHide}}
             {{else}}
                 {{{Button

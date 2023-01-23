@@ -29,7 +29,7 @@ export default class HTTPTransport {
   protected endpoint: string;
 
   constructor(endpoint: string) {
-    this.endpoint = endpoint;
+    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
   }
 
   public get<Response>(url = '/'): Promise<Response> {
@@ -38,7 +38,7 @@ export default class HTTPTransport {
 
   public post<Response>(url: string, options = {} as IOptions): Promise<Response> {
     return this.request(`${this.endpoint}${url}`, {
-      ...options,
+      data: JSON.stringify(options.data),
       method: METHODS.POST
     }, options?.timeout);
   }
@@ -87,8 +87,8 @@ export default class HTTPTransport {
       xhr.ontimeout = () => reject({ reason: 'timeout' });
 
 
-      // TODO: Но не работает для картинок, нужно написать проверку
       if (!(data instanceof FormData)) {
+        xhr.setRequestHeader('accept', 'application/json');
         xhr.setRequestHeader('Content-Type', 'application/json');
       }
 

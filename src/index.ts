@@ -19,6 +19,7 @@ export enum Routes {
   ProfileEdit = '/profile/edit',
   ProfileEditPass = '/profile/edit-pass',
   Chat = '/chat',
+  Logout = '/logout',
 }
 
 window.addEventListener('DOMContentLoaded', () => {

@@ -1,6 +1,8 @@
 import Block from 'core/Block';
 import withRouter from '../../HOC/withRouter';
 import './link.scss';
+import AuthController from '../../controllers/AuthController';
+import { Routes } from '../../index';
 
 type LinkProps = {
   className?: string,
@@ -26,6 +28,9 @@ class Link extends Block {
 
   navigate() {
     const { router, href } = this.props;
+    if (href === Routes.Logout) {
+      AuthController.logout()
+    }
     router.go(href);
   }
 

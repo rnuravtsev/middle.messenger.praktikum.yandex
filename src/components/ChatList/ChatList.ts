@@ -1,7 +1,7 @@
 import Block from 'core/Block';
 import './chat-list.scss';
 import { TChat } from '../ChatPreview/types';
-import {chats as mockChats} from '../../mock/chats';
+import { chats as mockChats } from '../../mock/chats';
 
 
 type ChatListProps = {

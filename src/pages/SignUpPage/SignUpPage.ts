@@ -2,6 +2,8 @@ import Block from 'core/Block';
 import './signup-page.scss';
 import { signUpFields } from '../../mock/fields';
 import { SignUpPageProps } from './types';
+import AuthController from '../../controllers/AuthController';
+import { SignUpData } from '../../api/types';
 
 
 class SignUpPage extends Block {
@@ -10,7 +12,14 @@ class SignUpPage extends Block {
 
     this.setProps({
       fields: signUpFields,
+      events: {
+        submit: (data: SignUpData) => this.onSubmit(data)
+      }
     })
+  }
+
+  onSubmit(data: SignUpData) {
+    return AuthController.signup(data)
   }
 
   render() {
@@ -28,6 +37,7 @@ class SignUpPage extends Block {
                                 className="paper__form"
                                 fields=fields
                                 buttonText="Зарегистрироваться"
+                                onSubmit=events.submit
                         }}}
                         {{{Link className="link paper__link" href="/login" text="Войти"}}}
                     </div>

@@ -22,7 +22,7 @@ class Router {
   }
 
   use(pathname: string, Block: BlockClass) {
-    const route = new Route(pathname, Block, {rootQuery: this._rootQuery});
+    const route = new Route(pathname, Block, { rootQuery: this._rootQuery });
 
     this.routes?.push(route);
 
