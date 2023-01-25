@@ -8,31 +8,32 @@ class AuthController {
   private api = new AuthAPI();
 
   async request(cb: () => void) {
+    store.set('user.loading', true)
+
     try {
-      store.set('user.loading', true)
       await cb()
+      store.set('user.error', '')
     } catch (e) {
       console.log('Error during request');
-      store.set('error', e)
+      store.set('user.error', e)
     } finally {
       store.set('user.loading', false)
     }
   }
 
-  async signup(data: SignUpData) {
+  async signUp(data: SignUpData) {
     await this.request(async () => {
-      await this.api.signup(data);
+      await this.api.signUp(data);
       await this.fetchUser();
 
       Router.go(Routes.Profile)
     });
   }
 
-  async signin(data: SignInData) {
+  async signIn(data: SignInData) {
     await this.request(async () => {
-      await this.api.signin(data);
+      await this.api.signIn(data);
       await this.fetchUser();
-
       Router.go(Routes.Profile)
     })
   }
@@ -46,11 +47,12 @@ class AuthController {
   }
 
   async fetchUser() {
-    await this.request(async () => {
+    try {
       const user = await this.api.getUser()
       store.set('user.data', user)
-      store.set('user.error', null)
-    })
+    } catch (e) {
+      store.set('user.data', null)
+    }
   }
 }
 

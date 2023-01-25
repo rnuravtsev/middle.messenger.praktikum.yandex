@@ -57,9 +57,11 @@
   padding-top: 10px;
   padding-bottom: 10px;
   font-size: 13px;
-  text-align: left;
   line-height: 13px;
+  text-align: left;
   border-bottom: 1px solid $gray-400;
+  background-color: transparent;
+  border-radius: 0;
 }
 
 .profile__form .form__button {

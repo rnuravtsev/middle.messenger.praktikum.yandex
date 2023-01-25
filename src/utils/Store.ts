@@ -1,22 +1,21 @@
 import EventBus from '../core/EventBus';
 import { set } from '../helpers/helpers';
 
-const enum StoreEvents {
+export const enum StoreEvents {
   UPDATED = 'updated',
 }
 
 class Store extends EventBus {
-  private static state: Record<string, unknown> = {};
+  private state: Record<string, unknown> = {};
 
-  public static getState(): Record<string, unknown> {
+  public getState(): Record<string, unknown> {
     return this.state
   }
 
   public set(key: string, value: unknown): void {
-    // TODO: Реализовать метод из теории
-    set(Store.state, key, value)
+    set(this.state, key, value)
 
-    this.emit(StoreEvents.UPDATED, Store.getState())
+    this.emit(StoreEvents.UPDATED, this.getState())
   }
 }
 

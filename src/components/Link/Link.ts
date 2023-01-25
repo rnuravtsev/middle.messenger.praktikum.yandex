@@ -1,15 +1,13 @@
 import Block from 'core/Block';
-import withRouter from '../../HOC/withRouter';
+import withRouter from '../../HOCs/withRouter';
 import './link.scss';
-import AuthController from '../../controllers/AuthController';
-import { Routes } from '../../index';
 
 type LinkProps = {
   className?: string,
   color?: string,
   href: string,
   target?: '_self' | '_blank',
-  text: string,
+  label: string,
   events?: Record<string, (e: Event) => void>,
 }
 
@@ -28,9 +26,7 @@ class Link extends Block {
 
   navigate() {
     const { router, href } = this.props;
-    if (href === Routes.Logout) {
-      AuthController.logout()
-    }
+
     router.go(href);
   }
 
@@ -38,10 +34,12 @@ class Link extends Block {
     // language=hbs
     return `
         <button class="link {{className}} {{#if color}}link_{{color}}{{else}}{{/if}}">
-            {{text}}
+            {{label}}
         </button>
     `
   }
 }
+
+export { Link }
 
 export default withRouter(Link);

@@ -55,7 +55,7 @@ export default class HTTPTransport {
   }
 
   private request<Response>(url: string, options: IOptions = {} as IOptions, timeout = 5000): Promise<Response> {
-    const { headers = {}, method, data } = options;
+    const { headers = {}, method = 'GET', data } = options;
 
     return new Promise(function (resolve, reject) {
       if (!method) {

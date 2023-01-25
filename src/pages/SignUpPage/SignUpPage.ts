@@ -19,7 +19,7 @@ class SignUpPage extends Block {
   }
 
   onSubmit(data: SignUpData) {
-    return AuthController.signup(data)
+    return AuthController.signUp(data)
   }
 
   render() {
@@ -39,7 +39,7 @@ class SignUpPage extends Block {
                                 buttonText="Зарегистрироваться"
                                 onSubmit=events.submit
                         }}}
-                        {{{Link className="link paper__link" href="/login" text="Войти"}}}
+                        {{{Link className="link paper__link" href="/login" label="Войти"}}}
                     </div>
                 </div>
             </main>

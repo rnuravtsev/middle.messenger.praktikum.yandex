@@ -18,7 +18,7 @@ class LoginPage extends Block {
   }
 
   onSubmit(data: SignInData) {
-    return AuthController.signin(data)
+    return AuthController.signIn(data)
   }
 
   render() {
@@ -41,7 +41,7 @@ class LoginPage extends Block {
                         {{{Link
                                 className="link paper__link"
                                 href="/sign-up"
-                                text="Нет аккаунта?"}}}
+                                label="Нет аккаунта?"}}}
                     </div>
                 </div>
             </main>

@@ -5,11 +5,11 @@ export class AuthAPI extends BaseApi {
     super('/auth');
   }
 
-  public signin(data: SignInData): Promise<unknown> {
+  public signIn(data: SignInData): Promise<unknown> {
     return this.http.post('/signin', { data });
   }
 
-  public signup(data: SignUpData): Promise<unknown> {
+  public signUp(data: SignUpData): Promise<unknown> {
     return this.http.post('/signup', { data });
   }
 

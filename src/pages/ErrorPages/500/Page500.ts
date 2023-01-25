@@ -21,7 +21,7 @@ class Page500 extends Block {
                         className="page-error__link"
                         href="/"
                         rel="noopener nofollow"
-                        text="Назад к чатам"
+                        label="Назад к чатам"
                 }}}
             </div>
         </main>

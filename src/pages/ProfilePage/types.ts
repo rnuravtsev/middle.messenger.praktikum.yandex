@@ -1,4 +1,6 @@
+import { User } from '../../api/types';
+
 export type ProfilePageProps = {
   className?: string,
-  fields: unknown[]
+  user: User
 }

@@ -19,5 +19,16 @@
 
   &_negative {
     color: $negative;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $negative;
+      opacity: .85;
+    }
+  }
+
+  &_success {
+    color: $success;
   }
 }

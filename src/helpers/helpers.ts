@@ -38,3 +38,33 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
 
   return merge(object as Indexed, result);
 }
+
+export function omit(...args: unknown[]) {
+  const resolveArgs = Array.prototype.slice.call(args);
+  const obj = resolveArgs[0];
+  const keys = resolveArgs.slice(1);
+
+  return Object.keys(obj).reduce((acc: { [key: string]: unknown }, key) => {
+    if (keys.indexOf(key) === -1) {
+      acc[key] = obj[key];
+    }
+
+    return acc;
+  }, {});
+}
+
+export function isEmpty<T extends Indexed | string>(value: T): boolean {
+  if (typeof value === 'string') {
+    return value.trim().length === 0;
+  }
+
+  if (typeof value === 'object') {
+    return Object.keys(value).length === 0;
+  }
+  // TODO: Доработать для других типов
+  return false
+}
+
+export function isEquals<T extends Indexed>(lhs: T, rhs: T): boolean {
+  return JSON.stringify(lhs) === JSON.stringify(rhs);
+}

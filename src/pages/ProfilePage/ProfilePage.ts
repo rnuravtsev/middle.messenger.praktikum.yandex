@@ -1,16 +1,11 @@
 import Block from 'core/Block';
 import './profile-page.scss';
-import { profileFields } from '../../mock/profileFields';
 import { ProfilePageProps } from './types';
-
+import withStore from '../../HOCs/withStore';
 
 class ProfilePage extends Block {
   constructor(props: ProfilePageProps = {} as ProfilePageProps) {
     super(props);
-
-    this.setProps({
-      fields: profileFields,
-    })
   }
 
   render() {
@@ -25,11 +20,11 @@ class ProfilePage extends Block {
                             text="Иван Иванов"
                     }}}
                 </div>
-                {{{Table className="profile__table" data=fields}}}
+                {{{Table className="profile__table" user=user}}}
                 <div class="profile__links">
-                    {{{Link className="profile__link" href="/profile/edit" text="Изменить данные"}}}
-                    {{{Link className="profile__link" href="/profile/password" text="Изменить пароль"}}}
-                    {{{Link className="profile__link" href="/logout" color="negative" text="Выйти"}}}
+                    {{{Link className="profile__link" href="/profile/edit" label="Изменить данные"}}}
+                    {{{Link className="profile__link" href="/profile/password" label="Изменить пароль"}}}
+                    {{{Logout className="profile__link" color="negative" label="Выйти"}}}
                 </div>
             </div>
         </main>
@@ -37,4 +32,6 @@ class ProfilePage extends Block {
   }
 }
 
-export default ProfilePage;
+const mapStateToProps = (state: any) => ({ user: state.user?.data } || {});
+
+export default withStore(mapStateToProps)(ProfilePage as any);

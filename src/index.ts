@@ -10,6 +10,7 @@ import MainPage from './pages/MainPage/MainPage';
 import ProfileEditPage from './pages/ProfileEditPage/ProfileEditPage';
 import ProfileEditPass from './pages/ProfileEditPass/ProfileEditPass';
 import Router from 'core/Router';
+import AuthController from './controllers/AuthController';
 
 export enum Routes {
   Onboard = '/',
@@ -22,7 +23,8 @@ export enum Routes {
   Logout = '/logout',
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+
+window.addEventListener('DOMContentLoaded', async () => {
 
   Router
     .use(Routes.Onboard, Onboard)
@@ -36,6 +38,7 @@ window.addEventListener('DOMContentLoaded', () => {
     .use('*', Page404)
 
   try {
+    await AuthController.fetchUser()
     Router.start()
   }
   catch (e) {
