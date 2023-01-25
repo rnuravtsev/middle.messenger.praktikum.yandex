@@ -1,3 +1,5 @@
+import { User } from '../api/types';
+
 export type Indexed<T = any> = {
   [key in string]: T;
 };
@@ -39,13 +41,12 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
   return merge(object as Indexed, result);
 }
 
-export function omit(...args: unknown[]) {
-  const resolveArgs = Array.prototype.slice.call(args);
-  const obj = resolveArgs[0];
-  const keys = resolveArgs.slice(1);
+export function omit(
+  obj: User extends Record<string, unknown> ? User : Record<string, unknown>,
+  args: unknown[]) {
 
   return Object.keys(obj).reduce((acc: { [key: string]: unknown }, key) => {
-    if (keys.indexOf(key) === -1) {
+    if (args.indexOf(key) === -1) {
       acc[key] = obj[key];
     }
 

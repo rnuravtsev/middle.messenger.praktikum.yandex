@@ -31,6 +31,6 @@ export const editProfileFields = [
     type: 'tel',
     name: ValidateRuleType.Phone,
     labelText: 'Телефон',
-    value: '+7 (909) 967 30 30',
+    value: '+79099673030',
   }
 ]

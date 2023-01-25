@@ -26,14 +26,7 @@ class Form extends Block {
 
   static componentName = 'Form';
 
-  handleButtonSubmit(evt: Event) {
-    const { onSubmit } = this.props;
-    evt.preventDefault();
-
-    const formEl = this._element as HTMLFormElement;
-    const formData = new FormData(formEl);
-    const inputs = [...formEl.querySelectorAll('input')];
-
+  validate(inputs: HTMLInputElement[]): boolean {
     const preparedInputsForValidation = (inputs: HTMLInputElement[]) => {
       return inputs.map(({ name, value }) => {
         return { type: name as ValidateRuleType, value }
@@ -52,14 +45,28 @@ class Form extends Block {
       })
     }
 
-    if (isEmptyError) {
+    return isEmptyError
+  }
+
+  handleButtonSubmit(evt: Event) {
+    const { onSubmit } = this.props;
+
+    evt.preventDefault();
+
+    const formEl = this._element as HTMLFormElement;
+    const inputs = [...formEl.querySelectorAll('input')];
+    const isFormValid = this.validate(inputs);
+
+    if (isFormValid) {
+      const formData = new FormData(formEl);
       const data = Object.fromEntries(formData);
-      onSubmit(data);
+      onSubmit(data)
     }
   }
 
   render() {
     const { firstValidationError, submitButtonClassname, submitButtonType, inputClassName } = this.props;
+    console.log('911.', this.props)
     // language=hbs
     return `
         <form id="form"

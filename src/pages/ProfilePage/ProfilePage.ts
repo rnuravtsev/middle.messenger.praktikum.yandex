@@ -32,6 +32,6 @@ class ProfilePage extends Block {
   }
 }
 
-const mapStateToProps = (state: any) => ({ user: state.user?.data } || {});
+const mapStateToProps = (state: any) => ({ user: state.user?.data } || {} as ProfilePageProps);
 
-export default withStore(mapStateToProps)(ProfilePage as any);
+export default withStore(mapStateToProps)(ProfilePage);

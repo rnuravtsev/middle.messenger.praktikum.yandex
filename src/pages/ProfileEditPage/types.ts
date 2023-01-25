@@ -1,4 +1,6 @@
+import { User } from '../../api/types';
+
 export type ProfileEditProps = {
   className?: string,
-  fields: unknown[],
+  user?: User,
 }

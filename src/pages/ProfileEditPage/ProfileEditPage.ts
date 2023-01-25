@@ -1,15 +1,25 @@
 import Block from 'core/Block';
 import './profile-edit.scss';
-import { editProfileFields } from '../../mock/editProfileFields';
 import { ProfileEditProps } from './types';
+import withStore from '../../HOCs/withStore';
+import FieldNormalize from '../../helpers/FieldNormalize';
+import { User } from '../../api/types';
 
 class ProfileEditPage extends Block {
   constructor(props: ProfileEditProps = {} as ProfileEditProps) {
     super(props);
 
     this.setProps({
-      fields: editProfileFields
+      //TODO: Убрать any
+      fields: FieldNormalize.createFields(props.user as User),
+      events: {
+        submit: (evt: SubmitEvent) => this.onSubmit(evt),
+      }
     })
+  }
+
+  onSubmit(data: unknown) {
+    console.log(data)
   }
 
   render() {
@@ -25,6 +35,7 @@ class ProfileEditPage extends Block {
                         fields=fields
                         gridType="row"
                         buttonText="Cохранить"
+                        onSubmit=events.submit
                 }}}
             </div>
         </main>
@@ -32,4 +43,8 @@ class ProfileEditPage extends Block {
   }
 }
 
-export default ProfileEditPage;
+const mapStateToProps = (state: any) => ({
+ user: state.user?.data
+});
+
+export default withStore(mapStateToProps)(ProfileEditPage);
