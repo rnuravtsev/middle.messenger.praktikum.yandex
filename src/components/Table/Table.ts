@@ -27,8 +27,9 @@ class Table extends Block {
         return acc
       }, resolvedUser);
       this.setProps({
-        // Разрешить ошибку
-        data: Object.entries(userWithoutEmptyProperties).map(([key, value]) => ({ title: fieldLabelMap[key], text: value }))
+        data:
+          Object.entries(userWithoutEmptyProperties)
+          .map(([key, value]) => ({ title: fieldLabelMap[key], text: value }))
       })
     }
   }

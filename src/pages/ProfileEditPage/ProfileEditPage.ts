@@ -4,6 +4,7 @@ import { ProfileEditProps } from './types';
 import withStore from '../../HOCs/withStore';
 import FieldNormalize from '../../helpers/FieldNormalize';
 import { User } from '../../api/types';
+import EditsController from '../../controllers/EditsController';
 
 class ProfileEditPage extends Block {
   constructor(props: ProfileEditProps = {} as ProfileEditProps) {
@@ -18,8 +19,9 @@ class ProfileEditPage extends Block {
     })
   }
 
-  onSubmit(data: unknown) {
+  async onSubmit(data: unknown) {
     console.log(data)
+    await EditsController.changeUserInfo(data as User)
   }
 
   render() {

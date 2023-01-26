@@ -11,7 +11,7 @@ import MessagePreview from 'components/MessagePreview/MessagePreview';
 import Sidebar from 'components/Sidebar/Sidebar';
 import ChooseChat from 'pages/ChooseChat/ChooseChat';
 import MainChat from 'pages/MainChat/MainChat';
-import { Link } from 'components/Link/Link';
+import Link from 'components/Link/Link';
 import Form from 'components/Form/Form';
 import Field from 'components/Field/Field';
 import InputError from 'components/InputError/InputError';
@@ -37,6 +37,7 @@ registerComponent(ChooseChat);
 registerComponent(MainChat);
 registerComponent(Form);
 registerComponent(Field);
+// TODO: Изменить типы
 registerComponent(Link);
 registerComponent(InputError);
 registerComponent(Table);

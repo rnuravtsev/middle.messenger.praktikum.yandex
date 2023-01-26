@@ -19,7 +19,11 @@ class SignUpPage extends Block {
   }
 
   onSubmit(data: SignUpData) {
-    return AuthController.signUp(data)
+    //TODO: remove any
+    return AuthController.signUp({
+      ...data,
+      display_name: data['first_name']
+    } as any)
   }
 
   render() {

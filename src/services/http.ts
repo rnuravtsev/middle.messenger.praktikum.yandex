@@ -44,7 +44,11 @@ export default class HTTPTransport {
   }
 
   public put<Response>(url: string, options = {} as IOptions): Promise<Response> {
-    return this.request(`${this.endpoint}${url}`, { ...options, method: METHODS.PUT }, options?.timeout);
+    return this.request(`${this.endpoint}${url}`,
+      {
+        data: JSON.stringify(options.data),
+        method: METHODS.PUT }
+      , options?.timeout);
   }
 
   public delete<Response>(url: string, options = {} as IOptions): Promise<Response> {

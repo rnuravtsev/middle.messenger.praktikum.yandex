@@ -21,7 +21,7 @@ export const fieldLabelMap = {
   password: 'Пароль',
 } as Record<string, string>;
 class FieldNormalize {
-  omitFields(obj: User, fields: string[] = ['id', 'avatar', 'display_name']) {
+  omitFields(obj: User, fields: string[] = ['id', 'avatar']) {
     return omit(obj, fields);
   }
   createFields(obj: User) {
