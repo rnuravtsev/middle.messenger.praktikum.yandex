@@ -1,5 +1,3 @@
-import { User } from '../api/types';
-
 export type Indexed<T = any> = {
   [key in string]: T;
 };
@@ -42,7 +40,7 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
 }
 
 export function omit(
-  obj: User extends Record<string, unknown> ? User : Record<string, unknown>,
+  obj: Record<string, unknown>,
   args: unknown[]) {
 
   return Object.keys(obj).reduce((acc: { [key: string]: unknown }, key) => {

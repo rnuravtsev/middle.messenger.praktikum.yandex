@@ -12,7 +12,7 @@ class ProfileEditPage extends Block {
 
     this.setProps({
       //TODO: Убрать any
-      fields: FieldNormalize.createFields(props.user as User),
+      fields: FieldNormalize.createFields(undefined, props.user as User),
       events: {
         submit: (evt: SubmitEvent) => this.onSubmit(evt),
       }

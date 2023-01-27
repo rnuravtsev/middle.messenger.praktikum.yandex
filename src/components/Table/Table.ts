@@ -2,7 +2,7 @@ import Block from 'core/Block';
 import './table.scss';
 import { User } from '../../api/types';
 import { omit } from 'helpers/helpers';
-import { fieldLabelMap } from '../../helpers/FieldNormalize';
+import { LabelName } from '../../helpers/FieldNormalize';
 
 type TableProps = {
   className: string,
@@ -29,7 +29,7 @@ class Table extends Block {
       this.setProps({
         data:
           Object.entries(userWithoutEmptyProperties)
-          .map(([key, value]) => ({ title: fieldLabelMap[key], text: value }))
+          .map(([key, value]) => ({ title: LabelName[key], text: value }))
       })
     }
   }

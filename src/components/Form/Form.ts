@@ -66,7 +66,6 @@ class Form extends Block {
 
   render() {
     const { firstValidationError, submitButtonClassname, submitButtonType, inputClassName } = this.props;
-    console.log('911.', this.props)
     // language=hbs
     return `
         <form id="form"

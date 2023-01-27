@@ -23,7 +23,7 @@ class ProfilePage extends Block {
                 {{{Table className="profile__table" user=user}}}
                 <div class="profile__links">
                     {{{Link className="profile__link" href="/profile/edit" label="Изменить данные"}}}
-                    {{{Link className="profile__link" href="/profile/password" label="Изменить пароль"}}}
+                    {{{Link className="profile__link" href="/profile/edit-pass" label="Изменить пароль"}}}
                     {{{Logout className="profile__link" color="negative" label="Выйти"}}}
                 </div>
             </div>

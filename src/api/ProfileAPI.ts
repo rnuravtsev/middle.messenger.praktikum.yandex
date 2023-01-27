@@ -5,13 +5,17 @@ class ProfileAPI extends BaseApi {
     super('/user');
   }
 
-  getProfile() {
-    return this.http.get('/');
-  }
-
   //TODO: change type any
   update(data: any): Promise<Response> {
     return this.http.put('/profile', { data });
+  }
+
+  updatePassword(data: any): Promise<Response> {
+    return this.http.put('/password', { data });
+  }
+
+  getUserInfo(id: number): Promise<Response> {
+    return this.http.get(`/${id}`);
   }
 
   create = undefined
