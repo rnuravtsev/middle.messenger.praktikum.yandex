@@ -1,17 +1,21 @@
-import BaseApi from './BaseApi';
+import BaseAPI from './BaseAPI';
 
-class ProfileAPI extends BaseApi {
+enum ProfileAPIPath {
+  Profile = '/profile',
+  Password = '/password',
+}
+
+class ProfileAPI extends BaseAPI {
   constructor() {
     super('/user');
   }
 
-  //TODO: change type any
-  update(data: any): Promise<Response> {
-    return this.http.put('/profile', { data });
+  update(data: unknown): Promise<Response> {
+    return this.http.put(ProfileAPIPath.Profile, { data });
   }
 
-  updatePassword(data: any): Promise<Response> {
-    return this.http.put('/password', { data });
+  updatePassword(data: unknown): Promise<Response> {
+    return this.http.put(ProfileAPIPath.Password, { data });
   }
 
   getUserInfo(id: number): Promise<Response> {

@@ -1,23 +1,24 @@
 import Block from 'core/Block';
 import './chat-list.scss';
-import { TChat } from '../ChatPreview/types';
-import { chats as mockChats } from '../../mock/chats';
+import { ChatNew } from '../ChatPreview/types';
+import withStore from '../../HOCs/withStore';
+import ChatController from '../../controllers/ChatController';
 
 
 type ChatListProps = {
-  chats: TChat[]
+  chats?: ChatNew[]
 }
 
 class ChatList extends Block {
+  static componentName = 'ChatList';
   constructor(props: ChatListProps) {
     super(props);
 
     this.setProps({
-      chats: mockChats
+      chats: ChatController.getChats()
     })
   }
 
-  static componentName = 'ChatList';
 
   render() {
     // language=hbs
@@ -37,4 +38,9 @@ class ChatList extends Block {
   }
 }
 
-export default ChatList;
+const mapStateToProps = (state: any) => ({
+  chats: state?.chats?.data
+})
+//
+export default withStore(mapStateToProps)(ChatList);
+// export default ChatList;

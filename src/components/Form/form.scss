@@ -35,6 +35,12 @@
       width: max-content;
     }
   }
+
+  &_grid_column {
+    .input {
+      padding: 0;
+    }
+  }
 }
 
 .form__field {

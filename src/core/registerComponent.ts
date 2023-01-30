@@ -6,8 +6,11 @@ export interface IBlockConstructable<Props = any> {
   componentName: string;
 }
 
-export default function registerComponent<Props>(Component: IBlockConstructable<Props>) {
-  Handlebars.registerHelper(Component.componentName || Component.name, function (this: Props, { hash: { ref, ...hash }, data, fn }: HelperOptions) {
+export default function registerComponent<Props extends object>(Component: IBlockConstructable<Props>) {
+  Handlebars.registerHelper(
+    Component.componentName
+    || Component.name,
+    function (this: Props, { hash: { ref, ...hash }, data, fn }: HelperOptions) {
     if (!data.root.children) {
       data.root.children = {};
     }

@@ -7,11 +7,11 @@ type SidebarProps = {
 
 
 class Sidebar extends Block {
+  static componentName = 'Sidebar';
   constructor(props: SidebarProps) {
     super(props);
   }
 
-  static componentName = 'Sidebar';
 
     render() {
     //TODO: застилизовать скроллбар

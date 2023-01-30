@@ -1,16 +1,26 @@
 import ProfileAPI from '../api/ProfileAPI';
+import { request, setDataToStore } from './utils';
 
 class EditController {
+  private api = ProfileAPI;
+  private namespace = 'user';
   async changeUserInfo(data: unknown) {
-    return await ProfileAPI.update(data);
+    await request(this.namespace, async () => {
+      await this.api.update(data);
+    });
   }
 
   async changeUserPassword(data: unknown) {
-    return await ProfileAPI.updatePassword(data);
+    await request(this.namespace, async () => {
+       await this.api.updatePassword(data);
+    })
   }
 
   async getUser(id: number) {
-    return await ProfileAPI.getUserInfo(id);
+    await request(this.namespace, async () => {
+      const userInfo = await this.api.getUserInfo(id);
+      setDataToStore(this.namespace, userInfo)
+    })
   }
 }
 

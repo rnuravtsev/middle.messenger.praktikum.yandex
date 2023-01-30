@@ -1,24 +1,31 @@
-import BaseApi from './BaseApi';
+import BaseAPI from './BaseAPI';
 import { SignInData, SignUpData, User } from './types';
-export class AuthAPI extends BaseApi {
+
+enum AuthAPIPath {
+  SignIn = '/signin',
+  SignUp = '/signup',
+  Logout = '/logout',
+  User = '/user',
+}
+export class AuthAPI extends BaseAPI {
   constructor() {
     super('/auth');
   }
 
   public signIn(data: SignInData): Promise<unknown> {
-    return this.http.post('/signin', { data });
+    return this.http.post(AuthAPIPath.SignIn, { data });
   }
 
   public signUp(data: SignUpData): Promise<unknown> {
-    return this.http.post('/signup', { data });
+    return this.http.post(AuthAPIPath.SignUp, { data });
   }
 
   public logout(): Promise<unknown> {
-    return this.http.post('/logout', {});
+    return this.http.post(AuthAPIPath.Logout, {});
   }
 
   public getUser(): Promise<User> {
-    return this.http.get('/user');
+    return this.http.get(AuthAPIPath.User);
   }
 
   update = undefined
