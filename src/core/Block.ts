@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
+import { isEqual } from '../helpers/helpers';
 
 interface BlockMeta<P = any> {
   props: P;
@@ -71,14 +72,16 @@ export default class Block<P extends object = any> {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER, this.props);
   }
 
-  _componentDidMount() {
+  private _componentDidMount() {
     this.componentDidMount();
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  componentDidMount() {}
+  protected componentDidMount() {
+    console.log('911.', 'componentDidMount');
+  }
 
-  _componentDidUpdate(oldProps: P, newProps: P) {
+  private _componentDidUpdate(oldProps: P, newProps: P) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -88,11 +91,11 @@ export default class Block<P extends object = any> {
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
-  componentDidUpdate(oldProps: P, newProps: P) {
-    return true;
+  protected componentDidUpdate(oldProps: P, newProps: P) {
+    return isEqual(oldProps, newProps)
   }
 
-  setProps = (nextProps: P) => {
+  protected setProps = (nextProps: P) => {
     if (!nextProps) {
       return;
     }
@@ -100,7 +103,7 @@ export default class Block<P extends object = any> {
     Object.assign(this.props, nextProps);
   };
 
-  setState = (nextState: any) => {
+  protected setState = (nextState: any) => {
     if (!nextState) {
       return;
     }
@@ -112,7 +115,7 @@ export default class Block<P extends object = any> {
     return this._element;
   }
 
-  _render() {
+  private _render() {
     const fragment = this._compile();
 
     this._removeEvents();
@@ -141,7 +144,7 @@ export default class Block<P extends object = any> {
     return this.element!;
   }
 
-  _makePropsProxy(props: any): any {
+  private _makePropsProxy(props: any): any {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
@@ -151,9 +154,10 @@ export default class Block<P extends object = any> {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target: Record<string, unknown>, prop: string, value: unknown) {
+        const oldTarget = { ...target }
         target[prop] = value;
 
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
       deleteProperty() {
@@ -162,11 +166,11 @@ export default class Block<P extends object = any> {
     }) as unknown as P;
   }
 
-  _createDocumentElement(tagName: string) {
+  private _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
   }
 
-  _removeEvents() {
+  private _removeEvents() {
     const events: Record<string, () => void> = (this.props as any).events;
 
     if (!events || !this._element) {
@@ -179,7 +183,7 @@ export default class Block<P extends object = any> {
     });
   }
 
-  _addEvents() {
+  private _addEvents() {
     const events: Record<string, () => void> = (this.props as any).events;
 
     if (!events) {
@@ -191,14 +195,19 @@ export default class Block<P extends object = any> {
     });
   }
 
-  _compile(): DocumentFragment {
+  private _compile(): DocumentFragment {
     const fragment = document.createElement('template');
 
     /**
      * Рендерим шаблон
      */
     const template = Handlebars.compile(this.render());
-    fragment.innerHTML = template({ ...this.state, ...this.props, children: this.children, refs: this.refs });
+    fragment.innerHTML = template({
+      ...this.state,
+      ...this.props,
+      children: this.children,
+      refs: this.refs
+    });
 
     /**
      * Заменяем заглушки на компоненты

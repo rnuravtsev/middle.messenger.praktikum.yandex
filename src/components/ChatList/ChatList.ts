@@ -27,6 +27,7 @@ class ChatList extends Block {
         <ul class="chat-list">
             {{#each chats}}
                 {{{ChatPreview
+                        id=id
                         avatar=avatar
                         title=title
                         message=message
@@ -39,8 +40,8 @@ class ChatList extends Block {
   }
 }
 
-const mapStateToProps = (state: any) => ({
-  chats: state?.chats?.data
+const mapStateToProps = (store: any) => ({
+  chats: store?.chats?.data
 })
 export default withStore(mapStateToProps)(ChatList);
 

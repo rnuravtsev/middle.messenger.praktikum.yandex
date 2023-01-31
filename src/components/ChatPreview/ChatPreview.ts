@@ -1,6 +1,7 @@
 import Block from 'core/Block';
 import './chat-preview.scss';
 import { ChatProps } from './types';
+
 class ChatPreview extends Block {
   static componentName = 'ChatPreview';
   constructor(props: ChatProps) {
