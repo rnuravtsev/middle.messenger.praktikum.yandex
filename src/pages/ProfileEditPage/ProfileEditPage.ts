@@ -20,7 +20,6 @@ class ProfileEditPage extends Block {
   }
 
   async onSubmit(data: unknown) {
-    console.log(data)
     await EditsController.changeUserInfo(data as User)
   }
 

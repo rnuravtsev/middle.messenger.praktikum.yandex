@@ -23,6 +23,7 @@ type FieldProps = {
 
 
 class Field extends Block {
+  static componentName = 'Field';
   constructor(props: FieldProps) {
     super({
       ...props,
@@ -31,7 +32,6 @@ class Field extends Block {
     });
   }
 
-  static componentName = 'Field';
 
   onBlur(evt: Event) {
     const input = evt.target as HTMLInputElement;

@@ -8,5 +8,5 @@ export default abstract class BaseAPI {
   public abstract create?(data: unknown): Promise<Response>;
   public abstract read?(id: string): Promise<Response>;
   public abstract update?(data?: unknown, id?: string | number): Promise<Response>;
-  public abstract delete?(id: string): Promise<Response>;
+  public abstract delete?(id: unknown): Promise<Response>;
 }

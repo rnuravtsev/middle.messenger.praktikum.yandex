@@ -16,7 +16,15 @@
     color: $gray-500;
   }
 
+  &_p_0 {
+    padding: 0;
+  }
+
   &_bg_transparent {
     background-color: transparent;
+  }
+
+  &_bg_gray {
+    background-color: $gray-300;
   }
 }

@@ -13,12 +13,13 @@ class ChatList extends Block {
   static componentName = 'ChatList';
   constructor(props: ChatListProps) {
     super(props);
-
-    this.setProps({
-      chats: ChatController.getChats()
-    })
   }
 
+  protected async init() {
+      super.init();
+      // TODO: Добавить AbortController или пересмотреть класс Block
+      await ChatController.getChats()
+  }
 
   render() {
     // language=hbs
@@ -41,6 +42,5 @@ class ChatList extends Block {
 const mapStateToProps = (state: any) => ({
   chats: state?.chats?.data
 })
-//
 export default withStore(mapStateToProps)(ChatList);
-// export default ChatList;
+

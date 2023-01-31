@@ -25,3 +25,12 @@ i[class*=" icon-"] {
 .icon-loupe::before {
   display: none;
 }
+
+.icon-square-and-pencil {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("../static/icons/square-and-pencil.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}

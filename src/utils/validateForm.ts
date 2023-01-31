@@ -10,8 +10,9 @@ export enum ValidateRuleType {
   SecondName = 'second_name',
   Message = 'message',
   DisplayName = 'display_name',
-  //TODO: Временное решение, доработать в 3 спринте
+  Search = 'search',
   File = 'file',
+  NewChatName = 'new_chat_name',
 }
 
 export type ValidateRule = {
@@ -32,6 +33,14 @@ const validateName = (value: string) => {
   const regExp = /^[А-ЯЁA-Z][а-яёa-z-]+$/;
   if (!regExp.test(value)) {
     return 'От 2 до 20 символов, только буквы, первая заглавная, может содержать дефис'
+  }
+
+  return '';
+}
+
+const validateForEmpty = (value: string) => {
+  if (value.length < 1) {
+    return 'Поле не может быть пустым'
   }
 
   return '';
@@ -69,22 +78,24 @@ const validates = {
   [ValidateRuleType.FirstName]: validateName,
   [ValidateRuleType.SecondName]: validateName,
   [ValidateRuleType.DisplayName]: validateName,
-  [ValidateRuleType.Message]: (value: string) => {
-    if (value.length < 1) {
-      return 'Поле не может быть пустым'
-    }
-
-    return '';
-  },
+  [ValidateRuleType.NewChatName]: validateForEmpty,
+  [ValidateRuleType.Message]: validateForEmpty,
   // TODO: Доработать файловую валидацию
   [ValidateRuleType.File]: (str = '') => {
     return str;
+  },
+  [ValidateRuleType.Search]: () => {
+    return '';
   },
 }
 
 export function validateForm(rules: ValidateRule[]): ValidateRule[] {
   return rules.map((rule) => {
     const { type, value } = rule;
+
+    if (!validates[type]) {
+      throw new Error(`Неизвестный тип валидации: ${type}`);
+    }
 
     const validateError = validates[type](value);
 

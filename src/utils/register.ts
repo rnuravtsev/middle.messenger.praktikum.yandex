@@ -22,6 +22,7 @@ import PageTitle from 'components/PageTitle/PageTitle';
 import ProfileIcon from 'components/ProfileIcon/ProfileIcon';
 import SidebarReturn from 'components/SidebarReturn/SidebarReturn';
 import { Logout } from 'components/Logout/Logout';
+import ModalForm from '../components/Modal/ModalForm/ModalForm';
 
 registerComponent(Layout);
 registerComponent(Button);
@@ -47,3 +48,4 @@ registerComponent(PageTitle);
 registerComponent(ProfileIcon);
 registerComponent(SidebarReturn);
 registerComponent(Logout);
+registerComponent(ModalForm);

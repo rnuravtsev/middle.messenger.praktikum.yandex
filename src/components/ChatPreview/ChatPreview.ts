@@ -9,19 +9,22 @@ class ChatPreview extends Block {
 
   render() {
     // language=hbs
-    const { avatar, last_message, message, time, unread_count, content } = this.props;
-    const  { first_name } = last_message.user;
+    const { avatar, title } = this.props;
     return `
         <div class="chat-preview">
             <img class="chat-preview__avatar" src="${avatar}" alt="Аватар профиля">
             {{{MessagePreview
                     className="chat-preview__message"
-                    title="${first_name}"
+                    title="${title}"
                     message=content
             }}}
             <div class="chat-preview__additional">
-                <span class="chat-preview__time">{{time}}</span>
-                <span class="chat-preview__counter">{{unread_count}}</span>
+                {{#if time}}
+                    <span class="chat-preview__time">{{time}}</span>
+                {{/if}}
+                {{#if unread_count}}
+                    <span class="chat-preview__counter">{{unread_count}}</span>
+                {{/if}}
             </div>
         </div>
     `

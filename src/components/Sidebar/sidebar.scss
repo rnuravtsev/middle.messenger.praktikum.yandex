@@ -8,9 +8,22 @@
   overflow: auto;
 }
 
+.sidebar__header {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.sidebar__flex-wrapper {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .sidebar__link {
-  margin-bottom: 23px;
-  align-self: flex-end;
   font-size: 12px;
   line-height: 12px;
   color: $gray-500;
@@ -21,6 +34,6 @@
   }
 }
 
-.sidebar__search {
+.sidebar__input {
   margin-bottom: 14px;
 }

@@ -1,6 +1,6 @@
 import render from './renderDOM';
 import Block from './Block';
-import { isEqual } from '../utils/isEqual';
+import { isEqual } from '../helpers/helpers';
 
 export default class Route {
   private _pathname: string;

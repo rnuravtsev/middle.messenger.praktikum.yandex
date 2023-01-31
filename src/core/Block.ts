@@ -59,25 +59,24 @@ export default class Block<P extends object = any> {
     this._element = this._createDocumentElement('div');
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //@ts-ignore
-  protected getStateFromProps(props: any): void {
-    this.state = {};
+  protected getStateFromProps(newProps: any): void {
+    this.state = {
+      ...this.state,
+      ...newProps,
+    };
   }
 
-  init() {
+  protected init() {
     this._createResources();
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER, this.props);
   }
 
-  _componentDidMount(props: P) {
-    this.componentDidMount(props);
+  _componentDidMount() {
+    this.componentDidMount();
   }
 
-  // TODO: Поправить eslint
-  componentDidMount(props: P) {
-    console.log('componentDidMount', props);
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  componentDidMount() {}
 
   _componentDidUpdate(oldProps: P, newProps: P) {
     const response = this.componentDidUpdate(oldProps, newProps);

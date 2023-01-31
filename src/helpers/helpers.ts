@@ -52,7 +52,10 @@ export function omit(
   }, {});
 }
 
-export function isEmpty<T extends Indexed | string>(value: T): boolean {
+export function isEmpty<T extends Indexed | string | boolean>(value: T): boolean {
+  if (typeof value === 'boolean') {
+    return false;
+  }
   if (typeof value === 'string') {
     return value.trim().length === 0;
   }
@@ -64,6 +67,37 @@ export function isEmpty<T extends Indexed | string>(value: T): boolean {
   return false
 }
 
-export function isEquals<T extends Indexed>(lhs: T, rhs: T): boolean {
-  return JSON.stringify(lhs) === JSON.stringify(rhs);
+export const isEqual = (a: any, b: any): boolean => {
+  if (a === b) {
+    return true;
+  }
+
+  if (typeof a === 'object' && typeof b === 'object') {
+    if (Object.keys(a).length !== Object.keys(b).length) {
+      return false;
+    }
+
+    for (const key in a) {
+      if (!(key in b) || !isEqual(a[key], b[key])) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
+export function debounce(cb: (...args: unknown[]) => unknown, timeout = 2000) {
+  let timer: undefined | ReturnType<typeof setTimeout> = undefined;
+
+  return (...args: unknown[]) => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      cb.apply(this, args)
+    }, timeout)
+  }
 }

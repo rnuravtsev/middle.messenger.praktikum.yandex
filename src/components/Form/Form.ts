@@ -5,6 +5,7 @@ import { validateForm, ValidateRuleType } from '../../utils/validateForm';
 type FormProps = {
   className: string,
   inputClassName: string,
+  inputPlaceholder: string,
   isSubmitButtonHide: boolean,
   submitButtonClassname: string,
   submitButtonType: string,
@@ -65,7 +66,13 @@ class Form extends Block {
   }
 
   render() {
-    const { firstValidationError, submitButtonClassname, submitButtonType, inputClassName } = this.props;
+    const {
+      firstValidationError,
+      submitButtonClassname,
+      submitButtonType,
+      inputClassName,
+      inputPlaceholder,
+    } = this.props;
     // language=hbs
     return `
         <form id="form"
@@ -74,6 +81,7 @@ class Form extends Block {
                 {{{Field
                         className="form__field"
                         inputClassName="${inputClassName ? inputClassName : ''}"
+                        placeholder="${inputPlaceholder ? inputPlaceholder : ''}"
                         labelText=this.labelText
                         name=this.name
                         placeholder=this.placeholder

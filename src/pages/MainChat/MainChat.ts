@@ -3,15 +3,22 @@ import './main-chat.scss';
 import { ChatPageProps } from './types';
 import { chatFields } from '../../mock/chatFields';
 class MainChat extends Block {
+  static componentName = 'MainChat';
   constructor(props: ChatPageProps = {} as ChatPageProps) {
     super(props);
 
     this.setProps({
       fields: chatFields,
+      events: {
+        click: (evt: Event) => this.handleClick(evt),
+      }
     })
   }
 
-  static componentName = 'MainChat';
+  handleClick(evt: Event) {
+    console.log('911.', evt)
+  }
+
 
     render() {
     // language=hbs
@@ -20,7 +27,12 @@ class MainChat extends Block {
             <header class="chat-page__header">
                 <img class="chat-page__img" src="#" alt="Аватар профиля">
                 <h3 class="chat-page__title">{{author}}</h3>
-                {{{Button type="icon" icon="menu" className="chat-page__extra"}}}
+                {{{Button
+                        className="chat-page__extra"
+                        type="icon"
+                        icon="menu"
+                        onClick=events.click
+                }}}
             </header>
             <div class="chat-page__chat">
                 {{{Chat}}}

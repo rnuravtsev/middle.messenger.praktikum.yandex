@@ -19,7 +19,6 @@ class ProfileEditPass extends Block {
 
   async onSubmit(data: unknown) {
     // TODO: Изменить реализацию метода
-    console.log('911.', data)
     await EditsController.changeUserPassword(data)
   }
 
