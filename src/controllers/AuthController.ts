@@ -1,11 +1,11 @@
 import { SignUpData, SignInData } from '../api/types';
-import { AuthAPI } from '../api/AuthAPI';
+import AuthAPI from '../api/AuthAPI';
 import Router from 'core/Router';
 import { Routes } from '../index';
 import { request, setDataToStore } from './utils';
 
 class AuthController {
-  private api = new AuthAPI();
+  private api = AuthAPI;
   private namespace = 'user';
 
   async signUp(data: SignUpData) {

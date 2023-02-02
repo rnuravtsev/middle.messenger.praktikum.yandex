@@ -6,11 +6,10 @@ type ChatProps = {
 }
 
 class Chat extends Block {
+  static componentName = 'Chat';
   constructor({ className }: ChatProps) {
     super({ className });
   }
-
-  static componentName = 'Chat';
 
   render() {
     // language=hbs

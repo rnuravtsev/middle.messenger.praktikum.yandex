@@ -72,7 +72,7 @@ export const isEqual = (a: any, b: any): boolean => {
     return true;
   }
 
-  if (typeof a === 'object' && typeof b === 'object') {
+  if (typeof a === 'object' && typeof b === 'object' && a !== null && b !== null) {
     if (Object.keys(a).length !== Object.keys(b).length) {
       return false;
     }

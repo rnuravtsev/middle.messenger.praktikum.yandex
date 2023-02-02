@@ -35,7 +35,7 @@ class Button extends Block {
                 type="button"
         >
             {{#if icon}}
-                <i class="icon icon-{{icon}}"/>
+                <i class="icon icon-{{icon}}"></i>
             {{/if}}
             {{label}}
         </button>

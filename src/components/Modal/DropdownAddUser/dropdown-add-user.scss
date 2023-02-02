@@ -1,0 +1,27 @@
+@import 'src/scss/variables';
+
+.dropdown {
+  padding: 15px;
+  width: max-content;
+  height: max-content;
+  background-color: $white;
+  display: none;
+  border-radius: $radius-l;
+  box-shadow: 0 0 6px 0 #00000024;
+}
+
+.dropdown.dropdown_open {
+  display: block;
+}
+
+.dropdown__content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.dropdown__button {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+}

@@ -1,11 +1,24 @@
 import Block from 'core/Block';
 import './chat-preview.scss';
 import { ChatProps } from './types';
+import store from '../../utils/Store';
 
 class ChatPreview extends Block {
   static componentName = 'ChatPreview';
+
   constructor(props: ChatProps) {
     super(props);
+
+    this.setProps({
+      events: {
+        click: () => this.handleClick(),
+      }
+    })
+  }
+
+  handleClick() {
+    const { id } = this.props;
+    store.set('activeChatId', id);
   }
 
   render() {

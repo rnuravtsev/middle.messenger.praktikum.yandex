@@ -1,8 +1,8 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.ttf?d04a2748d4b85a1b50f3064bb18f85b8") format("truetype"),
-url("./icons.woff?d04a2748d4b85a1b50f3064bb18f85b8") format("woff"),
-url("./icons.woff2?d04a2748d4b85a1b50f3064bb18f85b8") format("woff2");
+    src: url("./icons.ttf?0e6eec7df6dc46cf27528f4cb2a06009") format("truetype"),
+url("./icons.woff?0e6eec7df6dc46cf27528f4cb2a06009") format("woff"),
+url("./icons.woff2?0e6eec7df6dc46cf27528f4cb2a06009") format("woff2");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -19,12 +19,24 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-2check:before {
     content: "\f101";
 }
-.icon-clip:before {
+.icon-avatar:before {
     content: "\f102";
 }
-.icon-loupe:before {
+.icon-circle-cross:before {
     content: "\f103";
 }
-.icon-menu:before {
+.icon-circle-plus:before {
     content: "\f104";
+}
+.icon-clip:before {
+    content: "\f105";
+}
+.icon-loupe:before {
+    content: "\f106";
+}
+.icon-menu:before {
+    content: "\f107";
+}
+.icon-square-and-pencil:before {
+    content: "\f108";
 }

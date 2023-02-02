@@ -9,14 +9,16 @@ class MainPage extends Block {
   }
 
   render() {
+    //TODO: Поменять местам ифы
+
     // language=hbs
     return `
         <div class="main-page">
             {{{Sidebar onCLick=handleClick className="main-page__sidebar"}}}
-            {{#if activeChat}}
-                {{{ChooseChat className="main-page__empty-chat"}}}
+            {{#if activeChatId}}
+                {{{MainChat className="main-page__chat"}}}
             {{else}}
-                {{{Chat className="main-page__chat"}}}
+                {{{ChooseChat className="main-page__empty-chat"}}}
             {{/if}}
 
         </div>`
@@ -25,7 +27,7 @@ class MainPage extends Block {
 
 
 const mapStateToProps = (store: any) => ({
-  activeChat: store?.activeChat
+  activeChatId: store?.activeChatId
 })
 
 export default withStore(mapStateToProps)(MainPage);

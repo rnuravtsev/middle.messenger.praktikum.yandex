@@ -76,21 +76,19 @@ export default class Block<P extends object = any> {
     this.componentDidMount();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   protected componentDidMount() {
     console.log('911.', 'componentDidMount');
   }
 
   private _componentDidUpdate(oldProps: P, newProps: P) {
     const response = this.componentDidUpdate(oldProps, newProps);
-    if (!response) {
+    if (response) {
       return;
     }
-    this._render();
+
+    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //@ts-ignore
   protected componentDidUpdate(oldProps: P, newProps: P) {
     return isEqual(oldProps, newProps)
   }

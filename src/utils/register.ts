@@ -23,6 +23,8 @@ import ProfileIcon from 'components/ProfileIcon/ProfileIcon';
 import SidebarReturn from 'components/SidebarReturn/SidebarReturn';
 import { Logout } from 'components/Logout/Logout';
 import ModalForm from '../components/Modal/ModalForm/ModalForm';
+import DropdownAddUser from '../components/Modal/DropdownAddUser/DropdownAddUser';
+import Extra from '../components/Extra/Extra';
 
 registerComponent(Layout);
 registerComponent(Button);
@@ -49,3 +51,5 @@ registerComponent(ProfileIcon);
 registerComponent(SidebarReturn);
 registerComponent(Logout);
 registerComponent(ModalForm);
+registerComponent(DropdownAddUser);
+registerComponent(Extra);

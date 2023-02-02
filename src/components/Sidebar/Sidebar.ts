@@ -11,6 +11,13 @@ const inputs = [{
   type: 'search',
 }];
 
+const modalFields = [
+  {
+    labelText: 'Название чата',
+    name: 'new_chat_name',
+  },
+]
+
 
 class Sidebar extends Block {
   static componentName = 'Sidebar';
@@ -20,6 +27,7 @@ class Sidebar extends Block {
 
     this.setProps({
       inputs,
+      modalFields,
       events: {
         click: (evt: Event) => this.handleClick(evt),
         submit: (evt: Event) => this.onSubmit(evt),
@@ -73,6 +81,7 @@ class Sidebar extends Block {
                 }}}
                 {{{ModalForm
                         isOpen=isModalOpen
+                        fields=modalFields
                         className="modal"
                         title="Создать чат"
                         buttonText="Создать"

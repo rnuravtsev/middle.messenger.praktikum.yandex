@@ -2,32 +2,15 @@ import Block from 'core/Block';
 import './modal-form.scss';
 import { ModalProps } from './types'
 
-const fields = [
-  {
-    labelText: 'Название чата',
-    name: 'new_chat_name',
-  },
-]
-
-
 class ModalForm extends Block {
   static componentName = 'ModalForm';
 
   constructor(props: ModalProps = {} as ModalProps) {
     super(props);
 
-    const { isOpen } = props;
-
-    this.state = {
-      isOpen: false
-    }
-
-    this.setProps({
-      fields,
-      isOpen: isOpen || false,
-    })
-
-    this.getStateFromProps({ isOpen: isOpen })
+    // this.setProps({
+    //   fields: this.props.fields || fields,
+    // })
   }
 
   render() {
@@ -38,7 +21,7 @@ class ModalForm extends Block {
                 <div class="modal__body">
                     {{{Subtitle
                         className="modal__subtitle"
-                        text="Добавить чат"
+                        text=title
                     }}}
                     <div class="modal__content">
                         {{{Form

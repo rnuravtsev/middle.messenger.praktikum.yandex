@@ -9,6 +9,7 @@
 }
 
 .chat-page__header {
+  position: relative;
   display: grid;
   grid-template-columns: 34px 1fr 8px;
   align-items: center;
@@ -21,6 +22,13 @@
   .icon-menu {
     color: $main;
   }
+}
+
+.chat-page__dropdown {
+  position: absolute;
+  right: 10px;
+  bottom: -250%;
+  z-index: 99999;
 }
 
 .chat-page__title {
