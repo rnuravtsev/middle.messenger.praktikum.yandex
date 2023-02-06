@@ -1,4 +1,4 @@
-import store from '../utils/Store';
+import store from '../utils/Store'
 
 export const setDataToStore = (namespace: string, data: unknown) => {
   store.set(`${namespace}.data`, data)
@@ -15,7 +15,7 @@ export const setLoadingToStore = (namespace: string, loading: boolean) => {
 export const request = async (namespace: string, cb: () => void) => {
   setLoadingToStore(namespace, true)
   try {
-    await cb();
+    await cb()
     setErrorToStore(namespace)
   } catch (e) {
     setErrorToStore(namespace, e)

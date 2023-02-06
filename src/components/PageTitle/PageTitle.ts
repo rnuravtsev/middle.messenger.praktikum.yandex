@@ -1,5 +1,5 @@
-import Block from 'core/Block';
-import './page-title.scss';
+import Block from 'core/Block'
+import './page-title.scss'
 
 type PageTitleProps = {
   className: string,
@@ -9,10 +9,10 @@ type PageTitleProps = {
 
 class PageTitle extends Block {
   constructor(props: PageTitleProps) {
-    super(props);
+    super(props)
   }
 
-  static componentName = 'PageTitle';
+  static componentName = 'PageTitle'
 
     render() {
     // language=hbs
@@ -22,4 +22,4 @@ class PageTitle extends Block {
   }
 }
 
-export default PageTitle;
+export default PageTitle

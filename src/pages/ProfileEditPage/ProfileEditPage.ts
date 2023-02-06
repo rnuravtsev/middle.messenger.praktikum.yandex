@@ -1,14 +1,14 @@
-import Block from 'core/Block';
-import './profile-edit.scss';
-import { ProfileEditProps } from './types';
-import withStore from '../../HOCs/withStore';
-import FieldNormalize from '../../helpers/FieldNormalize';
-import { User } from '../../api/types';
-import EditsController from '../../controllers/EditsController';
+import Block from 'core/Block'
+import './profile-edit.scss'
+import { ProfileEditProps } from './types'
+import withStore from '../../HOCs/withStore'
+import FieldNormalize from '../../helpers/FieldNormalize'
+import { User } from '../../api/types'
+import EditsController from '../../controllers/EditsController'
 
 class ProfileEditPage extends Block {
   constructor(props: ProfileEditProps = {} as ProfileEditProps) {
-    super(props);
+    super(props)
 
     this.setProps({
       //TODO: Убрать any
@@ -40,12 +40,12 @@ class ProfileEditPage extends Block {
                 }}}
             </div>
         </main>
-    `;
+    `
   }
 }
 
 const mapStateToProps = (state: any) => ({
  user: state.user?.data
-});
+})
 
-export default withStore(mapStateToProps)(ProfileEditPage);
+export default withStore(mapStateToProps)(ProfileEditPage)

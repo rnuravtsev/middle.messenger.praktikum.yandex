@@ -1,12 +1,12 @@
-import Block from 'core/Block';
-import './modal-form.scss';
+import Block from 'core/Block'
+import './modal-form.scss'
 import { ModalProps } from './types'
 
 class ModalForm extends Block {
-  static componentName = 'ModalForm';
+  static componentName = 'ModalForm'
 
   constructor(props: ModalProps = {} as ModalProps) {
-    super(props);
+    super(props)
 
     // this.setProps({
     //   fields: this.props.fields || fields,
@@ -39,4 +39,4 @@ class ModalForm extends Block {
   }
 }
 
-export default ModalForm;
+export default ModalForm

@@ -1,6 +1,6 @@
-import Block from 'core/Block';
-import './form.scss';
-import { validateForm, ValidateRuleType } from '../../utils/validateForm';
+import Block from 'core/Block'
+import './form.scss'
+import { validateForm, ValidateRuleType } from '../../utils/validateForm'
 
 type FormProps = {
   className: string,
@@ -18,14 +18,14 @@ type FormProps = {
 
 class Form extends Block {
   constructor(props: FormProps) {
-    super(props);
+    super(props)
 
     this.setProps({
       handleButtonSubmit: (evt: Event) => this.handleButtonSubmit(evt),
     })
   }
 
-  static componentName = 'Form';
+  static componentName = 'Form'
 
   validate(inputs: HTMLInputElement[]): boolean {
     const preparedInputsForValidation = (inputs: HTMLInputElement[]) => {
@@ -34,11 +34,11 @@ class Form extends Block {
       })
     }
 
-    const validationErrors = validateForm(preparedInputsForValidation(inputs));
+    const validationErrors = validateForm(preparedInputsForValidation(inputs))
 
-    const firstValidationError = validationErrors.find(({ value }) => value !== '');
+    const firstValidationError = validationErrors.find(({ value }) => value !== '')
 
-    const isEmptyError = validationErrors.every(({ value }) => value === '');
+    const isEmptyError = validationErrors.every(({ value }) => value === '')
 
     if (firstValidationError) {
       this.setProps({
@@ -50,18 +50,20 @@ class Form extends Block {
   }
 
   handleButtonSubmit(evt: Event) {
-    const { onSubmit } = this.props;
+    const { onSubmit } = this.props
 
-    evt.preventDefault();
+    evt.preventDefault()
 
-    const formEl = this._element as HTMLFormElement;
-    const inputs = [...formEl.querySelectorAll('input')];
-    const isFormValid = this.validate(inputs);
+    const formEl = this._element as HTMLFormElement
+    const inputs = [...formEl.querySelectorAll('input')]
+    const isFormValid = this.validate(inputs)
 
     if (isFormValid) {
-      const formData = new FormData(formEl);
-      const data = Object.fromEntries(formData);
+      const formData = new FormData(formEl)
+      const data = Object.fromEntries(formData)
       onSubmit(data)
+
+      formEl.reset()
     }
   }
 
@@ -72,7 +74,7 @@ class Form extends Block {
       submitButtonType,
       inputClassName,
       inputPlaceholder,
-    } = this.props;
+    } = this.props
     // language=hbs
     return `
         <form id="form"
@@ -105,4 +107,4 @@ class Form extends Block {
   }
 }
 
-export default Form;
+export default Form

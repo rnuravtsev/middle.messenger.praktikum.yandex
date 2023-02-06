@@ -1,5 +1,5 @@
-import Block from 'core/Block';
-import './button.scss';
+import Block from 'core/Block'
+import './button.scss'
 
 type ButtonProps = {
   className: string,
@@ -21,9 +21,9 @@ class Button extends Block {
         click: onClick,
       },
       type,
-    });
+    })
   }
-  static componentName = 'Button';
+  static componentName = 'Button'
 
   render() {
     // language=hbs
@@ -43,4 +43,4 @@ class Button extends Block {
   }
 }
 
-export default Button;
+export default Button

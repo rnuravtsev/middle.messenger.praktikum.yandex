@@ -1,4 +1,4 @@
-import { ValidateRuleType } from '../utils/validateForm';
+import { ValidateRuleType } from '../utils/validateForm'
 
 export const fields = [
   {

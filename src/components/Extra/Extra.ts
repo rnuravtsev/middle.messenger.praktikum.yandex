@@ -1,12 +1,12 @@
-import Block from 'core/Block';
-import './extra.scss';
+import Block from 'core/Block'
+import './extra.scss'
 import { ExtraProps } from './types'
 
 class Extra extends Block {
-  static componentName = 'Extra';
+  static componentName = 'Extra'
 
   constructor(props: ExtraProps = {} as ExtraProps) {
-    super(props);
+    super(props)
 
     this.setProps({
       handleExtraClick: () => this.handleExtraClick(),
@@ -43,4 +43,4 @@ class Extra extends Block {
   }
 }
 
-export default Extra;
+export default Extra

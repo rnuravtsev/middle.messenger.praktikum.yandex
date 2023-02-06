@@ -1,4 +1,4 @@
-import { TColors } from '../../types/colors';
+import { TColors } from '../../types/colors'
 
 export type LogoutProps = {
   className?: string

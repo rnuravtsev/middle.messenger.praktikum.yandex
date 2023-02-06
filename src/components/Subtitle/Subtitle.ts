@@ -1,5 +1,5 @@
-import Block from 'core/Block';
-import './subtitle.scss';
+import Block from 'core/Block'
+import './subtitle.scss'
 
 type SubtitleProps = {
   className: string,
@@ -9,10 +9,10 @@ type SubtitleProps = {
 
 class Subtitle extends Block {
   constructor(props: SubtitleProps) {
-    super(props);
+    super(props)
   }
 
-  static componentName = 'Subtitle';
+  static componentName = 'Subtitle'
 
     render() {
     // language=hbs
@@ -26,4 +26,4 @@ class Subtitle extends Block {
   }
 }
 
-export default Subtitle;
+export default Subtitle

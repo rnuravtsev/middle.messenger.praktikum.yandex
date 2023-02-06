@@ -1,11 +1,11 @@
-import Block from 'core/Block';
-import './profile-page.scss';
-import { ProfilePageProps } from './types';
-import withStore from '../../HOCs/withStore';
+import Block from 'core/Block'
+import './profile-page.scss'
+import { ProfilePageProps } from './types'
+import withStore from '../../HOCs/withStore'
 
 class ProfilePage extends Block {
   constructor(props: ProfilePageProps = {} as ProfilePageProps) {
-    super(props);
+    super(props)
   }
 
   render() {
@@ -32,6 +32,6 @@ class ProfilePage extends Block {
   }
 }
 
-const mapStateToProps = (state: any) => ({ user: state.user?.data } || {} as ProfilePageProps);
+const mapStateToProps = (state: any) => ({ user: state?.user?.data } || {} as ProfilePageProps)
 
-export default withStore(mapStateToProps)(ProfilePage);
+export default withStore(mapStateToProps)(ProfilePage)

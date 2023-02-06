@@ -1,6 +1,6 @@
-import Block from 'core/Block';
-import withRouter from '../../HOCs/withRouter';
-import './link.scss';
+import Block from 'core/Block'
+import withRouter from '../../HOCs/withRouter'
+import './link.scss'
 
 type LinkProps = {
   className?: string,
@@ -14,7 +14,7 @@ type LinkProps = {
 
 class Link extends Block {
   constructor(props: LinkProps) {
-    super(props);
+    super(props)
 
     this.setProps({
       events: {
@@ -22,12 +22,12 @@ class Link extends Block {
       }
     })
   }
-  static componentName = 'Link';
+  static componentName = 'Link'
 
   navigate() {
-    const { router, href } = this.props;
+    const { router, href } = this.props
 
-    router.go(href);
+    router.go(href)
   }
 
   render() {
@@ -42,4 +42,4 @@ class Link extends Block {
 
 export { Link }
 
-export default withRouter(Link);
+export default withRouter(Link)

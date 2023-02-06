@@ -1,5 +1,5 @@
-import Block from 'core/Block';
-import './message-preview.scss';
+import Block from 'core/Block'
+import './message-preview.scss'
 
 type MessageProps = {
   className: string,
@@ -13,10 +13,10 @@ type MessageProps = {
 
 class MessagePreview extends Block {
   constructor(props: MessageProps) {
-    super(props);
+    super(props)
   }
 
-  static componentName = 'MessagePreview';
+  static componentName = 'MessagePreview'
 
     render() {
     // language=hbs
@@ -35,4 +35,4 @@ class MessagePreview extends Block {
   }
 }
 
-export default MessagePreview;
+export default MessagePreview

@@ -1,8 +1,9 @@
-import Block from 'core/Block';
-import './chat-list.scss';
-import { ChatNew } from '../ChatPreview/types';
-import withStore from '../../HOCs/withStore';
-import ChatController from '../../controllers/ChatController';
+import Block from 'core/Block'
+import './chat-list.scss'
+import { ChatNew } from '../ChatPreview/types'
+import withStore from '../../HOCs/withStore'
+import ChatController from '../../controllers/ChatController'
+import { State } from '../../utils/Store'
 
 
 type ChatListProps = {
@@ -10,13 +11,13 @@ type ChatListProps = {
 }
 
 class ChatList extends Block {
-  static componentName = 'ChatList';
+  static componentName = 'ChatList'
   constructor(props: ChatListProps) {
-    super(props);
+    super(props)
   }
 
   protected async init() {
-      super.init();
+      super.init()
       // TODO: Добавить AbortController или пересмотреть класс Block
       await ChatController.getChats()
   }
@@ -40,8 +41,8 @@ class ChatList extends Block {
   }
 }
 
-const mapStateToProps = (store: any) => ({
-  chats: store?.chats?.data
+const mapStateToProps = (state: State) => ({
+  chats: state?.chats?.data
 })
-export default withStore(mapStateToProps)(ChatList);
+export default withStore(mapStateToProps)(ChatList)
 

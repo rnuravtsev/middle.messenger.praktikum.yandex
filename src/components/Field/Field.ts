@@ -1,6 +1,6 @@
-import Block from 'core/Block';
-import './field.scss';
-import { validateField } from '../../utils/validateForm';
+import Block from 'core/Block'
+import './field.scss'
+import { validateField } from '../../utils/validateForm'
 
 type FieldProps = {
   className: string,
@@ -23,23 +23,23 @@ type FieldProps = {
 
 
 class Field extends Block {
-  static componentName = 'Field';
+  static componentName = 'Field'
   constructor(props: FieldProps) {
     super({
       ...props,
       onBlur: (evt: Event) => this.onBlur(evt),
       onFocus: (evt: Event) => this.onFocus(evt),
-    });
+    })
   }
 
 
   onBlur(evt: Event) {
-    const input = evt.target as HTMLInputElement;
+    const input = evt.target as HTMLInputElement
     this.validate(input)
   }
 
   onFocus(evt: Event) {
-    const input = evt.target as HTMLInputElement;
+    const input = evt.target as HTMLInputElement
     this.validate(input)
   }
 
@@ -81,4 +81,4 @@ class Field extends Block {
   }
 }
 
-export default Field;
+export default Field

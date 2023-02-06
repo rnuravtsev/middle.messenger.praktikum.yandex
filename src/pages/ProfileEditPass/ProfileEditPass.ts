@@ -1,13 +1,13 @@
-import Block from 'core/Block';
-import './profile-edit-pass.scss';
-import withStore from '../../HOCs/withStore';
-import { ProfileEditPassProps } from './types';
-import EditsController from '../../controllers/EditsController';
-import FieldNormalize from '../../helpers/FieldNormalize';
+import Block from 'core/Block'
+import './profile-edit-pass.scss'
+import withStore from '../../HOCs/withStore'
+import { ProfileEditPassProps } from './types'
+import EditsController from '../../controllers/EditsController'
+import FieldNormalize from '../../helpers/FieldNormalize'
 
 class ProfileEditPass extends Block {
   constructor(props: ProfileEditPassProps = {} as ProfileEditPassProps) {
-    super(props);
+    super(props)
 
     this.setProps({
       fields: FieldNormalize.createFields(['oldPassword', 'newPassword', 'repeatedNewPassword']),
@@ -48,4 +48,4 @@ const mapStateToProps = (state: any) => ({
 })
 
 
-export default withStore(mapStateToProps)(ProfileEditPass);
+export default withStore(mapStateToProps)(ProfileEditPass)

@@ -1,4 +1,4 @@
-import Block from 'core/Block';
+import Block from 'core/Block'
 
 type ImgProps = {
   className: string,
@@ -11,10 +11,10 @@ type ImgProps = {
 
 class Img extends Block {
   constructor(props: ImgProps) {
-    super(props);
+    super(props)
   }
 
-  static componentName = 'Img';
+  static componentName = 'Img'
 
     render() {
     // language=hbs
@@ -30,4 +30,4 @@ class Img extends Block {
   }
 }
 
-export default Img;
+export default Img

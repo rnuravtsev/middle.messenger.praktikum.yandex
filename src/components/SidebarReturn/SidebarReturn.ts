@@ -1,5 +1,5 @@
-import Block from 'core/Block';
-import './sidebar-return.scss';
+import Block from 'core/Block'
+import './sidebar-return.scss'
 
 type SidebarReturnProps = {
   className: string,
@@ -8,17 +8,17 @@ type SidebarReturnProps = {
 
 class SidebarReturn extends Block {
   constructor(props: SidebarReturnProps) {
-    super(props);
+    super(props)
 
     this.setProps({
       handleButtonClick: () => this.handleButtonClick(),
     })
   }
 
-  static componentName = 'SidebarReturn';
+  static componentName = 'SidebarReturn'
 
     handleButtonClick() {
-    window.history.back();
+    window.history.back()
   }
 
   render() {
@@ -35,4 +35,4 @@ class SidebarReturn extends Block {
   }
 }
 
-export default SidebarReturn;
+export default SidebarReturn

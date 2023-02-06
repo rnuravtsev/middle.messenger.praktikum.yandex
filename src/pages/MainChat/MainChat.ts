@@ -1,12 +1,40 @@
-import Block from 'core/Block';
-import './main-chat.scss';
-import { ChatPageProps } from './types';
+import Block from 'core/Block'
+import './main-chat.scss'
+import { ChatPageProps } from './types'
+import withStore from '../../HOCs/withStore'
+import MessagesController from '../../controllers/MessagesController'
+import { State } from '../../utils/Store'
+
+const fields = [
+  {
+    name: 'file',
+    type: 'file',
+  },
+  {
+    name: 'message',
+    type: 'text',
+    placeholder: 'Введите сообщение',
+  },
+]
 
 class MainChat extends Block {
-  static componentName = 'MainChat';
+  static componentName = 'MainChat'
 
   constructor(props: ChatPageProps = {} as ChatPageProps) {
-    super(props);
+    super(props)
+
+    this.setProps({
+      fields,
+      onSubmit: (e: Event) => this.onSubmit(e),
+    })
+  }
+
+
+  async onSubmit(data: unknown) {
+    const { activeChatId } = this.props
+
+    const { message } = data as { message: string }
+    await MessagesController.sendMessage(activeChatId, message)
   }
 
   render() {
@@ -32,11 +60,16 @@ class MainChat extends Block {
                         submitButtonClassname="chat-page__submit"
                         submitButtonType="round"
                         buttonText="->"
+                        onSubmit=onSubmit
                 }}}
             </footer>
         </section>
-    `;
+    `
   }
 }
 
-export default MainChat;
+const mapStateToProps = (state: State) => ({
+  activeChatId: state.activeChatId,
+})
+
+export default withStore(mapStateToProps)(MainChat)

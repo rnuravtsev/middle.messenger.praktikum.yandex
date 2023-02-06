@@ -1,26 +1,26 @@
-import { SignUpData, SignInData } from '../api/types';
-import AuthAPI from '../api/AuthAPI';
-import Router from 'core/Router';
-import { Routes } from '../index';
-import { request, setDataToStore } from './utils';
+import { SignUpData, SignInData } from '../api/types'
+import AuthAPI from '../api/AuthAPI'
+import Router from 'core/Router'
+import { Routes } from '../index'
+import { request, setDataToStore } from './utils'
 
 class AuthController {
-  private api = AuthAPI;
-  private namespace = 'user';
+  private api = AuthAPI
+  private namespace = 'user'
 
   async signUp(data: SignUpData) {
     await request(this.namespace, async () => {
-      await this.api.signUp(data);
-      await this.fetchUser();
+      await this.api.signUp(data)
+      await this.fetchUser()
 
       Router.go(Routes.Profile)
-    });
+    })
   }
 
   async signIn(data: SignInData) {
     await request(this.namespace, async () => {
-      await this.api.signIn(data);
-      await this.fetchUser();
+      await this.api.signIn(data)
+      await this.fetchUser()
       Router.go(Routes.Profile)
     })
   }
@@ -43,4 +43,4 @@ class AuthController {
   }
 }
 
-export default new AuthController();
+export default new AuthController()

@@ -1,5 +1,5 @@
-import { User } from '../api/types';
-import { isEmpty, omit } from './helpers';
+import { User } from '../api/types'
+import { isEmpty, omit } from './helpers'
 
 const FieldType = {
   login: 'text',
@@ -12,7 +12,7 @@ const FieldType = {
   oldPassword: 'password',
   newPassword: 'password',
   repeatedNewPassword: 'password',
-} as Record<string, string>;
+} as Record<string, string>
 
 export const LabelName = {
   login: 'Логин',
@@ -25,7 +25,7 @@ export const LabelName = {
   oldPassword: 'Старый пароль',
   newPassword: 'Новый пароль',
   repeatedNewPassword: 'Повторите новый пароль',
-} as Record<string, string>;
+} as Record<string, string>
 class FieldNormalize {
   getFields(obj: User, fields: string[]): Record<string, unknown> {
     return Object.entries(obj).reduce((acc, [key, value]) => {
@@ -40,16 +40,16 @@ class FieldNormalize {
     }, {})
   }
   omitFields(obj: Record<string, unknown>, fields: string[] = ['id', 'avatar']) {
-    return omit(obj, fields);
+    return omit(obj, fields)
   }
   createFields(
     fields: string[] = Object.keys(FieldType),
     obj: User | Record<string, unknown> = {}) {
 
-    let resolveObj;
+    let resolveObj
 
     if (!isEmpty(obj)) {
-      resolveObj = this.getFields(obj as User, fields);
+      resolveObj = this.getFields(obj as User, fields)
     } else {
       resolveObj = fields.reduce((acc, field) => {
         return {
@@ -67,8 +67,8 @@ class FieldNormalize {
           type: FieldType[key],
           value: value,
         }
-      });
+      })
   }
 }
 
-export default new FieldNormalize();
+export default new FieldNormalize()

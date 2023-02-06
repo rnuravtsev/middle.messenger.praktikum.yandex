@@ -1,16 +1,15 @@
-import Block from 'core/Block';
-import './main-page.scss';
-import { MainPageProps } from './types';
-import withStore from '../../HOCs/withStore';
+import Block from 'core/Block'
+import './main-page.scss'
+import { MainPageProps } from './types'
+import withStore from '../../HOCs/withStore'
+import { State } from '../../utils/Store'
 
 class MainPage extends Block {
   constructor(props: MainPageProps = {} as MainPageProps) {
-    super(props);
+    super(props)
   }
 
   render() {
-    //TODO: Поменять местам ифы
-
     // language=hbs
     return `
         <div class="main-page">
@@ -26,8 +25,8 @@ class MainPage extends Block {
 }
 
 
-const mapStateToProps = (store: any) => ({
-  activeChatId: store?.activeChatId
+const mapStateToProps = (state: State) => ({
+  activeChatId: state?.activeChatId
 })
 
-export default withStore(mapStateToProps)(MainPage);
+export default withStore(mapStateToProps)(MainPage)

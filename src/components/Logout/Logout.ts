@@ -1,12 +1,12 @@
-import Block from 'core/Block';
-import './logout.scss';
-import { LogoutProps } from './types';
-import AuthController from '../../controllers/AuthController';
+import Block from 'core/Block'
+import './logout.scss'
+import { LogoutProps } from './types'
+import AuthController from '../../controllers/AuthController'
 
 class Logout extends Block {
-  static componentName = 'Logout';
+  static componentName = 'Logout'
   constructor(props: LogoutProps = {} as LogoutProps) {
-    super(props);
+    super(props)
 
     this.setProps({
       ...props,
@@ -16,8 +16,8 @@ class Logout extends Block {
     })
   }
 
-  logout() {
-    AuthController.logout()
+  async logout() {
+    await AuthController.logout()
   }
 
 
@@ -35,4 +35,4 @@ class Logout extends Block {
 
 export { Logout }
 
-export default Logout;
+export default Logout

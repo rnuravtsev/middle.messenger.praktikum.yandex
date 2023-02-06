@@ -1,5 +1,5 @@
-import Block from 'core/Block';
-import './chat-view.scss';
+import Block from 'core/Block'
+import './chat-view.scss'
 
 type ChatViewProps = {
   activeChat: number
@@ -8,10 +8,10 @@ type ChatViewProps = {
 
 class ChatView extends Block {
   constructor(props: ChatViewProps) {
-    super(props);
+    super(props)
   }
 
-  static componentName = 'ChatView';
+  static componentName = 'ChatView'
 
   render() {
     //FIXME: add active chat view
@@ -28,4 +28,4 @@ class ChatView extends Block {
   }
 }
 
-export default ChatView;
+export default ChatView

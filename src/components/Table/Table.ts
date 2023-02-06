@@ -1,8 +1,8 @@
-import Block from 'core/Block';
-import './table.scss';
-import { User } from '../../api/types';
-import { omit } from 'helpers/helpers';
-import { LabelName } from '../../helpers/FieldNormalize';
+import Block from 'core/Block'
+import './table.scss'
+import { User } from '../../api/types'
+import { omit } from 'helpers/helpers'
+import { LabelName } from '../../helpers/FieldNormalize'
 
 type TableProps = {
   className: string,
@@ -12,20 +12,20 @@ type TableProps = {
 
 class Table extends Block {
   constructor(props: TableProps) {
-    super(props);
+    super(props)
 
-    const { user } = props;
-    const resolvedUser: {[key: string]: unknown} = {};
+    const { user } = props
+    const resolvedUser: {[key: string]: unknown} = {}
 
     if(user) {
-      const omittedUser: {[key: string]: unknown} = omit(user, ['id']);
+      const omittedUser: {[key: string]: unknown} = omit(user, ['id'])
 
       const userWithoutEmptyProperties = Object.entries(omittedUser).reduce((acc, [key, value]) => {
         if(value) {
-          acc[key] = value;
+          acc[key] = value
         }
         return acc
-      }, resolvedUser);
+      }, resolvedUser)
       this.setProps({
         data:
           Object.entries(userWithoutEmptyProperties)
@@ -34,7 +34,7 @@ class Table extends Block {
     }
   }
 
-  static componentName = 'Table';
+  static componentName = 'Table'
 
     render() {
     // language=hbs
@@ -58,4 +58,4 @@ class Table extends Block {
   }
 }
 
-export default Table;
+export default Table

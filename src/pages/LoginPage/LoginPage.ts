@@ -1,13 +1,13 @@
-import Block from 'core/Block';
-import './login-page.scss';
-import { fields as mockFields } from '../../mock/fields';
-import { LoginPageProps } from './types';
-import AuthController from '../../controllers/AuthController';
-import { SignInData } from '../../api/types';
+import Block from 'core/Block'
+import './login-page.scss'
+import { fields as mockFields } from '../../mock/fields'
+import { LoginPageProps } from './types'
+import AuthController from '../../controllers/AuthController'
+import { SignInData } from '../../api/types'
 
 class LoginPage extends Block {
   constructor(props: LoginPageProps = {} as LoginPageProps) {
-    super(props);
+    super(props)
 
     this.setProps({
       fields: mockFields,
@@ -50,4 +50,4 @@ class LoginPage extends Block {
   }
 }
 
-export default LoginPage;
+export default LoginPage

@@ -19,4 +19,4 @@ export const chats = [
   { 'title':'Leigha','avatar':false,'message':{ 'text':' ','prefix':true },'time':'4:34','count':1 },
   { 'title':'Lil','avatar':true,'message':{ 'text':'👩🏽','prefix':true },'time':'9:42','count':14 },
   { 'title':'Marcie','avatar':false,'message':{ 'text':'﻿','prefix':true },'time':'4:28','count':94 }
-];
+]

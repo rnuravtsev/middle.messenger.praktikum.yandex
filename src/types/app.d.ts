@@ -1,4 +1,4 @@
-import Block from '../core/Block';
+import Block from '../core/Block'
 
 declare global {
   export type Nullable<T> = T | null;

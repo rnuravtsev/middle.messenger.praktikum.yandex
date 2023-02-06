@@ -1,5 +1,5 @@
-import Block from 'core/Block';
-import './message.scss';
+import Block from 'core/Block'
+import './message.scss'
 
 type MessageProps = {
   className: string,
@@ -11,20 +11,20 @@ type MessageProps = {
 
 
 class Message extends Block {
-  constructor({ text, time, className, image, owner }: MessageProps) {
-    super({ text, time, className, image, owner });
+  constructor(props: MessageProps) {
+    super(props)
   }
 
-  static componentName = 'Message';
+  static componentName = 'Message'
 
     render() {
     // language=hbs
     return `
         <div class="message {{className}}{{#if owner}} message_owner{{/if}}">
             <div class="message__content">
-                {{#if text}}
+                {{#if content}}
                     <p class="message__text">
-                        {{text}}
+                        {{content}}
                         <span class="message__time">{{time}}</span>
                     </p>
                 {{else if image}}
@@ -37,4 +37,4 @@ class Message extends Block {
   }
 }
 
-export default Message;
+export default Message

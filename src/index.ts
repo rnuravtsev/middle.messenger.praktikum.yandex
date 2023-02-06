@@ -1,16 +1,17 @@
 import 'normalize.css/normalize.css'
 import './utils/register'
-import './scss/main.scss';
-import LoginPage from './pages/LoginPage/LoginPage';
-import Onboard from './pages/Onboard/Onboard';
-import SignUpPage from './pages/SignUpPage/SignUpPage';
-import Page404 from './pages/ErrorPages/404/Page404';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
-import MainPage from './pages/MainPage/MainPage';
-import ProfileEditPage from './pages/ProfileEditPage/ProfileEditPage';
-import ProfileEditPass from './pages/ProfileEditPass/ProfileEditPass';
-import Router from 'core/Router';
-import AuthController from './controllers/AuthController';
+import './scss/main.scss'
+import LoginPage from './pages/LoginPage/LoginPage'
+import Onboard from './pages/Onboard/Onboard'
+import SignUpPage from './pages/SignUpPage/SignUpPage'
+import Page404 from './pages/ErrorPages/404/Page404'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
+import MainPage from './pages/MainPage/MainPage'
+import ProfileEditPage from './pages/ProfileEditPage/ProfileEditPage'
+import ProfileEditPass from './pages/ProfileEditPass/ProfileEditPass'
+import Router from 'core/Router'
+import AuthController from './controllers/AuthController'
+import './controllers/MessagesController'
 
 export enum Routes {
   Onboard = '/',
@@ -45,4 +46,4 @@ window.addEventListener('DOMContentLoaded', async () => {
     Router.start()
   }
 
-});
+})

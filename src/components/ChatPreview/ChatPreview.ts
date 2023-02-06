@@ -1,13 +1,13 @@
-import Block from 'core/Block';
-import './chat-preview.scss';
-import { ChatProps } from './types';
-import store from '../../utils/Store';
+import Block from 'core/Block'
+import './chat-preview.scss'
+import { ChatProps } from './types'
+import store from '../../utils/Store'
 
 class ChatPreview extends Block {
-  static componentName = 'ChatPreview';
+  static componentName = 'ChatPreview'
 
   constructor(props: ChatProps) {
-    super(props);
+    super(props)
 
     this.setProps({
       events: {
@@ -17,13 +17,13 @@ class ChatPreview extends Block {
   }
 
   handleClick() {
-    const { id } = this.props;
-    store.set('activeChatId', id);
+    const { id } = this.props
+    store.set('activeChatId', id)
   }
 
   render() {
     // language=hbs
-    const { avatar, title } = this.props;
+    const { avatar, title } = this.props
     return `
         <div class="chat-preview">
             <img class="chat-preview__avatar" src="${avatar}" alt="Аватар профиля">

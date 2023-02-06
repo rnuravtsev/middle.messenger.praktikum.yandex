@@ -1,6 +1,6 @@
-import Block from 'core/Block';
-import './sidebar.scss';
-import ChatController from '../../controllers/ChatController';
+import Block from 'core/Block'
+import './sidebar.scss'
+import ChatController from '../../controllers/ChatController'
 
 type SidebarProps = {
   className: string,
@@ -9,7 +9,7 @@ type SidebarProps = {
 const inputs = [{
   name: 'search',
   type: 'search',
-}];
+}]
 
 const modalFields = [
   {
@@ -20,10 +20,10 @@ const modalFields = [
 
 
 class Sidebar extends Block {
-  static componentName = 'Sidebar';
+  static componentName = 'Sidebar'
 
   constructor(props: SidebarProps) {
-    super(props);
+    super(props)
 
     this.setProps({
       inputs,
@@ -38,18 +38,18 @@ class Sidebar extends Block {
   handleClick(evt: Event) {
     // TODO: Событие вешается на все вложенные элементы,
     //  нужно сделать так, чтобы событие вешалось только на выбранный элемент
-    const { currentTarget } = evt;
+    const { currentTarget } = evt
 
     if (currentTarget instanceof HTMLButtonElement) {
-      this.toggleModal();
+      this.toggleModal()
     }
   }
 
   async onSubmit(data: object) {
     // TODO: Нет возможности передать нужные данные в onSubmit
-    const values = Object.values(data);
+    const values = Object.values(data)
     await ChatController.createChat({ title: values[0] })
-    this.toggleModal();
+    this.toggleModal()
   }
 
   toggleModal() {
@@ -94,4 +94,4 @@ class Sidebar extends Block {
   }
 }
 
-export default Sidebar;
+export default Sidebar

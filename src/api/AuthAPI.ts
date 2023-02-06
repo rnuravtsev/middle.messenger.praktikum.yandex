@@ -1,5 +1,5 @@
-import BaseAPI from './BaseAPI';
-import { SignInData, SignUpData, User } from './types';
+import BaseAPI from './BaseAPI'
+import { SignInData, SignUpData, User } from './types'
 
 enum AuthAPIPath {
   SignIn = '/signin',
@@ -9,23 +9,23 @@ enum AuthAPIPath {
 }
 class AuthAPI extends BaseAPI {
   constructor() {
-    super('/auth');
+    super('/auth')
   }
 
   public signIn(data: SignInData): Promise<unknown> {
-    return this.http.post(AuthAPIPath.SignIn, { data });
+    return this.http.post(AuthAPIPath.SignIn, { data })
   }
 
   public signUp(data: SignUpData): Promise<unknown> {
-    return this.http.post(AuthAPIPath.SignUp, { data });
+    return this.http.post(AuthAPIPath.SignUp, { data })
   }
 
   public logout(): Promise<unknown> {
-    return this.http.post(AuthAPIPath.Logout, {});
+    return this.http.post(AuthAPIPath.Logout, {})
   }
 
   public getUser(): Promise<User> {
-    return this.http.get(AuthAPIPath.User);
+    return this.http.get(AuthAPIPath.User)
   }
 
   update = undefined
@@ -34,4 +34,4 @@ class AuthAPI extends BaseAPI {
   read = undefined
 }
 
-export default new AuthAPI();
+export default new AuthAPI()

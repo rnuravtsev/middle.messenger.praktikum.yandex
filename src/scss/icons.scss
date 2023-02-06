@@ -21,10 +21,10 @@ i[class*=" icon-"] {
   background-image: url("../static/icons/loupe.svg");
   background-repeat: no-repeat;
   background-position: center;
-}
 
-.icon-loupe::before {
-  display: none;
+  &::before {
+    display: none;
+  }
 }
 
 .icon-square-and-pencil {
@@ -34,4 +34,8 @@ i[class*=" icon-"] {
   background-image: url("../static/icons/square-and-pencil.svg");
   background-repeat: no-repeat;
   background-position: center;
+
+  &::before {
+    display: none;
+  }
 }

@@ -1,7 +1,7 @@
-import Block from 'core/Block';
-import './input.scss';
-import { LABEL_CLASS_NAME_SHRINK } from './consts';
-import { FORM_GRID_COLUMN_CSS_CLASS } from '../Form/consts';
+import Block from 'core/Block'
+import './input.scss'
+import { LABEL_CLASS_NAME_SHRINK } from './consts'
+import { FORM_GRID_COLUMN_CSS_CLASS } from '../Form/consts'
 
 type InputProps = {
   className?: string,
@@ -15,8 +15,8 @@ type InputProps = {
 
 
 class Input extends Block {
-  private readonly focusCallback: (evt: FocusEvent) => void;
-  private readonly blurCallback: (evt: FocusEvent) => void;
+  private readonly focusCallback: (evt: FocusEvent) => void
+  private readonly blurCallback: (evt: FocusEvent) => void
 
   constructor({ onBlur, onFocus, ...props }: InputProps) {
     super({
@@ -25,13 +25,13 @@ class Input extends Block {
         focus: onFocus,
         blur: onBlur,
       },
-    });
+    })
 
       // FIXME: Создаю ссылку на событие focus, приходящее из родителя
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    this.focusCallback = this.props.events.focus || (() => {});
+    this.focusCallback = this.props.events.focus || (() => {})
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    this.blurCallback = this.props.events.blur || (() => {});
+    this.blurCallback = this.props.events.blur || (() => {})
 
     this.setProps({
       events: {
@@ -42,32 +42,32 @@ class Input extends Block {
     })
   }
 
-  static componentName = 'Input';
+  static componentName = 'Input'
 
     toggleLabelClass() {
-    const input = this._element as HTMLInputElement;
-    const label = input.parentElement;
-    const form = input.form;
+    const input = this._element as HTMLInputElement
+    const label = input.parentElement
+    const form = input.form
 
     if (form?.classList.contains(FORM_GRID_COLUMN_CSS_CLASS)) {
       if (input.value || document.activeElement === input) {
-        label?.classList.add(LABEL_CLASS_NAME_SHRINK);
+        label?.classList.add(LABEL_CLASS_NAME_SHRINK)
       } else {
-        label?.classList.remove(LABEL_CLASS_NAME_SHRINK);
+        label?.classList.remove(LABEL_CLASS_NAME_SHRINK)
       }
     }
   }
 
   onFocus(evt: FocusEvent) {
     // FIXME: Вызов события focus, приходящего из родителя
-    this.focusCallback(evt);
-    this.toggleLabelClass();
+    this.focusCallback(evt)
+    this.toggleLabelClass()
   }
 
   onBlur(evt: FocusEvent) {
     // FIXME: Вызов события focus, приходящего из родителя
-    this.blurCallback(evt);
-    this.toggleLabelClass();
+    this.blurCallback(evt)
+    this.toggleLabelClass()
   }
 
   render() {
@@ -84,4 +84,4 @@ class Input extends Block {
   }
 }
 
-export default Input;
+export default Input

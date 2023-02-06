@@ -1,4 +1,4 @@
-import BaseAPI from './BaseAPI';
+import BaseAPI from './BaseAPI'
 
 enum ProfileAPIPath {
   Profile = '/profile',
@@ -7,19 +7,19 @@ enum ProfileAPIPath {
 
 class ProfileAPI extends BaseAPI {
   constructor() {
-    super('/user');
+    super('/user')
   }
 
   update(data: unknown): Promise<Response> {
-    return this.http.put(ProfileAPIPath.Profile, { data });
+    return this.http.put(ProfileAPIPath.Profile, { data })
   }
 
   updatePassword(data: unknown): Promise<Response> {
-    return this.http.put(ProfileAPIPath.Password, { data });
+    return this.http.put(ProfileAPIPath.Password, { data })
   }
 
   getUserInfo(id: number): Promise<Response> {
-    return this.http.get(`/${id}`);
+    return this.http.get(`/${id}`)
   }
 
   create = undefined
@@ -27,4 +27,4 @@ class ProfileAPI extends BaseAPI {
   read = undefined
 }
 
-export default new ProfileAPI();
+export default new ProfileAPI()

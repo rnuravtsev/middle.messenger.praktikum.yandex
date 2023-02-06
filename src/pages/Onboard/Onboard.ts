@@ -1,10 +1,10 @@
-import Block from 'core/Block';
-import './onboard.scss';
+import Block from 'core/Block'
+import './onboard.scss'
 import { OnboardProps } from './types'
 
 class Onboard extends Block {
   constructor(props: OnboardProps = {} as OnboardProps) {
-    super(props);
+    super(props)
   }
 
   render() {
@@ -38,4 +38,4 @@ class Onboard extends Block {
   }
 }
 
-export default Onboard;
+export default Onboard

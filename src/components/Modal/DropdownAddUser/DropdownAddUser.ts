@@ -1,9 +1,10 @@
-import Block from 'core/Block';
-import './dropdown-add-user.scss';
+import Block from 'core/Block'
+import './dropdown-add-user.scss'
 import { DropdownAddUserProps } from './types'
-import ChatController from '../../../controllers/ChatController';
-import { UsersRequestData } from '../../../api/ChatAPI/types';
-import withStore from '../../../HOCs/withStore';
+import ChatController from '../../../controllers/ChatController'
+import { UsersRequestData } from '../../../api/ChatAPI/types'
+import withStore from '../../../HOCs/withStore'
+import { State } from '../../../utils/Store'
 
 const userFields = [
   {
@@ -13,10 +14,10 @@ const userFields = [
 ]
 
 class DropdownAddUser extends Block {
-  static componentName = 'DropdownAddUser';
+  static componentName = 'DropdownAddUser'
 
   constructor(props: DropdownAddUserProps = {} as DropdownAddUserProps) {
-    super(props);
+    super(props)
 
     this.setState({
       isAddUserModalOpen: false,
@@ -44,13 +45,13 @@ class DropdownAddUser extends Block {
   }
 
   async handleAddUserModalSubmit(data: UsersRequestData) {
-    const { activeChatId } = this.props;
+    const { activeChatId } = this.props
     // TODO: мы должны получать id пользователя по его логину и передать его в users
     await ChatController.addUserToChat({ users: [0], chatId: activeChatId })
   }
 
   async handleDeleteModalUserSubmit(data: UsersRequestData) {
-    const { activeChatId } = this.props;
+    const { activeChatId } = this.props
     // TODO: мы должны получать id пользователя по его логину и передать его в users
     await ChatController.deleteUserFromChat({ users: [0], chatId: activeChatId })
   }
@@ -94,8 +95,8 @@ class DropdownAddUser extends Block {
   }
 }
 
-const mapStateToProps = (store: any) => ({
-  activeChatId: store.activeChatId,
+const mapStateToProps = (state: State) => ({
+  activeChatId: state.activeChatId,
 })
 
-export default withStore(mapStateToProps)(DropdownAddUser);
+export default withStore(mapStateToProps)(DropdownAddUser)

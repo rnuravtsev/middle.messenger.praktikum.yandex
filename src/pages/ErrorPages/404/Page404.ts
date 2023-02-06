@@ -1,10 +1,10 @@
-import Block from 'core/Block';
-import '../page-error.scss';
-import { Page404Props } from './types';
+import Block from 'core/Block'
+import '../page-error.scss'
+import { Page404Props } from './types'
 
 class Page404 extends Block {
   constructor(props: Page404Props = {} as Page404Props) {
-    super(props);
+    super(props)
   }
 
   render() {
@@ -29,4 +29,4 @@ class Page404 extends Block {
   }
 }
 
-export default Page404;
+export default Page404
