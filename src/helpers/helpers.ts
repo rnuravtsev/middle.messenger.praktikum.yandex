@@ -101,3 +101,11 @@ export function debounce(cb: (...args: unknown[]) => unknown, timeout = 2000) {
     }, timeout)
   }
 }
+
+export const dateToHumanHoursAndMinutes = (string: string): string => {
+  let date: string | Date = new Date(string)
+
+  date =`${date.getHours()}:${date.getMinutes()}`
+
+  return date
+}

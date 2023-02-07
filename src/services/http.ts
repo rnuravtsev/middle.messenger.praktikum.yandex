@@ -59,7 +59,7 @@ export default class HTTPTransport {
   }
 
   private request<Response>(url: string, options: IOptions = {} as IOptions, timeout = 5000): Promise<Response> {
-    const { headers = {}, method = 'GET', data } = options
+    const { headers = {}, method = METHODS.GET, data } = options
 
     return new Promise(function (resolve, reject) {
       if (!method) {
@@ -94,6 +94,8 @@ export default class HTTPTransport {
       if (!(data instanceof FormData)) {
         xhr.setRequestHeader('accept', 'application/json')
         xhr.setRequestHeader('Content-Type', 'application/json')
+        // xhr.setRequestHeader('mode', 'cors')
+        // xhr.setRequestHeader('credentials', 'include')
       }
 
       xhr.withCredentials = true

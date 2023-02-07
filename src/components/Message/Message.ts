@@ -1,5 +1,6 @@
 import Block from 'core/Block'
 import './message.scss'
+import { dateToHumanHoursAndMinutes } from '../../helpers/helpers'
 
 type MessageProps = {
   className: string,
@@ -17,7 +18,8 @@ class Message extends Block {
 
   static componentName = 'Message'
 
-    render() {
+  render() {
+    const { time } = this.props
     // language=hbs
     return `
         <div class="message {{className}}{{#if owner}} message_owner{{/if}}">
@@ -25,7 +27,7 @@ class Message extends Block {
                 {{#if content}}
                     <p class="message__text">
                         {{content}}
-                        <span class="message__time">{{time}}</span>
+                        <span class="message__time">${dateToHumanHoursAndMinutes(time)}</span>
                     </p>
                 {{else if image}}
                     <img class="message__img" src="{{image}}" alt="{{image}}">
