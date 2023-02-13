@@ -1,10 +1,6 @@
 import Block from 'core/Block'
 import './profile-icon.scss'
-
-type ProfileIconProps = {
-  className: string,
-}
-
+import { ProfileIconProps } from './types'
 
 class ProfileIcon extends Block<ProfileIconProps> {
   static componentName = 'ProfileIcon'

@@ -1,6 +1,9 @@
 @import "src/scss/variables";
 
 .link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: 11px;
   line-height: 11px;
   color: $primary-300;

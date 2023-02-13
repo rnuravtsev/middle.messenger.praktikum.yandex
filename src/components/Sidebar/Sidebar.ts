@@ -1,10 +1,9 @@
 import Block from 'core/Block'
 import './sidebar.scss'
 import ChatController from '../../controllers/ChatController'
-
-type SidebarProps = {
-  className: string,
-}
+import { Modal } from '../Modal/ModalForm/ModalForm'
+import store from '../../utils/Store'
+import { SidebarProps } from './types'
 
 const inputs = [{
   name: 'search',
@@ -23,39 +22,21 @@ class Sidebar extends Block {
   static componentName = 'Sidebar'
 
   constructor(props: SidebarProps) {
-    super(props)
-
-    this.setProps({
+    super({
+      ...props,
       inputs,
       modalFields,
-      events: {
-        click: (evt: Event) => this.handleClick(evt),
-        submit: (evt: Event) => this.onSubmit(evt),
-      }
+      handleClick: () => this.handleClick(),
+      submit: (evt: Event) => this.handleSubmit(evt),
     })
   }
 
-  handleClick(evt: Event) {
-    // TODO: Событие вешается на все вложенные элементы,
-    //  нужно сделать так, чтобы событие вешалось только на выбранный элемент
-    const { currentTarget } = evt
-
-    if (currentTarget instanceof HTMLButtonElement) {
-      this.toggleModal()
-    }
+  handleClick() {
+    store.set('modal', { name: Modal.AddChat, isOpen: true })
   }
 
-  async onSubmit(data: object) {
-    // TODO: Нет возможности передать нужные данные в onSubmit
-    const values = Object.values(data)
-    await ChatController.createChat({ title: values[0] })
-    this.toggleModal()
-  }
-
-  toggleModal() {
-    this.setProps({
-      isModalOpen: !this.props.isModalOpen
-    })
+  async handleSubmit(data: object) {
+    await ChatController.createChat({ title: Object.values(data)[0] })
   }
 
   render() {
@@ -65,7 +46,12 @@ class Sidebar extends Block {
     return `
         <div class="sidebar {{className}}">
             <div class="sidebar__header">
-                {{{Link href="/profile" className="sidebar__link" label="Профиль &gt;"}}}
+                {{{Link
+                        className="sidebar__link"
+                        href="/profile"
+                        label="Профиль"
+                        icon="chevron-forward"
+                }}}
             </div>
             <div class="sidebar__flex-wrapper">
                 {{{Input
@@ -77,7 +63,7 @@ class Sidebar extends Block {
                         className="sidebar__button button button_bg_gray"
                         type="icon"
                         icon="square-and-pencil"
-                        onClick=events.click
+                        onClick=handleClick
                 }}}
                 {{{ModalForm
                         isOpen=isModalOpen
@@ -85,7 +71,7 @@ class Sidebar extends Block {
                         className="modal"
                         title="Создать чат"
                         buttonText="Создать"
-                        onSubmit=events.submit
+                        onSubmit=handleSubmit
                 }}}
             </div>
             {{{ChatList}}}

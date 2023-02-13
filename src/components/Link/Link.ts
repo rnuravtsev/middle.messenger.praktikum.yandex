@@ -1,32 +1,21 @@
 import Block from 'core/Block'
 import withRouter from '../../HOCs/withRouter'
 import './link.scss'
-
-type LinkProps = {
-  className?: string,
-  color?: string,
-  href: string,
-  target?: '_self' | '_blank',
-  label: string,
-  events?: Record<string, (e: Event) => void>,
-}
-
+import { LinkProps } from './types'
 
 class Link extends Block {
+  static componentName = 'Link'
   constructor(props: LinkProps) {
-    super(props)
-
-    this.setProps({
+    super({
+      ...props,
       events: {
         click: () => this.navigate()
       }
     })
   }
-  static componentName = 'Link'
 
   navigate() {
     const { router, href } = this.props
-
     router.go(href)
   }
 
@@ -35,6 +24,9 @@ class Link extends Block {
     return `
         <button class="link {{className}} {{#if color}}link_{{color}}{{else}}{{/if}}">
             {{label}}
+            {{#if icon}}
+                <i class="icon icon-{{icon}}"></i>
+            {{/if}}
         </button>
     `
   }

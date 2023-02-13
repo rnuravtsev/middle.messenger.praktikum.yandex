@@ -2,7 +2,6 @@ import Block from 'core/Block'
 import './chat-list.scss'
 import { ChatNew } from '../ChatPreview/types'
 import withStore from '../../HOCs/withStore'
-import ChatController from '../../controllers/ChatController'
 import { State } from '../../utils/Store'
 
 
@@ -10,18 +9,8 @@ type ChatListProps = {
   chats?: ChatNew[]
 }
 
-class ChatList extends Block {
+class ChatList extends Block<ChatListProps> {
   static componentName = 'ChatList'
-  constructor(props: ChatListProps) {
-    super(props)
-  }
-
-  protected async init() {
-      super.init()
-      // TODO: Добавить AbortController или пересмотреть класс Block
-      await ChatController.getChats()
-  }
-
   render() {
     // language=hbs
     return `

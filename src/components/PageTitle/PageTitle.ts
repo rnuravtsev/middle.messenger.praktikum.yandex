@@ -1,18 +1,13 @@
 import Block from 'core/Block'
 import './page-title.scss'
-
-type PageTitleProps = {
-  className: string,
-  text: string,
-}
-
+import { PageTitleProps } from './types'
 
 class PageTitle extends Block {
+  static componentName = 'PageTitle'
   constructor(props: PageTitleProps) {
     super(props)
   }
 
-  static componentName = 'PageTitle'
 
     render() {
     // language=hbs

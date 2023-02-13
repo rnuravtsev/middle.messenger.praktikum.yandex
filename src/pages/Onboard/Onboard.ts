@@ -23,7 +23,7 @@ class Onboard extends Block {
                         <a href="/sign-up" class="onboard__link">sign up</a>
                     </li>
                     <li>
-                        <a href="/chat" class="onboard__link">chat</a>
+                        <a href="/messenger" class="onboard__link">messenger</a>
                     </li>
                     <li>
                         <a href="/profile" class="onboard__link">profile</a>

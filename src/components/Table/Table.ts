@@ -1,24 +1,19 @@
 import Block from 'core/Block'
 import './table.scss'
-import { User } from '../../api/types'
 import { omit } from 'helpers/helpers'
 import { LabelName } from '../../helpers/FieldNormalize'
-
-type TableProps = {
-  className: string,
-  user: User,
-}
-
+import { TableProps } from './types'
 
 class Table extends Block {
+  static componentName = 'Table'
   constructor(props: TableProps) {
     super(props)
 
     const { user } = props
-    const resolvedUser: {[key: string]: unknown} = {}
+    const resolvedUser: Indexed = {}
 
-    if(user) {
-      const omittedUser: {[key: string]: unknown} = omit(user, ['id'])
+    if (user) {
+      const omittedUser: Indexed = omit(user, ['id'])
 
       const userWithoutEmptyProperties = Object.entries(omittedUser).reduce((acc, [key, value]) => {
         if(value) {
@@ -26,6 +21,7 @@ class Table extends Block {
         }
         return acc
       }, resolvedUser)
+
       this.setProps({
         data:
           Object.entries(userWithoutEmptyProperties)
@@ -34,7 +30,6 @@ class Table extends Block {
     }
   }
 
-  static componentName = 'Table'
 
     render() {
     // language=hbs

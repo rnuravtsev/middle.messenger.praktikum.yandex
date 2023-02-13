@@ -1,5 +1,7 @@
 @import "src/scss/variables";
 
+// TODO: Перенести общие стили в modal.scss
+
 .modal {
   position: fixed;
   top: 0;
@@ -30,6 +32,18 @@
 
 .modal__subtitle {
   margin-bottom: 50px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .form__button.modal__button {

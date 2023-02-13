@@ -1,20 +1,13 @@
 import Block from 'core/Block'
-
-type ImgProps = {
-  className: string,
-  src: string,
-  alt: string,
-  width: string,
-  height: string,
-}
+import { ImgProps } from './types'
 
 
 class Img extends Block {
+  static componentName = 'Img'
   constructor(props: ImgProps) {
     super(props)
   }
 
-  static componentName = 'Img'
 
     render() {
     // language=hbs

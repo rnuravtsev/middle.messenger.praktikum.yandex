@@ -1,4 +1,4 @@
-import EventBus from '../core/EventBus'
+import { EventBus } from '../core/EventBus'
 import { set } from '../helpers/helpers'
 import { Chat, Message, User } from '../api/types'
 
@@ -18,6 +18,7 @@ export interface State {
     isLoading: boolean,
   }
   messages?: Record<number, Message[]>,
+  modal?: Record<string, unknown>,
   activeChatId?: number,
 }
 

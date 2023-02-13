@@ -1,6 +1,6 @@
 import ChatAPI from '../api/ChatAPI/ChatAPI'
 import { request, setDataToStore } from './utils'
-import { CreateChatData, UsersRequestData } from '../api/ChatAPI/types'
+import { ChatDeleteData, CreateChatData, UsersRequestData } from '../api/ChatAPI/types'
 import MessagesController from './MessagesController'
 
 class ChatController {
@@ -29,6 +29,13 @@ class ChatController {
     await request(this.namespace,async () => {
       const chat = await this.api.create(data)
       setDataToStore(this.namespace, chat)
+    })
+  }
+
+  async deleteChat(id: ChatDeleteData) {
+    await request(this.namespace,async () => {
+      await this.api.delete(id)
+      setDataToStore(this.namespace, id)
     })
   }
 

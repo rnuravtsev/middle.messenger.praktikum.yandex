@@ -1,11 +1,6 @@
 import Block from 'core/Block'
 import './input-error.scss'
-
-type InputErrorProps = {
-  className: string,
-  errorMessage: string,
-}
-
+import { InputErrorProps } from './types'
 
 class InputError extends Block {
   constructor(props: InputErrorProps) {

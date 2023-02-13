@@ -56,6 +56,10 @@ class Router {
     this._onRoute(pathname)
   }
 
+  public back() {
+    this._history?.back()
+  }
+
   getRoute(pathname: string) {
     return this.routes?.find(route => route.match(pathname))
   }

@@ -1,8 +1,8 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.ttf?0e6eec7df6dc46cf27528f4cb2a06009") format("truetype"),
-url("./icons.woff?0e6eec7df6dc46cf27528f4cb2a06009") format("woff"),
-url("./icons.woff2?0e6eec7df6dc46cf27528f4cb2a06009") format("woff2");
+    src: url("./icons.ttf?ab1c770e40e3c311f57de618666aa51f") format("truetype"),
+url("./icons.woff?ab1c770e40e3c311f57de618666aa51f") format("woff"),
+url("./icons.woff2?ab1c770e40e3c311f57de618666aa51f") format("woff2");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -19,24 +19,33 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-2check:before {
     content: "\f101";
 }
-.icon-avatar:before {
+.icon-arrow-right:before {
     content: "\f102";
 }
-.icon-circle-cross:before {
+.icon-avatar:before {
     content: "\f103";
 }
-.icon-circle-plus:before {
+.icon-chevron-forward:before {
     content: "\f104";
 }
-.icon-clip:before {
+.icon-circle-cross:before {
     content: "\f105";
 }
-.icon-loupe:before {
+.icon-circle-plus:before {
     content: "\f106";
 }
-.icon-menu:before {
+.icon-clip:before {
     content: "\f107";
 }
-.icon-square-and-pencil:before {
+.icon-loupe:before {
     content: "\f108";
+}
+.icon-menu:before {
+    content: "\f109";
+}
+.icon-square-and-pencil:before {
+    content: "\f10a";
+}
+.icon-xmark:before {
+    content: "\f10b";
 }

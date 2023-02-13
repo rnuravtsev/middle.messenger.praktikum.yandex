@@ -6,12 +6,11 @@ class Extra extends Block {
   static componentName = 'Extra'
 
   constructor(props: ExtraProps = {} as ExtraProps) {
-    super(props)
-
-    this.setProps({
+    super({
+      ...props,
       handleExtraClick: () => this.handleExtraClick(),
     })
-
+    
     this.setState({
       isExtraDropdownOpen: false,
     })

@@ -11,6 +11,7 @@ type ButtonProps = {
 }
 
 class Button extends Block {
+  static componentName = 'Button'
   constructor({ className, icon, color, label, onClick, type }: ButtonProps) {
     super({
       label,
@@ -23,7 +24,6 @@ class Button extends Block {
       type,
     })
   }
-  static componentName = 'Button'
 
   render() {
     // language=hbs

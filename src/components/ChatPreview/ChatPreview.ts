@@ -7,9 +7,8 @@ class ChatPreview extends Block {
   static componentName = 'ChatPreview'
 
   constructor(props: ChatProps) {
-    super(props)
-
-    this.setProps({
+    super({
+      ...props,
       events: {
         click: () => this.handleClick(),
       }

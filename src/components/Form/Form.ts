@@ -1,31 +1,18 @@
 import Block from 'core/Block'
 import './form.scss'
 import { validateForm, ValidateRuleType } from '../../utils/validateForm'
-
-type FormProps = {
-  className: string,
-  inputClassName: string,
-  inputPlaceholder: string,
-  isSubmitButtonHide: boolean,
-  submitButtonClassname: string,
-  submitButtonType: string,
-  onSubmit: (data: unknown) => void,
-  gridType: 'row' | 'column',
-  fields: unknown[],
-  buttonText: string,
-}
-
+import { escapeHtml } from '../../helpers/helpers'
+import { FormProps } from './types'
 
 class Form extends Block {
+  static componentName = 'Form'
   constructor(props: FormProps) {
-    super(props)
-
-    this.setProps({
+    super({
+      ...props,
       handleButtonSubmit: (evt: Event) => this.handleButtonSubmit(evt),
     })
   }
 
-  static componentName = 'Form'
 
   validate(inputs: HTMLInputElement[]): boolean {
     const preparedInputsForValidation = (inputs: HTMLInputElement[]) => {
@@ -61,8 +48,12 @@ class Form extends Block {
     if (isFormValid) {
       const formData = new FormData(formEl)
       const data = Object.fromEntries(formData)
-      onSubmit(data)
+      const escapedData = Object.entries(data).reduce((acc: Record<string, unknown>, [key, value]) => {
+        acc[key] = typeof value === 'string' ? escapeHtml(value as string) : value
+        return acc
+      }, {})
 
+      onSubmit(escapedData)
       formEl.reset()
     }
   }

@@ -1,13 +1,12 @@
 import render from './renderDOM'
 import Block from './Block'
-import { isEqual } from '../helpers/helpers'
 
 export default class Route {
   private _pathname: string
   private readonly _blockClass: BlockClass
   protected block: Nullable<Block>
-  private readonly _props: any
-  constructor(pathname: string, view: BlockClass, props: any) {
+  private readonly _props: Indexed
+  constructor(pathname: string, view: BlockClass, props: Indexed) {
     this._pathname = pathname
     this._blockClass = view
     this.block = null
@@ -28,7 +27,7 @@ export default class Route {
   }
 
   match(pathname: string) {
-    return isEqual(pathname, this._pathname)
+    return pathname === this._pathname
   }
 
   render() {

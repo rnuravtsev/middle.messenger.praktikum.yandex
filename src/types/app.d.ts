@@ -1,6 +1,11 @@
 import Block from '../core/Block'
 
 declare global {
+  export type Indexed <T = any> = {
+    [key in string]: T;
+  }
+  export type StringIndexed = Record<string, any>;
+
   export type Nullable<T> = T | null;
   export interface BlockClass<P extends object = any> extends Function {
     new (props: P): Block<P>;

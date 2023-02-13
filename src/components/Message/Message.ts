@@ -12,17 +12,19 @@ type MessageProps = {
 
 
 class Message extends Block {
+  static componentName = 'Message'
   constructor(props: MessageProps) {
     super(props)
   }
 
-  static componentName = 'Message'
-
   render() {
-    const { time } = this.props
+    const { time, messageUserId, userId } = this.props
+
+    const isOwnerMessage = messageUserId === userId
+
     // language=hbs
     return `
-        <div class="message {{className}}{{#if owner}} message_owner{{/if}}">
+        <div class="message {{className}} ${isOwnerMessage ? 'message_owner' : ''}">
             <div class="message__content">
                 {{#if content}}
                     <p class="message__text">

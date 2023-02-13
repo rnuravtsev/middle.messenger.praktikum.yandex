@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid'
 import Handlebars from 'handlebars'
-import EventBus from './EventBus'
+import { EventBus } from './EventBus'
 import { isEqual } from '../helpers/helpers'
 
 interface BlockMeta<P = any> {
@@ -13,7 +13,7 @@ export default class Block<P extends object = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
-    FLOW_CDU: 'flow:component-did-update',
+    FLOW_SCU: 'flow:should-component-update',
     FLOW_RENDER: 'flow:render',
   } as const
   static componentName: string
@@ -52,7 +52,7 @@ export default class Block<P extends object = any> {
   _registerEvents(eventBus: EventBus<Events>) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this))
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
-    eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
+    eventBus.on(Block.EVENTS.FLOW_SCU, this._shouldComponentUpdate.bind(this))
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this))
   }
 
@@ -80,17 +80,16 @@ export default class Block<P extends object = any> {
     console.log('911.', 'componentDidMount')
   }
 
-  private _componentDidUpdate(oldProps: P, newProps: P) {
-    const response = this.componentDidUpdate(oldProps, newProps)
-    if (response) {
-      return
+  private _shouldComponentUpdate(oldProps: P, newProps: P) {
+    if (this.shouldComponentUpdate(oldProps, newProps)) {
+      this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
     }
 
-    this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
   }
 
-  protected componentDidUpdate(oldProps: P, newProps: P) {
-    return isEqual(oldProps, newProps)
+  protected shouldComponentUpdate(oldProps: P, newProps: P) {
+    return !isEqual(oldProps, newProps)
+    // return true
   }
 
   protected setProps = (nextProps: P) => {
@@ -155,7 +154,7 @@ export default class Block<P extends object = any> {
         const oldTarget = { ...target }
         target[prop] = value
 
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target)
+        self.eventBus().emit(Block.EVENTS.FLOW_SCU, oldTarget, target)
         return true
       },
       deleteProperty() {

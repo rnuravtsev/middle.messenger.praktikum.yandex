@@ -6,9 +6,7 @@ import AuthController from '../../controllers/AuthController'
 class Logout extends Block {
   static componentName = 'Logout'
   constructor(props: LogoutProps = {} as LogoutProps) {
-    super(props)
-
-    this.setProps({
+    super({
       ...props,
       events: {
         click: () => this.logout()

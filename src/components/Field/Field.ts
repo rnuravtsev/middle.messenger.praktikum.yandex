@@ -1,26 +1,7 @@
 import Block from 'core/Block'
 import './field.scss'
 import { validateField } from '../../utils/validateForm'
-
-type FieldProps = {
-  className: string,
-  labelClassName: string,
-  inputClassName: string,
-  labelText: string,
-  placeholder: string,
-  name: string,
-  /** Тип ошибки при валидации формы по Submit */
-  validationType: string,
-  /** Сообщение ошибки при валидации формы по Submit */
-  validationError: string,
-  /** Тип инпута */
-  type: string,
-  /** Сообщение ошибки при валидации поля по Focus/Blur */
-  errorMessages: string,
-  /** Значение инпута */
-  value: string,
-}
-
+import { FieldProps } from './types'
 
 class Field extends Block {
   static componentName = 'Field'

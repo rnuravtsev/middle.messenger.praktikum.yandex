@@ -9,7 +9,7 @@ import Input from 'components/Input/Input'
 import Message from 'components/Message/Message'
 import MessagePreview from 'components/MessagePreview/MessagePreview'
 import Sidebar from 'components/Sidebar/Sidebar'
-import ChooseChat from 'pages/ChooseChat/ChooseChat'
+import EmptyChat from 'pages/EmptyChat/EmptyChat'
 import MainChat from 'pages/MainChat/MainChat'
 import Link from 'components/Link/Link'
 import Form from 'components/Form/Form'
@@ -36,7 +36,7 @@ registerComponent(Input)
 registerComponent(MessagePreview)
 registerComponent(Message)
 registerComponent(Sidebar)
-registerComponent(ChooseChat)
+registerComponent(EmptyChat)
 registerComponent(MainChat)
 registerComponent(Form)
 registerComponent(Field)

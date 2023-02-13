@@ -4,7 +4,8 @@ import { DropdownAddUserProps } from './types'
 import ChatController from '../../../controllers/ChatController'
 import { UsersRequestData } from '../../../api/ChatAPI/types'
 import withStore from '../../../HOCs/withStore'
-import { State } from '../../../utils/Store'
+import store, { State } from '../../../utils/Store'
+import { Modal } from '../ModalForm/ModalForm'
 
 const userFields = [
   {
@@ -17,14 +18,8 @@ class DropdownAddUser extends Block {
   static componentName = 'DropdownAddUser'
 
   constructor(props: DropdownAddUserProps = {} as DropdownAddUserProps) {
-    super(props)
-
-    this.setState({
-      isAddUserModalOpen: false,
-      isDeleteUserModalOpen: false,
-    })
-
-    this.setProps({
+    super({
+      ...props,
       modalFields: userFields,
       handleAddUserButtonClick: () => this.handleAddUserButtonClick(),
       handleDeleteUserButtonClick: () => this.handleDeleteUserButtonClick(),
@@ -33,15 +28,11 @@ class DropdownAddUser extends Block {
   }
 
   handleAddUserButtonClick() {
-    this.setState({
-      isAddUserModalOpen: true,
-    })
+    store.set('modal' , { name: Modal.AddUser, isOpen: true })
   }
 
   handleDeleteUserButtonClick() {
-    this.setState({
-      isDeleteUserModalOpen: true,
-    })
+    store.set('modal', { name: Modal.DeleteUser,  isOpen: true })
   }
 
   async handleAddUserModalSubmit(data: UsersRequestData) {
@@ -79,15 +70,15 @@ class DropdownAddUser extends Block {
             {{{ModalForm
                     title="Добавить пользователя"
                     fields=modalFields
-                    isOpen=isAddUserModalOpen
                     buttonText="Добавить"
+                    onClose=handleAddUserModalClose
                     onSubmit=handleAddUserModalSubmit
             }}}
             {{{ModalForm
                     title="Удалить пользователя"
                     fields=modalFields
-                    isOpen=isDeleteUserModalOpen
                     buttonText="Удалить"
+                    onClose=handleDeleteModalUserClose
                     onSubmit=handleDeleteModalUserSubmit
             }}}
         </div>

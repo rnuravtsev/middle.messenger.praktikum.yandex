@@ -1,15 +1,6 @@
 import Block from 'core/Block'
 import './message-preview.scss'
-
-type MessageProps = {
-  className: string,
-  title: string,
-  message: {
-    prefix: boolean,
-    text: string,
-  }
-}
-
+import { MessageProps } from './types'
 
 class MessagePreview extends Block {
   constructor(props: MessageProps) {

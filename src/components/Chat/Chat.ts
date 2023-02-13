@@ -14,6 +14,7 @@ class Chat extends Block {
   }
 
   render() {
+    const { userId } = this.props
     // language=hbs
     return `
         <div class="chat {{className}}">
@@ -24,6 +25,8 @@ class Chat extends Block {
                             className="chat__message"
                             content=content
                             time=time
+                            messageUserId=user_id
+                            userId=${userId}
                     }}}
 
                 {{/each}}

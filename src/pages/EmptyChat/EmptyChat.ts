@@ -1,9 +1,8 @@
 import Block from 'core/Block'
-import './choose-chat.scss'
+import './empty-chat.scss'
 import { ChooseChatProps } from './types'
 
-
-class ChooseChat extends Block {
+class EmptyChat extends Block {
   constructor(props: ChooseChatProps = {} as ChooseChatProps) {
     super(props)
   }
@@ -18,4 +17,4 @@ class ChooseChat extends Block {
   }
 }
 
-export default ChooseChat
+export default EmptyChat
