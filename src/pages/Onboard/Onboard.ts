@@ -26,7 +26,7 @@ class Onboard extends Block {
                         <a href="/messenger" class="onboard__link">messenger</a>
                     </li>
                     <li>
-                        <a href="/profile" class="onboard__link">profile</a>
+                        <a href="/settings" class="onboard__link">profile</a>
                     </li>
                     <li>
                         <a href="/login" class="onboard__link">login</a>

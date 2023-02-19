@@ -7,7 +7,7 @@ enum AuthAPIPath {
   Logout = '/logout',
   User = '/user',
 }
-class AuthAPI extends BaseAPI {
+class UserAPI extends BaseAPI {
   constructor() {
     super('/auth')
   }
@@ -34,4 +34,4 @@ class AuthAPI extends BaseAPI {
   read = undefined
 }
 
-export default new AuthAPI()
+export default new UserAPI()

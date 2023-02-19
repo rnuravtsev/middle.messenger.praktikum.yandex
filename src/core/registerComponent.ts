@@ -6,7 +6,7 @@ export interface IBlockConstructable<Props = any> {
   componentName: string;
 }
 
-export default function registerComponent<Props extends object>(Component: IBlockConstructable<Props>) {
+export default function registerComponent<Props extends object>(Component: BlockClass<Props>) {
   Handlebars.registerHelper(
     Component.componentName
     || Component.name,

@@ -1,18 +1,8 @@
 import Block from 'core/Block'
 import './dropdown-add-user.scss'
 import { DropdownAddUserProps } from './types'
-import ChatController from '../../../controllers/ChatController'
-import { UsersRequestData } from '../../../api/ChatAPI/types'
-import withStore from '../../../HOCs/withStore'
+import connect from '../../../HOCs/connect'
 import store, { State } from '../../../utils/Store'
-import { Modal } from '../ModalForm/ModalForm'
-
-const userFields = [
-  {
-    labelText: 'Логин',
-    name: 'login',
-  }
-]
 
 class DropdownAddUser extends Block {
   static componentName = 'DropdownAddUser'
@@ -20,31 +10,17 @@ class DropdownAddUser extends Block {
   constructor(props: DropdownAddUserProps = {} as DropdownAddUserProps) {
     super({
       ...props,
-      modalFields: userFields,
       handleAddUserButtonClick: () => this.handleAddUserButtonClick(),
       handleDeleteUserButtonClick: () => this.handleDeleteUserButtonClick(),
-      handleAddUserModalSubmit: (user: UsersRequestData) => this.handleAddUserModalSubmit(user),
     })
   }
 
   handleAddUserButtonClick() {
-    store.set('modal' , { name: Modal.AddUser, isOpen: true })
+    store.set('modalAddUser', true)
   }
 
   handleDeleteUserButtonClick() {
-    store.set('modal', { name: Modal.DeleteUser,  isOpen: true })
-  }
-
-  async handleAddUserModalSubmit(data: UsersRequestData) {
-    const { activeChatId } = this.props
-    // TODO: мы должны получать id пользователя по его логину и передать его в users
-    await ChatController.addUserToChat({ users: [0], chatId: activeChatId })
-  }
-
-  async handleDeleteModalUserSubmit(data: UsersRequestData) {
-    const { activeChatId } = this.props
-    // TODO: мы должны получать id пользователя по его логину и передать его в users
-    await ChatController.deleteUserFromChat({ users: [0], chatId: activeChatId })
+    store.set('modalDeleteUser', true)
   }
 
   render() {
@@ -67,20 +43,8 @@ class DropdownAddUser extends Block {
                       onClick=handleDeleteUserButtonClick
                 }}}
             </div>
-            {{{ModalForm
-                    title="Добавить пользователя"
-                    fields=modalFields
-                    buttonText="Добавить"
-                    onClose=handleAddUserModalClose
-                    onSubmit=handleAddUserModalSubmit
-            }}}
-            {{{ModalForm
-                    title="Удалить пользователя"
-                    fields=modalFields
-                    buttonText="Удалить"
-                    onClose=handleDeleteModalUserClose
-                    onSubmit=handleDeleteModalUserSubmit
-            }}}
+            {{{AddUser}}}
+            {{{DeleteUser}}}
         </div>
       `
   }
@@ -90,4 +54,4 @@ const mapStateToProps = (state: State) => ({
   activeChatId: state.activeChatId,
 })
 
-export default withStore(mapStateToProps)(DropdownAddUser)
+export default connect(mapStateToProps)(DropdownAddUser)

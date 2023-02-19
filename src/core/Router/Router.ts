@@ -1,4 +1,5 @@
-import Route from './Route'
+import Route from '../Route'
+import { Routes } from './types'
 
 const APP_ROOT_SELECTOR = '#app'
 
@@ -41,6 +42,7 @@ class Router {
   _onRoute(pathname: string) {
     const route = this.getRoute(pathname)
     if (!route) {
+      this.go(Routes.NoFound)
       return
     }
 
@@ -65,4 +67,6 @@ class Router {
   }
 }
 
-export default new Router(APP_ROOT_SELECTOR)
+const router = new Router(APP_ROOT_SELECTOR)
+
+export default router

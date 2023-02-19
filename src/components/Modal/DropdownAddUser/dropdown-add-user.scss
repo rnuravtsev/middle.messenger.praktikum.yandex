@@ -8,6 +8,7 @@
   display: none;
   border-radius: $radius-l;
   box-shadow: 0 0 6px 0 #00000024;
+  z-index: $dropdown-z;
 }
 
 .dropdown.dropdown_open {

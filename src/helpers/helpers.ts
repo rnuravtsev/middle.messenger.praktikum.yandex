@@ -28,6 +28,7 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
     [key]: acc,
   }), value as any)
 
+
   return merge(object as Indexed, result)
 }
 
@@ -164,7 +165,7 @@ export function cloneDeep<T extends object = object>(obj: T) {
     }
 
     if (isPlainObject(item)) {
-      const copy: object = {}
+      const copy: Indexed = {}
 
       Object.getOwnPropertySymbols(item).forEach(s => (copy[s] = _cloneDeep(item[s])))
 

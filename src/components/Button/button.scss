@@ -29,6 +29,10 @@
     @include btn-color($primary-300, transparent, $primary-200, $primary-400);
   }
 
+  &_color_gray {
+    @include btn-color($gray-500, transparent, $gray-600, $gray-600, true);
+  }
+
   &_type_icon {
     padding: 0;
     display: flex;

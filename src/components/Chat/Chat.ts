@@ -1,5 +1,5 @@
 import Block from 'core/Block'
-import withStore from '../../HOCs/withStore'
+import connect from '../../HOCs/connect'
 import './chat.scss'
 import { State } from '../../utils/Store'
 
@@ -54,4 +54,4 @@ const mapStateToProps = (state: State) => {
   }
 }
 
-export default withStore(mapStateToProps)(Chat)
+export default connect(mapStateToProps)(Chat)

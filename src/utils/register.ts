@@ -9,7 +9,7 @@ import Input from 'components/Input/Input'
 import Message from 'components/Message/Message'
 import MessagePreview from 'components/MessagePreview/MessagePreview'
 import Sidebar from 'components/Sidebar/Sidebar'
-import EmptyChat from 'pages/EmptyChat/EmptyChat'
+import EmptyChat from 'components/EmptyChat/EmptyChat'
 import MainChat from 'pages/MainChat/MainChat'
 import Link from 'components/Link/Link'
 import Form from 'components/Form/Form'
@@ -22,9 +22,13 @@ import PageTitle from 'components/PageTitle/PageTitle'
 import ProfileIcon from 'components/ProfileIcon/ProfileIcon'
 import SidebarReturn from 'components/SidebarReturn/SidebarReturn'
 import { Logout } from 'components/Logout/Logout'
-import ModalForm from '../components/Modal/ModalForm/ModalForm'
+import AddChat from '../components/Modal/AddChat/AddChat'
 import DropdownAddUser from '../components/Modal/DropdownAddUser/DropdownAddUser'
 import Extra from '../components/Extra/Extra'
+import Loader from '../components/Loader/Loader'
+import AddUser from '../components/Modal/AddUser/AddUser'
+import DeleteUser from '../components/Modal/DeleteUser/DeleteUser'
+import Alert from '../components/Alert/Alert'
 
 registerComponent(Layout)
 registerComponent(Button)
@@ -50,6 +54,10 @@ registerComponent(PageTitle)
 registerComponent(ProfileIcon)
 registerComponent(SidebarReturn)
 registerComponent(Logout)
-registerComponent(ModalForm)
+registerComponent(AddChat)
 registerComponent(DropdownAddUser)
 registerComponent(Extra)
+registerComponent(Loader)
+registerComponent(AddUser)
+registerComponent(DeleteUser)
+registerComponent(Alert)

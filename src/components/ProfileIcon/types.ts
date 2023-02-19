@@ -1,3 +1,3 @@
 export type ProfileIconProps = {
-  className: string,
+  className?: string,
 }

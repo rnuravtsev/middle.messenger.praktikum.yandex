@@ -1,13 +1,12 @@
-import { EventBus } from '../core/EventBus'
-import { set } from '../helpers/helpers'
+import { EventBus } from 'core/EventBus'
 import { Chat, Message, User } from '../api/types'
+import { set } from '../helpers/helpers'
 
 export const enum StoreEvents {
   Updated = 'updated',
 }
-
 export interface State {
-  user: {
+  user?: {
     data: Nullable<User>,
     error: string,
     isLoading: boolean,
@@ -18,24 +17,42 @@ export interface State {
     isLoading: boolean,
   }
   messages?: Record<number, Message[]>,
-  modal?: Record<string, unknown>,
+  modalAddUser?: boolean,
+  modalAddChat?: boolean,
+  modalDeleteUser?: boolean,
+  modalDeleteChat?: boolean,
   activeChatId?: number,
 }
 
-class Store extends EventBus {
-  private state: any = {}
 
-  public set(key: string, value: unknown): void {
-    set(this.state, key, value)
+export class Store extends EventBus {
+  state: Indexed = {}
 
-    this.emit(StoreEvents.Updated, this.getState())
+  constructor() {
+    super()
+    this.state = {}
   }
 
-  public getState(): State {
+  getState() {
     return this.state
+  }
+
+  removeState() {
+    this.state = {}
+    this.emit(StoreEvents.Updated)
+  }
+
+  set(path: string, value: any) {
+    set(this.state, path, value)
+
+    this.emit(StoreEvents.Updated)
+    return this
   }
 }
 
 const store = new Store()
+
+// TODO: Удалить перед сдачей
+window.store = store
 
 export default store

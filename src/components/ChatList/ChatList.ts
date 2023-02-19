@@ -1,20 +1,21 @@
 import Block from 'core/Block'
 import './chat-list.scss'
-import { ChatNew } from '../ChatPreview/types'
-import withStore from '../../HOCs/withStore'
+import connect from '../../HOCs/connect'
 import { State } from '../../utils/Store'
-
-
-type ChatListProps = {
-  chats?: ChatNew[]
-}
+import { ChatListProps } from './types'
 
 class ChatList extends Block<ChatListProps> {
   static componentName = 'ChatList'
+  constructor(props: ChatListProps) {
+    super(props)
+  }
   render() {
     // language=hbs
     return `
         <ul class="chat-list">
+            {{#if chatLoading}}
+                {{{Loader}}}
+            {{/if}}
             {{#each chats}}
                 {{{ChatPreview
                         id=id
@@ -31,7 +32,8 @@ class ChatList extends Block<ChatListProps> {
 }
 
 const mapStateToProps = (state: State) => ({
-  chats: state?.chats?.data
+  chats: state?.chats?.data,
+  chatLoading: state?.chats?.isLoading
 })
-export default withStore(mapStateToProps)(ChatList)
+export default connect(mapStateToProps)(ChatList)
 

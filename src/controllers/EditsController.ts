@@ -1,4 +1,4 @@
-import ProfileAPI from '../api/ProfileAPI'
+import ProfileAPI from '../api/UserAPI'
 import { request, setDataToStore } from './utils'
 
 class EditController {

@@ -24,27 +24,29 @@ class LoginPage extends Block {
   render() {
     // language=hbs
     return `
-        <div class="container">
-            <main class="login">
-                <div class="container">
-                    <div class="paper paper_auth login__paper">
-                        {{{Subtitle
-                                className="paper__subtitle"
-                                text="Вход"
-                        }}}
-                        {{{Form
-                                fields=fields
-                                className="paper__form"
-                                onSubmit=events.submit
-                                buttonText="Войти"
-                        }}}
-                        {{{Link
-                                className="link paper__link"
-                                href="/sign-up"
-                                label="Нет аккаунта?"}}}
+        <div>
+            <div class="container">
+                <main class="login">
+                    <div class="container">
+                        <div class="paper paper_auth login__paper">
+                            {{{Subtitle
+                                    className="paper__subtitle"
+                                    text="Вход"
+                            }}}
+                            {{{Form
+                                    fields=fields
+                                    className="paper__form"
+                                    onSubmit=events.submit
+                                    buttonText="Войти"
+                            }}}
+                            {{{Link
+                                    className="link paper__link"
+                                    href="/sign-up"
+                                    label="Нет аккаунта?"}}}
+                        </div>
                     </div>
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
     `
   }

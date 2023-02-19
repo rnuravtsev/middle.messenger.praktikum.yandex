@@ -1,3 +1,3 @@
 export type ChooseChatProps = {
-  className: string,
+  className?: string,
 }

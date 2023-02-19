@@ -48,12 +48,12 @@ class Form extends Block {
     if (isFormValid) {
       const formData = new FormData(formEl)
       const data = Object.fromEntries(formData)
-      const escapedData = Object.entries(data).reduce((acc: Record<string, unknown>, [key, value]) => {
-        acc[key] = typeof value === 'string' ? escapeHtml(value as string) : value
-        return acc
-      }, {})
+      // const escapedData = Object.entries(data).reduce((acc: Record<string, unknown>, [key, value]) => {
+      //   acc[key] = typeof value === 'string' ? escapeHtml(value as string) : value
+      //   return acc
+      // }, {})
 
-      onSubmit(escapedData)
+      onSubmit(data)
       formEl.reset()
     }
   }

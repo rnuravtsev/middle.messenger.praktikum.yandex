@@ -1,7 +1,8 @@
 import { nanoid } from 'nanoid'
 import Handlebars from 'handlebars'
 import { EventBus } from './EventBus'
-import { isEqual } from '../helpers/helpers'
+import { isEqual } from 'helpers/helpers'
+
 
 interface BlockMeta<P = any> {
   props: P;
@@ -84,15 +85,13 @@ export default class Block<P extends object = any> {
     if (this.shouldComponentUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
     }
-
   }
 
   protected shouldComponentUpdate(oldProps: P, newProps: P) {
     return !isEqual(oldProps, newProps)
-    // return true
   }
 
-  protected setProps = (nextProps: P) => {
+  setProps = (nextProps: P) => {
     if (!nextProps) {
       return
     }
@@ -141,16 +140,18 @@ export default class Block<P extends object = any> {
     return this.element!
   }
 
-  private _makePropsProxy(props: any): any {
+  _makePropsProxy(props: P) {
+    // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this
 
-    return new Proxy(props as unknown as object, {
-      get(target: Record<string, unknown>, prop: string) {
+    return new Proxy(props, {
+      get(target: Indexed, prop: string) {
         const value = target[prop]
         return typeof value === 'function' ? value.bind(target) : value
       },
-      set(target: Record<string, unknown>, prop: string, value: unknown) {
+      set(target, prop: string, value) {
+        // Shallow equal
         const oldTarget = { ...target }
         target[prop] = value
 
@@ -159,10 +160,9 @@ export default class Block<P extends object = any> {
       },
       deleteProperty() {
         throw new Error('Нет доступа')
-      },
-    }) as unknown as P
+      }
+    })
   }
-
   private _createDocumentElement(tagName: string) {
     return document.createElement(tagName)
   }

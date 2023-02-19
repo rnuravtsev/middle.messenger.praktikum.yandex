@@ -1,8 +1,8 @@
 import { SignUpData, SignInData } from '../api/types'
 import AuthAPI from '../api/AuthAPI'
-import Router from 'core/Router'
-import { Routes } from '../index'
+import Router from 'core/Router/Router'
 import { request, setDataToStore } from './utils'
+import { Routes } from '../core/Router/types'
 
 class AuthController {
   private api = AuthAPI
@@ -21,6 +21,7 @@ class AuthController {
     await request(this.namespace, async () => {
       await this.api.signIn(data)
       await this.fetchUser()
+
       Router.go(Routes.Profile)
     })
   }
@@ -29,17 +30,15 @@ class AuthController {
     await request(this.namespace, async () => {
       await this.api.logout()
 
-      Router.go(Routes.Onboard)
+      Router.go(Routes.Home)
     })
   }
 
   async fetchUser() {
-    try {
+    await request(this.namespace, async () => {
       const user = await this.api.getUser()
       setDataToStore(this.namespace, user)
-    } catch (e) {
-      setDataToStore(this.namespace, null)
-    }
+    })
   }
 }
 

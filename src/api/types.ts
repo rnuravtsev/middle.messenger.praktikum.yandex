@@ -59,3 +59,22 @@ export interface Message {
     upload_date: string,
   }
 }
+
+export type CreateChatData = {
+  title: string,
+}
+export type ChatDeleteData = {
+  chatId: number,
+}
+export type UsersRequestData = {
+  users: number[],
+  chatId: number,
+}
+
+export type FindUserRequest = {
+  login:	string
+}
+
+export type createChatRequest = {
+  title:	string
+}

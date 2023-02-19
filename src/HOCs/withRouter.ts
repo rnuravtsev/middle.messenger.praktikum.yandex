@@ -1,4 +1,4 @@
-import Router from 'core/Router'
+import Router from 'core/Router/Router'
 
 type withRouterProps = {
   router: typeof Router;

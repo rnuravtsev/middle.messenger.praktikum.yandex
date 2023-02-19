@@ -1,6 +1,6 @@
 import Block from 'core/Block'
 import './profile-edit-pass.scss'
-import withStore from '../../HOCs/withStore'
+import connect from '../../HOCs/connect'
 import { ProfileEditPassProps } from './types'
 import EditsController from '../../controllers/EditsController'
 import FieldNormalize from '../../helpers/FieldNormalize'
@@ -25,18 +25,20 @@ class ProfileEditPass extends Block {
   render() {
     // language=hbs
     return `
-        <main class="profile">
-            {{{SidebarReturn className="profile__sidebar"}}}
-            <div class="profile__content container">
-                {{{ProfileIcon}}}
-                <div class="profile__subtitle-wrapper"></div>
-                {{{Form
-                        className="profile__form"
-                        gridType="row"
-                        fields=fields
-                        onSubmit=events.submit
-                        buttonText="Сохранить"
-                }}}
+        <main>
+            <div class="profile">
+                {{{SidebarReturn className="profile__sidebar"}}}
+                <div class="profile__content container">
+                    {{{ProfileIcon}}}
+                    <div class="profile__subtitle-wrapper"></div>
+                    {{{Form
+                            className="profile__form"
+                            gridType="row"
+                            fields=fields
+                            onSubmit=events.submit
+                            buttonText="Сохранить"
+                    }}}
+                </div>
             </div>
         </main>
     `
@@ -48,4 +50,4 @@ const mapStateToProps = (state: any) => ({
 })
 
 
-export default withStore(mapStateToProps)(ProfileEditPass)
+export default connect(mapStateToProps)(ProfileEditPass)

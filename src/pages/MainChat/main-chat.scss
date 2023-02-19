@@ -6,6 +6,7 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: 10px;
+  height: 100%;
 }
 
 .chat-page__header {
@@ -28,7 +29,7 @@
   position: absolute;
   right: 10px;
   bottom: -250%;
-  z-index: 99999;
+  z-index: 9999;
 }
 
 .chat-page__title {

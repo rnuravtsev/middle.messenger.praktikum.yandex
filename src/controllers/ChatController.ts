@@ -1,7 +1,9 @@
-import ChatAPI from '../api/ChatAPI/ChatAPI'
+import ChatAPI from '../api/ChatAPI'
 import { request, setDataToStore } from './utils'
-import { ChatDeleteData, CreateChatData, UsersRequestData } from '../api/ChatAPI/types'
 import MessagesController from './MessagesController'
+import { ChatDeleteData, CreateChatData, FindUserRequest, UsersRequestData } from '../api/types'
+import UserAPI from '../api/UserAPI'
+import { User } from '../api/types'
 
 class ChatController {
   private api = ChatAPI
@@ -39,8 +41,18 @@ class ChatController {
     })
   }
 
+  async searchUser(login: FindUserRequest): Promise<User[]> {
+    return UserAPI.search(login)
+  }
+
   async addUserToChat(data: UsersRequestData) {
     await request(this.namespace,async () => {
+      const chatUsers = await this.api.getChatUsers(data.chatId)
+
+      if (chatUsers.some((user) => user.id === data.users[0])) {
+        return
+      }
+
       const chat = await this.api.addUsers(data)
       setDataToStore(this.namespace, chat)
     })
@@ -48,6 +60,12 @@ class ChatController {
 
   async deleteUserFromChat(data: UsersRequestData) {
     await request(this.namespace,async () => {
+      const chatUsers = await this.api.getChatUsers(data.chatId)
+
+      if (chatUsers.some((user) => user.id === data.users[0])) {
+        return
+      }
+
       const chat = await this.api.removeUsers(data)
       setDataToStore(this.namespace, chat)
     })

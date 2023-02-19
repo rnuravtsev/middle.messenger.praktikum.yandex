@@ -1,11 +1,10 @@
-import BaseAPI from '../BaseAPI'
-import { ChatDeleteData, CreateChatData, UsersRequestData } from './types'
-import { Chat } from '../types'
+import BaseAPI from './BaseAPI'
+import { Chat, User, ChatDeleteData, CreateChatData, UsersRequestData } from './types'
 
-enum ChatAPIPath {
+ enum ChatAPIPath {
   Chats = '/',
   Users = '/users',
-  Token = 'chats/token',
+  Token = '/token',
 }
 class ChatAPI extends BaseAPI {
   constructor() {
@@ -13,7 +12,7 @@ class ChatAPI extends BaseAPI {
   }
 
   async getToken(id: number): Promise<string> {
-    const response = await this.http.post<{ token: string }>(`/token/${id}`)
+    const response = await this.http.post<{ token: string }>(`${ChatAPIPath.Token}/${id}`)
     return response.token
   }
 
@@ -35,6 +34,10 @@ class ChatAPI extends BaseAPI {
 
   async removeUsers(data: UsersRequestData): Promise<Response> {
     return this.http.delete(ChatAPIPath.Users, { data })
+  }
+
+  async getChatUsers(id: number): Promise<User[]> {
+    return this.http.get(`/${id}${ChatAPIPath.Users}`)
   }
 
   read = undefined

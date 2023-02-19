@@ -1,7 +1,7 @@
 import Block from 'core/Block'
 import './profile-edit.scss'
 import { ProfileEditProps } from './types'
-import withStore from '../../HOCs/withStore'
+import connect from '../../HOCs/connect'
 import FieldNormalize from '../../helpers/FieldNormalize'
 import { User } from '../../api/types'
 import EditsController from '../../controllers/EditsController'
@@ -11,7 +11,6 @@ class ProfileEditPage extends Block {
     super(props)
 
     this.setProps({
-      //TODO: Убрать any
       fields: FieldNormalize.createFields(undefined, props.user as User),
       events: {
         submit: (evt: SubmitEvent) => this.onSubmit(evt),
@@ -26,18 +25,20 @@ class ProfileEditPage extends Block {
   render() {
     // language=hbs
     return `
-        <main class="profile">
-            {{{SidebarReturn className="profile__sidebar"}}}
-            <div class="profile__content container">
-                {{{ProfileIcon}}}
-                <div class="profile__subtitle-wrapper"></div>
-                {{{Form
-                        className="profile__form"
-                        fields=fields
-                        gridType="row"
-                        buttonText="Cохранить"
-                        onSubmit=events.submit
-                }}}
+        <main>
+            <div class="profile">
+                {{{SidebarReturn className="profile__sidebar"}}}
+                <div class="profile__content container">
+                    {{{ProfileIcon}}}
+                    <div class="profile__subtitle-wrapper"></div>
+                    {{{Form
+                            className="profile__form"
+                            fields=fields
+                            gridType="row"
+                            buttonText="Cохранить"
+                            onSubmit=events.submit
+                    }}}
+                </div>
             </div>
         </main>
     `
@@ -48,4 +49,4 @@ const mapStateToProps = (state: any) => ({
  user: state.user?.data
 })
 
-export default withStore(mapStateToProps)(ProfileEditPage)
+export default connect(mapStateToProps)(ProfileEditPage)

@@ -1,21 +1,27 @@
 import BaseAPI from './BaseAPI'
+import { FindUserRequest, User } from './types'
 
-enum ProfileAPIPath {
+enum UserAPIPath {
   Profile = '/profile',
   Password = '/password',
+  Search = '/search',
 }
 
-class ProfileAPI extends BaseAPI {
+class UserAPI extends BaseAPI {
   constructor() {
     super('/user')
   }
 
   update(data: unknown): Promise<Response> {
-    return this.http.put(ProfileAPIPath.Profile, { data })
+    return this.http.put(UserAPIPath.Profile, { data })
   }
 
   updatePassword(data: unknown): Promise<Response> {
-    return this.http.put(ProfileAPIPath.Password, { data })
+    return this.http.put(UserAPIPath.Password, { data })
+  }
+
+  search(login: FindUserRequest): Promise<User[]> {
+    return this.http.post(UserAPIPath.Search, { data: login })
   }
 
   getUserInfo(id: number): Promise<Response> {
@@ -27,4 +33,4 @@ class ProfileAPI extends BaseAPI {
   read = undefined
 }
 
-export default new ProfileAPI()
+export default new UserAPI()

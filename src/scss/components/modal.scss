@@ -1,6 +1,4 @@
-@import "src/scss/variables";
-
-// TODO: Перенести общие стили в modal.scss
+@import "../variables";
 
 .modal {
   position: fixed;
@@ -11,7 +9,7 @@
   display: none;
   width: 100dvw;
   height: 100dvh;
-  z-index: 9999;
+  z-index: $modal-z;
 }
 
 .modal__backdrop {
