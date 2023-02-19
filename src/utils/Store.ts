@@ -52,7 +52,5 @@ export class Store extends EventBus {
 
 const store = new Store()
 
-// TODO: Удалить перед сдачей
-window.store = store
 
 export default store
