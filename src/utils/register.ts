@@ -44,7 +44,9 @@ registerComponent(EmptyChat)
 registerComponent(MainChat)
 registerComponent(Form)
 registerComponent(Field)
-// TODO: Изменить типы
+// TODO: Доработать типизацию
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
 registerComponent(Link)
 registerComponent(InputError)
 registerComponent(Table)
@@ -52,6 +54,9 @@ registerComponent(Img)
 registerComponent(Subtitle)
 registerComponent(PageTitle)
 registerComponent(ProfileIcon)
+// TODO: Доработать типизацию
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
 registerComponent(SidebarReturn)
 registerComponent(Logout)
 registerComponent(AddChat)

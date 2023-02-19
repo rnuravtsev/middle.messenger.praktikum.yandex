@@ -10,7 +10,7 @@ interface BlockMeta<P = any> {
 
 type Events = Values<typeof Block.EVENTS>;
 
-export default class Block<P extends Record<string, unknown> = any> {
+export default class Block<P extends Indexed = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -40,6 +40,9 @@ export default class Block<P extends Record<string, unknown> = any> {
 
     this.getStateFromProps(props)
 
+    // TODO: Доработать типизацию
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
     this.props = this._makePropsProxy(props || {} as P)
     this.state = this._makePropsProxy(this.state)
 
@@ -146,11 +149,11 @@ export default class Block<P extends Record<string, unknown> = any> {
     const self = this
 
     return new Proxy(props, {
-      get(target: Record<string, unknown>, prop: string) {
+      get(target: Indexed, prop: string) {
         const value = target[prop]
         return typeof value === 'function' ? value.bind(target) : value
       },
-      set(target: Record<string, unknown>, prop: string, value) {
+      set(target: Indexed, prop: string, value) {
         // Shallow equal
         const oldTarget = { ...target }
         target[prop] = value
