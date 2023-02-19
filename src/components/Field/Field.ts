@@ -1,45 +1,26 @@
-import Block from "core/Block";
-import './field.scss';
-import { validateField } from "../../utils/validateForm";
-
-type FieldProps = {
-  className: string,
-  labelClassName: string,
-  inputClassName: string,
-  labelText: string,
-  placeholder: string,
-  name: string,
-  /** Тип ошибки при валидации формы по Submit */
-  validationType: string,
-  /** Сообщение ошибки при валидации формы по Submit */
-  validationError: string,
-  /** Тип инпута */
-  type: string,
-  /** Сообщение ошибки при валидации поля по Focus/Blur */
-  errorMessages: string,
-  /** Значение инпута */
-  value: string,
-}
-
+import Block from 'core/Block'
+import './field.scss'
+import { validateField } from '../../utils/validateForm'
+import { FieldProps } from './types'
 
 class Field extends Block {
+  static componentName = 'Field'
   constructor(props: FieldProps) {
     super({
       ...props,
       onBlur: (evt: Event) => this.onBlur(evt),
       onFocus: (evt: Event) => this.onFocus(evt),
-    });
+    })
   }
 
-  static componentName = 'Field';
 
   onBlur(evt: Event) {
-    const input = evt.target as HTMLInputElement;
+    const input = evt.target as HTMLInputElement
     this.validate(input)
   }
 
   onFocus(evt: Event) {
-    const input = evt.target as HTMLInputElement;
+    const input = evt.target as HTMLInputElement
     this.validate(input)
   }
 
@@ -81,4 +62,4 @@ class Field extends Block {
   }
 }
 
-export default Field;
+export default Field

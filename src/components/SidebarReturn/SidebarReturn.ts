@@ -1,24 +1,21 @@
-import Block from "core/Block";
-import './sidebar-return.scss';
-
-type SidebarReturnProps = {
-  className: string,
-}
-
+import Block from 'core/Block'
+import './sidebar-return.scss'
+import Router from '../../core/Router/Router'
+import { SidebarReturnProps } from './types'
 
 class SidebarReturn extends Block {
-  constructor(props: SidebarReturnProps) {
-    super(props);
+  static componentName = 'SidebarReturn'
 
-    this.setProps({
+  constructor(props: SidebarReturnProps) {
+    super({
+      ...props,
       handleButtonClick: () => this.handleButtonClick(),
     })
   }
 
-  static componentName = 'SidebarReturn';
 
-    handleButtonClick() {
-    window.history.back();
+  handleButtonClick() {
+    Router.back()
   }
 
   render() {
@@ -31,8 +28,8 @@ class SidebarReturn extends Block {
                     onClick=handleButtonClick
             }}}
         </div>
-      `
+    `
   }
 }
 
-export default SidebarReturn;
+export default SidebarReturn

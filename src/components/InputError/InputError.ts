@@ -1,18 +1,13 @@
-import Block from "core/Block";
-import './input-error.scss';
-
-type InputErrorProps = {
-  className: string,
-  errorMessage: string,
-}
-
+import Block from 'core/Block'
+import './input-error.scss'
+import { InputErrorProps } from './types'
 
 class InputError extends Block {
   constructor(props: InputErrorProps) {
-    super(props);
+    super(props)
   }
 
-  static componentName = 'InputError';
+  static componentName = 'InputError'
 
     render() {
     // language=hbs
@@ -22,4 +17,4 @@ class InputError extends Block {
   }
 }
 
-export default InputError;
+export default InputError

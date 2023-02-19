@@ -1,12 +1,8 @@
-import Block from '../../core/Block';
-import './layout.css';
-
-interface LayoutProps {
-  className: string,
-}
-
+import Block from '../../core/Block'
+import './layout.css'
+import { LayoutProps } from './types'
 export default class Layout extends Block<LayoutProps> {
-  static componentName = 'Layout';
+  static componentName = 'Layout'
     protected render(): string {
     // language=hbs
     return `

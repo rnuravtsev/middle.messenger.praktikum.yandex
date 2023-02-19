@@ -6,9 +6,11 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: 10px;
+  height: 100%;
 }
 
 .chat-page__header {
+  position: relative;
   display: grid;
   grid-template-columns: 34px 1fr 8px;
   align-items: center;
@@ -21,6 +23,13 @@
   .icon-menu {
     color: $main;
   }
+}
+
+.chat-page__dropdown {
+  position: absolute;
+  right: 10px;
+  bottom: -250%;
+  z-index: 9999;
 }
 
 .chat-page__title {
@@ -48,6 +57,7 @@
   align-items: center;
 
   .form__field {
+    position: relative;
     min-height: auto;
     margin-bottom: 0;
   }
@@ -87,8 +97,9 @@
   // FIXME: Временное решение, пока не решим проблему с позиционированием подсказки ошибки инпута
   .input-error {
     position: absolute;
-    right: 80px;
-    bottom: 23px;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
   }
 }
 

@@ -10,11 +10,18 @@ $gray-400: #eaeaea;
 $gray-500: #999;
 $gray-600: #525252;
 $white: #fff;
+$success: #00d68f;
 $negative: #ff2f2f;
 $main: #1e1e1e;
 
+/* css layers */
+$modal-z: 99999;
+$dropdown-z: 9999;
+
+
 /* Border */
-$radius-default: 8px;
+$radius-m: 8px;
+$radius-l: 12px;
 
 /* Field */
 $form-field-min-height: 50px;

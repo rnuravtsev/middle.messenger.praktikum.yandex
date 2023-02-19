@@ -1,6 +1,13 @@
 {
     "2check": 61697,
-    "clip": 61698,
-    "loupe": 61699,
-    "menu": 61700
+    "arrow-right": 61698,
+    "avatar": 61699,
+    "chevron-forward": 61700,
+    "circle-cross": 61701,
+    "circle-plus": 61702,
+    "clip": 61703,
+    "loupe": 61704,
+    "menu": 61705,
+    "square-and-pencil": 61706,
+    "xmark": 61707
 }

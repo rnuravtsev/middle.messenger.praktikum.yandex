@@ -1,4 +1,4 @@
 export type SignUpPageProps = {
-  className: string,
+  className?: string,
   fields: unknown[],
 }

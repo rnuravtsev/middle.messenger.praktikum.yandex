@@ -1,13 +1,9 @@
-import Block from "core/Block";
-import './profile-icon.scss';
-
-type ProfileIconProps = {
-  className: string,
-}
-
+import Block from 'core/Block'
+import './profile-icon.scss'
+import { ProfileIconProps } from './types'
 
 class ProfileIcon extends Block<ProfileIconProps> {
-  static componentName = 'ProfileIcon';
+  static componentName = 'ProfileIcon'
     render() {
     // language=hbs
     return `
@@ -18,4 +14,4 @@ class ProfileIcon extends Block<ProfileIconProps> {
   }
 }
 
-export default ProfileIcon;
+export default ProfileIcon

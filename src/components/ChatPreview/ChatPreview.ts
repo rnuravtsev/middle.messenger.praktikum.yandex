@@ -1,26 +1,43 @@
-import Block from "core/Block";
-import './chat-preview.scss';
-import { TChat } from "./types";
+import Block from 'core/Block'
+import './chat-preview.scss'
+import { ChatProps } from './types'
+import store from '../../utils/Store'
+
 class ChatPreview extends Block {
-  constructor(props: TChat) {
-    super(props);
+  static componentName = 'ChatPreview'
+
+  constructor(props: ChatProps) {
+    super({
+      ...props,
+      events: {
+        click: () => this.handleClick(),
+      }
+    })
   }
 
-  static componentName = 'ChatPreview';
+  handleClick() {
+    const { id } = this.props
+    store.set('activeChatId', id)
+  }
 
   render() {
     // language=hbs
+    const { avatar, title } = this.props
     return `
         <div class="chat-preview">
-            <img class="chat-preview__avatar" src="{{avatar}}" alt="Аватар профиля">
+            <img class="chat-preview__avatar" src="${avatar}" alt="Аватар профиля">
             {{{MessagePreview
                     className="chat-preview__message"
-                    title=title
-                    message=message
+                    title="${title}"
+                    message=content
             }}}
             <div class="chat-preview__additional">
-                <span class="chat-preview__time">{{time}}</span>
-                <span class="chat-preview__counter">{{count}}</span>
+                {{#if time}}
+                    <span class="chat-preview__time">{{time}}</span>
+                {{/if}}
+                {{#if unread_count}}
+                    <span class="chat-preview__counter">{{unread_count}}</span>
+                {{/if}}
             </div>
         </div>
     `

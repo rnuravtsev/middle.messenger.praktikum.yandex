@@ -1,30 +1,24 @@
-import Block from "core/Block";
-import './chat-list.scss';
-import { TChat } from "../ChatPreview/types";
-import {chats as mockChats} from "../../mock/chats";
+import Block from 'core/Block'
+import './chat-list.scss'
+import connect from '../../HOCs/connect'
+import { State } from '../../utils/Store'
+import { ChatListProps } from './types'
 
-
-type ChatListProps = {
-  chats: TChat[]
-}
-
-class ChatList extends Block {
+class ChatList extends Block<ChatListProps> {
+  static componentName = 'ChatList'
   constructor(props: ChatListProps) {
-    super(props);
-
-    this.setProps({
-      chats: mockChats
-    })
+    super(props)
   }
-
-  static componentName = 'ChatList';
-
   render() {
     // language=hbs
     return `
         <ul class="chat-list">
+            {{#if chatLoading}}
+                {{{Loader}}}
+            {{/if}}
             {{#each chats}}
                 {{{ChatPreview
+                        id=id
                         avatar=avatar
                         title=title
                         message=message
@@ -37,4 +31,9 @@ class ChatList extends Block {
   }
 }
 
-export default ChatList;
+const mapStateToProps = (state: State) => ({
+  chats: state?.chats?.data,
+  chatLoading: state?.chats?.isLoading
+})
+export default connect(mapStateToProps)(ChatList)
+

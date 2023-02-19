@@ -1,10 +1,10 @@
-import Block from "core/Block";
-import './onboard.scss';
+import Block from 'core/Block'
+import './onboard.scss'
 import { OnboardProps } from './types'
 
 class Onboard extends Block {
   constructor(props: OnboardProps = {} as OnboardProps) {
-    super(props);
+    super(props)
   }
 
   render() {
@@ -23,10 +23,10 @@ class Onboard extends Block {
                         <a href="/sign-up" class="onboard__link">sign up</a>
                     </li>
                     <li>
-                        <a href="/chat" class="onboard__link">chat</a>
+                        <a href="/messenger" class="onboard__link">messenger</a>
                     </li>
                     <li>
-                        <a href="/profile" class="onboard__link">profile</a>
+                        <a href="/settings" class="onboard__link">profile</a>
                     </li>
                     <li>
                         <a href="/login" class="onboard__link">login</a>
@@ -38,4 +38,4 @@ class Onboard extends Block {
   }
 }
 
-export default Onboard;
+export default Onboard

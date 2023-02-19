@@ -3,86 +3,109 @@ const METHODS = {
   POST: 'POST',
   PUT: 'PUT',
   DELETE: 'DELETE',
-};
+}
 
 interface IOptions {
-  method: string,
+  method?: string,
   // eslint-disable-next-line @typescript-eslint/ban-types
   headers?: {},
-  data?: XMLHttpRequestBodyInit,
+  data?: any,
   timeout?: number
 }
 
-type HTTPMethod = (url: string, options?: IOptions) => Promise<unknown>;
-
 function queryStringify(data: any) {
   if (typeof data !== 'object') {
-    throw new Error('Data must be object');
+    throw new Error('Data must be object')
   }
 
-  const keys = Object.keys(data);
+  const keys = Object.keys(data)
   return keys.reduce((result, key, index) => {
-    return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`;
-  }, '?');
+    return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`
+  }, '?')
 }
 
-class HTTPTransport {
-  get: HTTPMethod = (url, options) => {
-    return this.request(url, { ...options, method: METHODS.GET }, options?.timeout);
-  };
+export default class HTTPTransport {
+  static API_URL = 'https://ya-praktikum.tech/api/v2'
+  protected endpoint: string
 
-  post: HTTPMethod = (url, options) => {
-    return this.request(url, { ...options, method: METHODS.POST }, options?.timeout);
-  };
+  constructor(endpoint: string) {
+    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`
+  }
 
-  put: HTTPMethod = (url, options) => {
-    return this.request(url, { ...options, method: METHODS.PUT }, options?.timeout);
-  };
+  public get<Response>(url = '/'): Promise<Response> {
+    return this.request(`${this.endpoint}${url}`)
+  }
 
-  delete: HTTPMethod = (url, options) => {
-    return this.request(url, { ...options, method: METHODS.DELETE }, options?.timeout);
-  };
+  public post<Response>(url: string, options = {} as IOptions): Promise<Response> {
+    return this.request(`${this.endpoint}${url}`, {
+      data: JSON.stringify(options.data),
+      method: METHODS.POST
+    }, options?.timeout)
+  }
 
-  request = (url: string, options: IOptions = {} as IOptions, timeout = 5000) => {
-    const { headers = {}, method, data } = options;
+  public put<Response>(url: string, options = {} as IOptions): Promise<Response> {
+    return this.request(`${this.endpoint}${url}`,
+      {
+        data: JSON.stringify(options.data),
+        method: METHODS.PUT }
+      , options?.timeout)
+  }
+
+  public delete<Response>(url: string, options = {} as IOptions): Promise<Response> {
+    return this.request(`${this.endpoint}${url}`, {
+      ...options,
+      method: METHODS.DELETE
+    }, options?.timeout)
+  }
+
+  private request<Response>(url: string, options: IOptions = {} as IOptions, timeout = 5000): Promise<Response> {
+    const { headers = {}, method = METHODS.GET, data } = options
 
     return new Promise(function (resolve, reject) {
       if (!method) {
-        reject('No method');
-        return;
+        reject('No method')
+        return
       }
 
-      const xhr = new XMLHttpRequest();
-      const isGet = method === METHODS.GET;
+      const xhr = new XMLHttpRequest()
+      const isGet = method === METHODS.GET
 
       xhr.open(
         method,
         isGet && !!data
           ? `${url}${queryStringify(data)}`
           : url,
-      );
+      )
 
       Object.keys(headers).forEach((key) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        xhr.setRequestHeader(key, headers[key]);
-      });
+        xhr.setRequestHeader(key, headers[key])
+      })
 
-      xhr.onload = function () {
-        resolve(xhr);
-      };
+      xhr.onload = () => resolve(xhr.response)
+      xhr.timeout = timeout
 
-      xhr.onabort = reject;
-      xhr.onerror = reject;
+      xhr.onabort = () => reject({ reason: 'abort' })
+      xhr.onerror = () => reject({ reason: 'error' })
+      xhr.ontimeout = () => reject({ reason: 'timeout' })
 
-      xhr.timeout = timeout;
-      xhr.ontimeout = reject;
+
+      if (!(data instanceof FormData)) {
+        xhr.setRequestHeader('accept', 'application/json')
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        // xhr.setRequestHeader('mode', 'cors')
+        // xhr.setRequestHeader('credentials', 'include')
+      }
+
+      xhr.withCredentials = true
+      xhr.responseType = 'json'
 
       if (isGet || !data) {
-        xhr.send();
+        xhr.send()
       } else {
-        xhr.send(data);
+        xhr.send(data)
       }
-    });
-  };
+    })
+  }
 }
