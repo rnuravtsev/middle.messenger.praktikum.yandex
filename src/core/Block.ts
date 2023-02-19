@@ -10,7 +10,7 @@ interface BlockMeta<P = any> {
 
 type Events = Values<typeof Block.EVENTS>;
 
-export default class Block<P extends object = any> {
+export default class Block<P extends Record<string, unknown> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -146,11 +146,11 @@ export default class Block<P extends object = any> {
     const self = this
 
     return new Proxy(props, {
-      get(target: Indexed, prop: string) {
+      get(target: Record<string, unknown>, prop: string) {
         const value = target[prop]
         return typeof value === 'function' ? value.bind(target) : value
       },
-      set(target, prop: string, value) {
+      set(target: Record<string, unknown>, prop: string, value) {
         // Shallow equal
         const oldTarget = { ...target }
         target[prop] = value
@@ -241,14 +241,5 @@ export default class Block<P extends object = any> {
      * Возвращаем фрагмент
      */
     return fragment.content
-  }
-
-
-  show() {
-    this.getContent().style.display = 'block'
-  }
-
-  hide() {
-    this.getContent().style.display = 'none'
   }
 }

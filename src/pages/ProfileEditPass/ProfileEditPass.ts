@@ -18,7 +18,6 @@ class ProfileEditPass extends Block {
   }
 
   async onSubmit(data: unknown) {
-    // TODO: Изменить реализацию метода
     await EditsController.changeUserPassword(data)
   }
 

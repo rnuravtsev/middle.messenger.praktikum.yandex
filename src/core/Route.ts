@@ -21,9 +21,7 @@ export default class Route {
   }
 
   leave() {
-    if (this.block) {
-      this.block.hide()
-    }
+    this.block = null
   }
 
   match(pathname: string) {
@@ -36,7 +34,5 @@ export default class Route {
       render(this.block as Block)
       return
     }
-
-    this.block.show()
   }
 }

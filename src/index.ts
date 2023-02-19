@@ -22,7 +22,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Profile, ProfilePage)
     .use(Routes.Settings, ProfileEditPage)
     .use(Routes.ProfileEditPass, ProfileEditPass)
-    // TODO: Перенаправление на 404
     .use(Routes.NoFound, Page404)
 
   try {

@@ -4,7 +4,11 @@ import { AddChatProps } from './types'
 import store, { State } from '../../../utils/Store'
 import connect from '../../../HOCs/connect'
 import ChatController from '../../../controllers/ChatController'
-import { createChatRequest } from '../../../api/types'
+
+
+type AddChatPayload = {
+  new_chat_name: string
+}
 
 const modalFields = [
   {
@@ -14,14 +18,14 @@ const modalFields = [
 ]
 
 class AddChat extends Block {
-  static componentName = 'ModalForm'
+  static componentName = 'AddChat'
 
   constructor(props: AddChatProps = {} as AddChatProps) {
     super({
       ...props,
       fields: modalFields,
       handleModalClose: () => this.handleModalClose(),
-      handleSubmit: ({ title }: createChatRequest) => this.handleSubmit({ title }),
+      handleSubmit: (data: AddChatPayload) => this.handleSubmit(data),
     })
   }
 
@@ -29,8 +33,8 @@ class AddChat extends Block {
     store.set('modalAddChat', false)
   }
 
-  async handleSubmit({ title }: createChatRequest) {
-    await ChatController.createChat({ title })
+  async handleSubmit({ new_chat_name }: AddChatPayload) {
+    await ChatController.createChat({ title: new_chat_name })
   }
 
   render() {
@@ -58,7 +62,7 @@ class AddChat extends Block {
                                 fields=fields
                                 submitButtonClassname="modal__button"
                                 buttonText="Добавить"
-                                onSubmit=onSubmit
+                                onSubmit=handleSubmit
                         }}}
                     </div>
                 </div>

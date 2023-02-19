@@ -3,7 +3,7 @@
 
 .profile {
   display: grid;
-  grid-template-columns: 65px 1fr;
+  grid-template-columns: auto 1fr;
   min-height: 100vh;
 }
 
