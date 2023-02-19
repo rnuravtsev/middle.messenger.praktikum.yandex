@@ -1,7 +1,7 @@
 import Block from 'core/Block'
 import './sidebar-return.scss'
-import Router from '../../core/Router/Router'
 import { SidebarReturnProps } from './types'
+import withRouter from '../../HOCs/withRouter'
 
 class SidebarReturn extends Block {
   static componentName = 'SidebarReturn'
@@ -15,7 +15,7 @@ class SidebarReturn extends Block {
 
 
   handleButtonClick() {
-    Router.back()
+    this.props.router.back()
   }
 
   render() {
@@ -32,4 +32,4 @@ class SidebarReturn extends Block {
   }
 }
 
-export default SidebarReturn
+export default withRouter(SidebarReturn)

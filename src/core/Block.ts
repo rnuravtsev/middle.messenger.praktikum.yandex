@@ -10,7 +10,7 @@ interface BlockMeta<P = any> {
 
 type Events = Values<typeof Block.EVENTS>;
 
-export default class Block<P extends object = any> {
+export default class Block<P extends Indexed = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -40,6 +40,9 @@ export default class Block<P extends object = any> {
 
     this.getStateFromProps(props)
 
+    // TODO: Доработать типизацию
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
     this.props = this._makePropsProxy(props || {} as P)
     this.state = this._makePropsProxy(this.state)
 
@@ -150,7 +153,7 @@ export default class Block<P extends object = any> {
         const value = target[prop]
         return typeof value === 'function' ? value.bind(target) : value
       },
-      set(target, prop: string, value) {
+      set(target: Indexed, prop: string, value) {
         // Shallow equal
         const oldTarget = { ...target }
         target[prop] = value
@@ -241,14 +244,5 @@ export default class Block<P extends object = any> {
      * Возвращаем фрагмент
      */
     return fragment.content
-  }
-
-
-  show() {
-    this.getContent().style.display = 'block'
-  }
-
-  hide() {
-    this.getContent().style.display = 'none'
   }
 }

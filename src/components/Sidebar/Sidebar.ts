@@ -2,7 +2,6 @@ import Block from 'core/Block'
 import './sidebar.scss'
 import store from '../../utils/Store'
 import { SidebarProps } from './types'
-import { Modal } from '../Modal/types'
 
 const inputs = [{
   name: 'search',

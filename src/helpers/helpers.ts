@@ -128,56 +128,6 @@ export function trim(string: string, chars?: string): string {
   return string.replace(reg, '')
 }
 
-export function cloneDeep<T extends object = object>(obj: T) {
-  return (function _cloneDeep(item: T): T | Date | Set<unknown> | Map<unknown, unknown> | object | T[] {
-    if (item === null || typeof item !== 'object') {
-      return item
-    }
-
-    if (item instanceof Date) {
-      return new Date(item.valueOf())
-    }
-
-    if (isArray(item)) {
-      const copy: unknown[] = []
-
-      item.forEach((_, i) => (copy[i] = _cloneDeep(item[i])))
-
-      return copy
-    }
-
-    // Handle:
-    // * Set
-    if (item instanceof Set) {
-      const copy = new Set()
-
-      item.forEach(v => copy.add(_cloneDeep(v)))
-
-      return copy
-    }
-
-    if (item instanceof Map) {
-      const copy = new Map()
-
-      item.forEach((v, k) => copy.set(k, _cloneDeep(v)))
-
-      return copy
-    }
-
-    if (isPlainObject(item)) {
-      const copy: Indexed = {}
-
-      Object.getOwnPropertySymbols(item).forEach(s => (copy[s] = _cloneDeep(item[s])))
-
-      Object.keys(item).forEach(k => (copy[k] = _cloneDeep(item[k])))
-
-      return copy
-    }
-
-    throw new Error(`Unable to copy object: ${item}`)
-  })(obj)
-}
-
 export function queryStringify(obj: StringIndexed) {
   let queryString = ''
 
@@ -213,13 +163,10 @@ const entityMap = {
   '/': '&#x2F;',
   '`': '&#x60;',
   '=': '&#x3D;'
-}
+} as Indexed
 
-export function escapeHtml(string: string) {
-  return String(string).replace(/[&<>"'`=/]/g, function(s) {
-    // TODO: Доделать тип
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+export function escapeHtml(value: string) {
+  return String(value).replace(/[&<>"'`=/]/g, function(s) {
     return entityMap[s]
   })
 }

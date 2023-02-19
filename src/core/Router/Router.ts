@@ -6,7 +6,7 @@ const APP_ROOT_SELECTOR = '#app'
 class Router {
   public readonly routes: Route[] | undefined
   private _history: History | undefined
-  private readonly _currentRoute: Nullable<Route> | undefined
+  private _currentRoute: Nullable<Route> | undefined
   private readonly _rootQuery: string | undefined
   static _instance: Router
   constructor(rootQuery: string) {
@@ -49,6 +49,8 @@ class Router {
     if(this._currentRoute) {
       this._currentRoute.leave()
     }
+
+    this._currentRoute = route
 
     route.render()
   }

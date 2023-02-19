@@ -12,7 +12,7 @@
 .chat-page__header {
   position: relative;
   display: grid;
-  grid-template-columns: 34px 1fr 8px;
+  grid-template-columns: 34px 1fr auto;
   align-items: center;
   gap: 10px;
 }

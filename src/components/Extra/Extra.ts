@@ -10,7 +10,7 @@ class Extra extends Block {
       ...props,
       handleExtraClick: () => this.handleExtraClick(),
     })
-    
+
     this.setState({
       isExtraDropdownOpen: false,
     })
@@ -27,6 +27,7 @@ class Extra extends Block {
     return `
         <div class="extra {{className}}">
             {{{Button
+                    className="extra__button"
                     type="icon"
                     icon="menu"
                     color="main"
