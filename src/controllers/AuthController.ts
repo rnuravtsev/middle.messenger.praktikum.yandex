@@ -11,7 +11,9 @@ class AuthController {
   async signUp(data: SignUpData) {
     await request(this.namespace, async () => {
       const response = await this.api.signUp(data)
-      isBadRequest(response)
+      if (isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
 
       await this.fetchUser()
       Router.go(Routes.Profile)
@@ -20,8 +22,7 @@ class AuthController {
 
   async signIn(data: SignInData) {
     await request(this.namespace, async () => {
-      const response = await this.api.signIn(data)
-      isBadRequest(response)
+      await this.api.signIn(data)
 
       await this.fetchUser()
       Router.go(Routes.Profile)
@@ -41,6 +42,7 @@ class AuthController {
       if(isBadRequest(response)) {
         throw new Error(response.reason)
       }
+
       setDataToStore(this.namespace, response)
   }
 }
