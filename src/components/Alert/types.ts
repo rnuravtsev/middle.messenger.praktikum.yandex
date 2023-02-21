@@ -1,3 +1,5 @@
 export type AlertProps = {
-  className?: string;
+  className?: string
+  isOpen?: boolean
+  closed?: boolean
 }

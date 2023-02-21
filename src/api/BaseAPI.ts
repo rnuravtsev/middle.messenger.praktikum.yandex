@@ -5,8 +5,8 @@ export default abstract class BaseAPI {
     this.http = new HTTPTransport(endpoint)
   }
 
-  public abstract create?(data: unknown): Promise<Response>;
-  public abstract read?(id: string): Promise<Response>;
-  public abstract update?(data?: unknown, id?: string | number): Promise<Response>;
-  public abstract delete?(id: unknown): Promise<Response>;
+  public abstract create?(data: unknown): Promise<unknown>;
+  public abstract read?(id: string): Promise<unknown>;
+  public abstract update?(data?: unknown, id?: string | number): Promise<unknown>;
+  public abstract delete?(id: unknown): Promise<unknown>;
 }

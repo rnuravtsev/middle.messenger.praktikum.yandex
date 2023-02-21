@@ -5,6 +5,7 @@ import store, { State } from '../../../utils/Store'
 import ChatController from '../../../controllers/ChatController'
 import { FindUserRequest } from '../../../api/types'
 import connect from '../../../HOCs/connect'
+import { isBadRequest } from '../../../controllers/utils'
 
 const userFields = [
   {
@@ -29,13 +30,17 @@ class AddUser extends Block {
 
   async handleAddUserModalSubmit(login: FindUserRequest) {
     const { activeChatId } = this.props
-    const user = await ChatController.searchUser(login)
+    const users = await ChatController.searchUser(login)
 
-    if (!user.length) {
+    if(isBadRequest(users)) {
       return
     }
 
-    const firstUserId = user[0].id
+    if(!users.length) {
+      return
+    }
+
+    const firstUserId = users?.[0]?.id
 
     await ChatController.addUserToChat({ users: [firstUserId], chatId: activeChatId })
   }

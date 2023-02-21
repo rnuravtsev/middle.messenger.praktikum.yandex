@@ -24,10 +24,29 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.ProfileEditPass, ProfileEditPass)
     .use(Routes.NoFound, Page404)
 
+  let isProtectedRoute = true
+
+  switch (window.location.pathname) {
+    case Routes.Home:
+    case Routes.Login:
+    case Routes.SignUp:
+      isProtectedRoute = false
+      break
+  }
+
   try {
     await AuthController.fetchUser()
+
     Router.start()
+
+    if (!isProtectedRoute) {
+      Router.go(Routes.Messenger)
+    }
   } catch (e) {
     Router.start()
+
+    if (isProtectedRoute) {
+      Router.go(Routes.Home)
+    }
   }
 })

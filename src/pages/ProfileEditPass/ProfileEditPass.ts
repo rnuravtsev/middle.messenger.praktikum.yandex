@@ -4,6 +4,8 @@ import connect from '../../HOCs/connect'
 import { ProfileEditPassProps } from './types'
 import EditsController from '../../controllers/EditsController'
 import FieldNormalize from '../../helpers/FieldNormalize'
+import { ChangePasswordRequest } from '../../api/types'
+import { State } from '../../utils/Store'
 
 class ProfileEditPass extends Block {
   constructor(props: ProfileEditPassProps = {} as ProfileEditPassProps) {
@@ -11,13 +13,11 @@ class ProfileEditPass extends Block {
 
     this.setProps({
       fields: FieldNormalize.createFields(['oldPassword', 'newPassword', 'repeatedNewPassword']),
-      events: {
-        submit: (data: unknown) => this.onSubmit(data)
-      }
+      onSubmit: (data: ChangePasswordRequest) => this.onSubmit(data)
     })
   }
 
-  async onSubmit(data: unknown) {
+  async onSubmit(data: ChangePasswordRequest) {
     await EditsController.changeUserPassword(data)
   }
 
@@ -34,17 +34,18 @@ class ProfileEditPass extends Block {
                             className="profile__form"
                             gridType="row"
                             fields=fields
-                            onSubmit=events.submit
+                            onSubmit=onSubmit
                             buttonText="Сохранить"
                     }}}
                 </div>
             </div>
+            {{{Alert}}}
         </main>
     `
   }
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: State) => ({
   user: state.user?.data
 })
 

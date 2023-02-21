@@ -26,7 +26,7 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
 
   const result = path.split('.').reduceRight<Indexed>((acc, key) => ({
     [key]: acc,
-  }), value as any)
+  }), value as unknown as Indexed)
 
 
   return merge(object as Indexed, result)
@@ -60,14 +60,14 @@ export function isEmpty<T extends Indexed | string | boolean>(value: T): boolean
   return false
 }
 
-function isPlainObject(value: unknown): value is Indexed {
+export function isPlainObject(value: unknown): value is Indexed {
   return typeof value === 'object'
     && value !== null
     && value.constructor === Object
     && Object.prototype.toString.call(value) === '[object Object]'
 }
 
-function isArray(value: unknown): value is [] {
+export function isArray(value: unknown): value is [] {
   return Array.isArray(value)
 }
 

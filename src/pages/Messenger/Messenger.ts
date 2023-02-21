@@ -23,6 +23,7 @@ class Messenger extends Block<MainPageProps> {
                     {{{EmptyChat className="messenger__empty-chat"}}}
                 {{/if}}
             </div>
+            {{{Alert}}}
         </main>`
   }
 }

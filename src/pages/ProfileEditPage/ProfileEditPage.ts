@@ -45,6 +45,7 @@ class ProfileEditPage extends Block {
                     }}}
                 </div>
             </div>
+            {{{Alert}}}
         </main>
     `
   }

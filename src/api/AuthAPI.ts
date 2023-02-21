@@ -1,5 +1,5 @@
 import BaseAPI from './BaseAPI'
-import { SignInData, SignUpData, User } from './types'
+import { Misspelled, SignInData, SignUpData, User } from './types'
 
 enum AuthAPIPath {
   SignIn = '/signin',
@@ -12,19 +12,19 @@ class UserAPI extends BaseAPI {
     super('/auth')
   }
 
-  public signIn(data: SignInData): Promise<unknown> {
+  public signIn(data: SignInData): Promise<Misspelled<Response>> {
     return this.http.post(AuthAPIPath.SignIn, { data })
   }
 
-  public signUp(data: SignUpData): Promise<unknown> {
+  public signUp(data: SignUpData): Promise<Misspelled<Response>> {
     return this.http.post(AuthAPIPath.SignUp, { data })
   }
 
-  public logout(): Promise<unknown> {
+  public logout(): Promise<Misspelled<Response>> {
     return this.http.post(AuthAPIPath.Logout, {})
   }
 
-  public getUser(): Promise<User> {
+  public getUser(): Promise<Misspelled<User>> {
     return this.http.get(AuthAPIPath.User)
   }
 

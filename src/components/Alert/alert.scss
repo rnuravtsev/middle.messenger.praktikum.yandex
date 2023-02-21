@@ -1,0 +1,24 @@
+@import "src/scss/variables";
+
+.alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 300px;
+  min-height: 75px;
+  display: none;
+  place-items: center;
+  color: $negative;
+  background-color: white;
+  border-radius: $radius-m;
+  box-shadow: 0 0 6px 0 #00000024;
+  z-index: $alert-z;
+}
+
+.alert_open {
+  display: grid;
+}
+
+.alert_closed {
+  display: none;
+}

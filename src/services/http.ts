@@ -1,3 +1,5 @@
+import { queryStringify } from '../helpers/helpers'
+
 const METHODS = {
   GET: 'GET',
   POST: 'POST',
@@ -13,16 +15,7 @@ interface IOptions {
   timeout?: number
 }
 
-function queryStringify(data: any) {
-  if (typeof data !== 'object') {
-    throw new Error('Data must be object')
-  }
-
-  const keys = Object.keys(data)
-  return keys.reduce((result, key, index) => {
-    return `${result}${key}=${data[key]}${index < keys.length - 1 ? '&' : ''}`
-  }, '?')
-}
+type HTTPMethod<T = any> = (url: string, options?: IOptions) => Promise<T>
 
 export default class HTTPTransport {
   static API_URL = 'https://ya-praktikum.tech/api/v2'
@@ -32,27 +25,27 @@ export default class HTTPTransport {
     this.endpoint = `${HTTPTransport.API_URL}${endpoint}`
   }
 
-  public get<Response>(url = '/'): Promise<Response> {
+  public get: HTTPMethod =  (url = '/') => {
     return this.request(`${this.endpoint}${url}`)
   }
 
-  public post<Response>(url: string, options = {} as IOptions): Promise<Response> {
+  public post: HTTPMethod = (url, options) => {
     return this.request(`${this.endpoint}${url}`, {
-      data: options.data,
+      data: options?.data,
       method: METHODS.POST
     }, options?.timeout)
   }
 
-  public put<Response>(url: string, options = {} as IOptions): Promise<Response> {
+  public put: HTTPMethod = (url, options) => {
     return this.request(`${this.endpoint}${url}`,
       {
-        data: options.data,
+        data: options?.data,
         method: METHODS.PUT
       }
       , options?.timeout)
   }
 
-  public delete<Response>(url: string, options = {} as IOptions): Promise<Response> {
+  public delete: HTTPMethod = (url, options) => {
     return this.request(`${this.endpoint}${url}`, {
       ...options,
       method: METHODS.DELETE

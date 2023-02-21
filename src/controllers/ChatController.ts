@@ -1,9 +1,15 @@
 import ChatAPI from '../api/ChatAPI'
-import { request, setDataToStore } from './utils'
+import { isBadRequest, request, setDataToStore } from './utils'
 import MessagesController from './MessagesController'
-import { ChatDeleteData, CreateChatData, FindUserRequest, UsersRequestData } from '../api/types'
+import {
+  ChatDeleteData,
+  CreateChatData,
+  FindUserRequest,
+  Misspelled,
+  User,
+  UsersRequestData
+} from '../api/types'
 import UserAPI from '../api/UserAPI'
-import { User } from '../api/types'
 
 class ChatController {
   private api = ChatAPI
@@ -14,42 +20,61 @@ class ChatController {
   }
 
   async getChats() {
-    await request(this.namespace,async () => {
-      const chats = await this.api.fetchChats()
+    await request(this.namespace, async () => {
+      const response = await this.api.fetchChats()
 
-      await Promise.all(chats.map(async (chat) => {
+      if (isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
+
+      await Promise.all((response).map(async (chat) => {
         const token = await this.getToken(chat.id)
 
         return MessagesController.connect(chat.id, token)
       }))
 
-      setDataToStore(this.namespace, chats)
+      setDataToStore(this.namespace, response)
+
     })
   }
 
   async createChat(data: CreateChatData) {
-    await request(this.namespace,async () => {
-      const chat = await this.api.create(data)
-      setDataToStore(this.namespace, chat)
+    await request(this.namespace, async () => {
+      const response = await this.api.create(data)
+      if (isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
+
+      setDataToStore(this.namespace, response)
     })
   }
 
   async deleteChat(id: ChatDeleteData) {
-    await request(this.namespace,async () => {
+    await request(this.namespace, async () => {
       await this.api.delete(id)
       setDataToStore(this.namespace, id)
     })
   }
 
-  async searchUser(login: FindUserRequest): Promise<User[]> {
-    return UserAPI.search(login)
+  async searchUser(login: FindUserRequest): Promise<Misspelled<User[]>> {
+    const response = UserAPI.search(login)
+
+    if (isBadRequest(response)) {
+      throw new Error(response.reason)
+    }
+
+    return response
   }
 
   async addUserToChat(data: UsersRequestData) {
-    await request(this.namespace,async () => {
-      const chatUsers = await this.api.getChatUsers(data.chatId)
+    await request(this.namespace, async () => {
+      const response = await this.api.getChatUsers(data.chatId)
 
-      if (chatUsers.some((user) => user.id === data.users[0])) {
+      if (isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
+
+      if (response.some((user) => user.id === data.users[0])) {
         return
       }
 
@@ -59,10 +84,14 @@ class ChatController {
   }
 
   async deleteUserFromChat(data: UsersRequestData) {
-    await request(this.namespace,async () => {
-      const chatUsers = await this.api.getChatUsers(data.chatId)
+    await request(this.namespace, async () => {
+      const response = await this.api.getChatUsers(data.chatId)
 
-      if (chatUsers.some((user) => user.id === data.users[0])) {
+      if (isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
+
+      if (response.some((user) => user.id === data.users[0])) {
         return
       }
 

@@ -12,18 +12,20 @@ class Alert extends Block {
   }
 
   render() {
-    const { error } = this.props
+    const { errorItem } = this.props
+    const errorMessage = errorItem?.error?.message
+
     // language=hbs
     return `
-        <div class="alert {{className}}">
-            ${error ? error : ''}
+        <div class="alert {{className}} ${errorMessage ? 'alert_open' : ''}">
+            ${errorMessage}
         </div>
       `
   }
 }
 
 const mapStateToProps = (state: State) => ({
-  error: Object.values(state).find((item: any) => item?.error?.message)
+  errorItem: Object.values(state).find((item: any) => item?.error)
 })
 
 export default connect(mapStateToProps)(Alert)

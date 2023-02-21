@@ -4,6 +4,7 @@ import { fields as mockFields } from '../../mock/fields'
 import { LoginPageProps } from './types'
 import AuthController from '../../controllers/AuthController'
 import { SignInData } from '../../api/types'
+import withRouter from '../../HOCs/withRouter'
 
 class LoginPage extends Block {
   constructor(props: LoginPageProps = {} as LoginPageProps) {
@@ -11,9 +12,7 @@ class LoginPage extends Block {
 
     this.setProps({
       fields: mockFields,
-      events: {
-        submit: (data: SignInData) => this.onSubmit(data)
-      }
+      onSubmit: (data: SignInData) => this.onSubmit(data),
     })
   }
 
@@ -36,7 +35,7 @@ class LoginPage extends Block {
                             {{{Form
                                     fields=fields
                                     className="paper__form"
-                                    onSubmit=events.submit
+                                    onSubmit=onSubmit
                                     buttonText="Войти"
                             }}}
                             {{{Link
@@ -47,9 +46,10 @@ class LoginPage extends Block {
                     </div>
                 </main>
             </div>
+            {{{Alert}}}
         </div>
     `
   }
 }
 
-export default LoginPage
+export default withRouter(LoginPage)

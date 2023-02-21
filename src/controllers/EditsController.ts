@@ -1,32 +1,52 @@
 import ProfileAPI from '../api/UserAPI'
-import { request, setDataToStore } from './utils'
+import { isBadRequest, request, setDataToStore } from './utils'
+import { ChangePasswordRequest, UserRequest } from '../api/types'
 
 class EditController {
   private api = ProfileAPI
   private namespace = 'user'
-  async changeUserInfo(data: unknown) {
+
+  async changeUserInfo(data: UserRequest) {
     await request(this.namespace, async () => {
-      await this.api.update(data)
+      const response = await this.api.update(data)
+      if (isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
+
+      setDataToStore(this.namespace, response)
     })
   }
 
-  async changeUserPassword(data: unknown) {
+  async changeUserPassword(data: ChangePasswordRequest) {
     await request(this.namespace, async () => {
-       await this.api.updatePassword(data)
+      const response = await this.api.updatePassword(data)
+      if (isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
+
+      setDataToStore(this.namespace, data)
     })
   }
 
   async changeUserAvatar(data: FormData) {
     await request(this.namespace, async () => {
-      const user = await this.api.updateAvatar(data)
-      setDataToStore(this.namespace, user)
+      const response = await this.api.updateAvatar(data)
+      if (isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
+
+      setDataToStore(this.namespace, response)
     })
   }
 
   async getUser(id: number) {
     await request(this.namespace, async () => {
-      const userInfo = await this.api.getUserInfo(id)
-      setDataToStore(this.namespace, userInfo)
+      const response = await this.api.getUserInfo(id)
+      if (isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
+
+      setDataToStore(this.namespace, response)
     })
   }
 }

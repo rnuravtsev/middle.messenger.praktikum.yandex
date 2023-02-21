@@ -1,7 +1,7 @@
 import { SignUpData, SignInData } from '../api/types'
 import AuthAPI from '../api/AuthAPI'
 import Router from 'core/Router/Router'
-import { request, setDataToStore } from './utils'
+import { isBadRequest, request, setDataToStore } from './utils'
 import { Routes } from '../core/Router/types'
 
 class AuthController {
@@ -10,18 +10,20 @@ class AuthController {
 
   async signUp(data: SignUpData) {
     await request(this.namespace, async () => {
-      await this.api.signUp(data)
-      await this.fetchUser()
+      const response = await this.api.signUp(data)
+      isBadRequest(response)
 
+      await this.fetchUser()
       Router.go(Routes.Profile)
     })
   }
 
   async signIn(data: SignInData) {
     await request(this.namespace, async () => {
-      await this.api.signIn(data)
-      await this.fetchUser()
+      const response = await this.api.signIn(data)
+      isBadRequest(response)
 
+      await this.fetchUser()
       Router.go(Routes.Profile)
     })
   }
@@ -35,10 +37,11 @@ class AuthController {
   }
 
   async fetchUser() {
-    await request(this.namespace, async () => {
-      const user = await this.api.getUser()
-      setDataToStore(this.namespace, user)
-    })
+    const response = await this.api.getUser()
+      if(isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
+      setDataToStore(this.namespace, response)
   }
 }
 

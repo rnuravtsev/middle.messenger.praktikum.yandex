@@ -42,7 +42,7 @@ export class Store extends EventBus {
     this.emit(StoreEvents.Updated)
   }
 
-  set(path: string, value: any) {
+  set(path: string, value: unknown) {
     set(this.state, path, value)
 
     this.emit(StoreEvents.Updated)
@@ -51,6 +51,5 @@ export class Store extends EventBus {
 }
 
 const store = new Store()
-
 
 export default store

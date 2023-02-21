@@ -34,6 +34,7 @@ class ProfilePage extends Block {
                     </div>
                 </div>
             </div>
+            {{{Alert}}}
         </main>
     `
   }

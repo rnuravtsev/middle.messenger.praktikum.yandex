@@ -66,6 +66,20 @@ export type CreateChatData = {
 export type ChatDeleteData = {
   chatId: number,
 }
+
+export type UserRequest = {
+  first_name:	string
+  second_name:	string
+
+  display_name:	string
+
+  login:	string
+
+  email:	string
+
+  phone:	string
+}
+
 export type UsersRequestData = {
   users: number[],
   chatId: number,
@@ -75,6 +89,18 @@ export type FindUserRequest = {
   login:	string
 }
 
-export type createChatRequest = {
+export type CreateChatRequest = {
   title:	string
 }
+
+export type ChangePasswordRequest = {
+  oldPassword: string,
+
+  newPassword:string
+}
+
+export type BadRequestError = {
+  reason: string,
+}
+
+export type Misspelled<T> = T | BadRequestError
