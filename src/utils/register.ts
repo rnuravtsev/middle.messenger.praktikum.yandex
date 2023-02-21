@@ -1,5 +1,4 @@
 import registerComponent from 'core/registerComponent'
-import Layout from 'components/Layout/Layout'
 import Button from 'components/Button/Button'
 import ChatList from 'components/ChatList/ChatList'
 import ChatView from 'components/ChatView/ChatView'
@@ -30,7 +29,6 @@ import AddUser from '../components/Modal/AddUser/AddUser'
 import DeleteUser from '../components/Modal/DeleteUser/DeleteUser'
 import Alert from '../components/Alert/Alert'
 
-registerComponent(Layout)
 registerComponent(Button)
 registerComponent(ChatList)
 registerComponent(ChatView)
@@ -44,9 +42,6 @@ registerComponent(EmptyChat)
 registerComponent(MainChat)
 registerComponent(Form)
 registerComponent(Field)
-// TODO: Доработать типизацию
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
 registerComponent(Link)
 registerComponent(InputError)
 registerComponent(Table)
@@ -54,9 +49,6 @@ registerComponent(Img)
 registerComponent(Subtitle)
 registerComponent(PageTitle)
 registerComponent(Avatar)
-// TODO: Доработать типизацию
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
 registerComponent(SidebarReturn)
 registerComponent(Logout)
 registerComponent(AddChat)
