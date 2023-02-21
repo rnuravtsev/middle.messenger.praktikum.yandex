@@ -24,6 +24,8 @@ export const request = async (namespace: string, cb: () => unknown) => {
     setLoadingStateToStore(namespace, false)
   }
 }
+
 export const isBadRequest = (obj: object): obj is BadRequestError => {
+  console.trace()
   return 'reason' in obj
 }
