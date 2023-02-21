@@ -38,6 +38,12 @@
     }
   }
 
+  &_without-line {
+    &:after {
+      display: none;
+    }
+  }
+
   &_row {
     flex-direction: row;
     justify-content: space-between;

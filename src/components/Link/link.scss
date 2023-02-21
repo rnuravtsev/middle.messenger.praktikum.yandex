@@ -1,10 +1,16 @@
 @import "src/scss/variables";
 
 .link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: 11px;
   line-height: 11px;
   color: $primary-300;
   text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 
   &:hover {
     color: $primary-200;
@@ -16,5 +22,16 @@
 
   &_negative {
     color: $negative;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $negative;
+      opacity: .85;
+    }
+  }
+
+  &_success {
+    color: $success;
   }
 }

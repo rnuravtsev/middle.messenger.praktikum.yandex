@@ -1,22 +1,13 @@
-import Block from "core/Block";
-import './message-preview.scss';
-
-type MessageProps = {
-  className: string,
-  title: string,
-  message: {
-    prefix: boolean,
-    text: string,
-  }
-}
-
+import Block from 'core/Block'
+import './message-preview.scss'
+import { MessageProps } from './types'
 
 class MessagePreview extends Block {
   constructor(props: MessageProps) {
-    super(props);
+    super(props)
   }
 
-  static componentName = 'MessagePreview';
+  static componentName = 'MessagePreview'
 
     render() {
     // language=hbs
@@ -35,4 +26,4 @@ class MessagePreview extends Block {
   }
 }
 
-export default MessagePreview;
+export default MessagePreview

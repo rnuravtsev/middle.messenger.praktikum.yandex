@@ -1,5 +1,6 @@
-import Block from "core/Block";
-import './message.scss';
+import Block from 'core/Block'
+import './message.scss'
+import { dateToHumanHoursAndMinutes } from '../../helpers/helpers'
 
 type MessageProps = {
   className: string,
@@ -11,21 +12,24 @@ type MessageProps = {
 
 
 class Message extends Block {
-  constructor({ text, time, className, image, owner }: MessageProps) {
-    super({ text, time, className, image, owner });
+  static componentName = 'Message'
+  constructor(props: MessageProps) {
+    super(props)
   }
 
-  static componentName = 'Message';
+  render() {
+    const { time, messageUserId, userId } = this.props
 
-    render() {
+    const isOwnerMessage = messageUserId === userId
+
     // language=hbs
     return `
-        <div class="message {{className}}{{#if owner}} message_owner{{/if}}">
+        <div class="message {{className}} ${isOwnerMessage ? 'message_owner' : ''}">
             <div class="message__content">
-                {{#if text}}
+                {{#if content}}
                     <p class="message__text">
-                        {{text}}
-                        <span class="message__time">{{time}}</span>
+                        {{content}}
+                        <span class="message__time">${dateToHumanHoursAndMinutes(time)}</span>
                     </p>
                 {{else if image}}
                     <img class="message__img" src="{{image}}" alt="{{image}}">
@@ -37,4 +41,4 @@ class Message extends Block {
   }
 }
 
-export default Message;
+export default Message

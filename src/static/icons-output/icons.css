@@ -1,8 +1,8 @@
 @font-face {
     font-family: "icons";
-    src: url("./icons.ttf?d04a2748d4b85a1b50f3064bb18f85b8") format("truetype"),
-url("./icons.woff?d04a2748d4b85a1b50f3064bb18f85b8") format("woff"),
-url("./icons.woff2?d04a2748d4b85a1b50f3064bb18f85b8") format("woff2");
+    src: url("./icons.ttf?ab1c770e40e3c311f57de618666aa51f") format("truetype"),
+url("./icons.woff?ab1c770e40e3c311f57de618666aa51f") format("woff"),
+url("./icons.woff2?ab1c770e40e3c311f57de618666aa51f") format("woff2");
 }
 
 i[class^="icon-"]:before, i[class*=" icon-"]:before {
@@ -19,12 +19,33 @@ i[class^="icon-"]:before, i[class*=" icon-"]:before {
 .icon-2check:before {
     content: "\f101";
 }
-.icon-clip:before {
+.icon-arrow-right:before {
     content: "\f102";
 }
-.icon-loupe:before {
+.icon-avatar:before {
     content: "\f103";
 }
-.icon-menu:before {
+.icon-chevron-forward:before {
     content: "\f104";
+}
+.icon-circle-cross:before {
+    content: "\f105";
+}
+.icon-circle-plus:before {
+    content: "\f106";
+}
+.icon-clip:before {
+    content: "\f107";
+}
+.icon-loupe:before {
+    content: "\f108";
+}
+.icon-menu:before {
+    content: "\f109";
+}
+.icon-square-and-pencil:before {
+    content: "\f10a";
+}
+.icon-xmark:before {
+    content: "\f10b";
 }

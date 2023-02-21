@@ -1,20 +1,13 @@
-import Block from "core/Block";
-
-type ImgProps = {
-  className: string,
-  src: string,
-  alt: string,
-  width: string,
-  height: string,
-}
+import Block from 'core/Block'
+import { ImgProps } from './types'
 
 
 class Img extends Block {
+  static componentName = 'Img'
   constructor(props: ImgProps) {
-    super(props);
+    super(props)
   }
 
-  static componentName = 'Img';
 
     render() {
     // language=hbs
@@ -30,4 +23,4 @@ class Img extends Block {
   }
 }
 
-export default Img;
+export default Img
