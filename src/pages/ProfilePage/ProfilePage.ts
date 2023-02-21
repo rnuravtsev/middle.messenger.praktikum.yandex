@@ -18,7 +18,7 @@ class ProfilePage extends Block {
             <div class="profile">
                 {{{SidebarReturn className="profile__sidebar"}}}
                 <div class="profile__content container">
-                    {{{ProfileIcon}}}
+                    {{{Avatar className="profile__avatar" src=user.avatar}}}
                     <div class="profile__subtitle-wrapper">
                         {{{Subtitle
                                 text="${user?.first_name} ${user?.second_name}"

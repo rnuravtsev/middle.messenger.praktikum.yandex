@@ -13,7 +13,7 @@ class Table extends Block {
     const resolvedUser: Indexed = {}
 
     if (user) {
-      const omittedUser: Indexed = omit(user, ['id'])
+      const omittedUser: Indexed = omit(user, ['id', 'avatar'])
 
       const userWithoutEmptyProperties = Object.entries(omittedUser).reduce((acc, [key, value]) => {
         if(value) {

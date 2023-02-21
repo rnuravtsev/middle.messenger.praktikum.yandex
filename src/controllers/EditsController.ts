@@ -16,6 +16,13 @@ class EditController {
     })
   }
 
+  async changeUserAvatar(data: FormData) {
+    await request(this.namespace, async () => {
+      const user = await this.api.updateAvatar(data)
+      setDataToStore(this.namespace, user)
+    })
+  }
+
   async getUser(id: number) {
     await request(this.namespace, async () => {
       const userInfo = await this.api.getUserInfo(id)

@@ -19,7 +19,7 @@ import Table from 'components/Table/Table'
 import Img from 'components/Img/Img'
 import Subtitle from 'components/Subtitle/Subtitle'
 import PageTitle from 'components/PageTitle/PageTitle'
-import ProfileIcon from 'components/ProfileIcon/ProfileIcon'
+import Avatar from 'components/Avatar/Avatar'
 import SidebarReturn from 'components/SidebarReturn/SidebarReturn'
 import { Logout } from 'components/Logout/Logout'
 import AddChat from '../components/Modal/AddChat/AddChat'
@@ -53,7 +53,7 @@ registerComponent(Table)
 registerComponent(Img)
 registerComponent(Subtitle)
 registerComponent(PageTitle)
-registerComponent(ProfileIcon)
+registerComponent(Avatar)
 // TODO: Доработать типизацию
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore

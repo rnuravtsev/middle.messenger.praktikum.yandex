@@ -38,7 +38,7 @@ export default class HTTPTransport {
 
   public post<Response>(url: string, options = {} as IOptions): Promise<Response> {
     return this.request(`${this.endpoint}${url}`, {
-      data: JSON.stringify(options.data),
+      data: options.data,
       method: METHODS.POST
     }, options?.timeout)
   }
@@ -46,8 +46,9 @@ export default class HTTPTransport {
   public put<Response>(url: string, options = {} as IOptions): Promise<Response> {
     return this.request(`${this.endpoint}${url}`,
       {
-        data: JSON.stringify(options.data),
-        method: METHODS.PUT }
+        data: options.data,
+        method: METHODS.PUT
+      }
       , options?.timeout)
   }
 
@@ -92,20 +93,24 @@ export default class HTTPTransport {
 
 
       if (!(data instanceof FormData)) {
-        xhr.setRequestHeader('accept', 'application/json')
         xhr.setRequestHeader('Content-Type', 'application/json')
-        // xhr.setRequestHeader('mode', 'cors')
-        // xhr.setRequestHeader('credentials', 'include')
       }
 
       xhr.withCredentials = true
       xhr.responseType = 'json'
 
+
       if (isGet || !data) {
         xhr.send()
-      } else {
-        xhr.send(data)
+        return
       }
+
+      if (data instanceof FormData) {
+        xhr.send(data)
+        return
+      }
+
+      xhr.send(JSON.stringify(data))
     })
   }
 }

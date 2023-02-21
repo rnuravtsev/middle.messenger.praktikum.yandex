@@ -5,6 +5,7 @@ import connect from '../../HOCs/connect'
 import FieldNormalize from '../../helpers/FieldNormalize'
 import { User } from '../../api/types'
 import EditsController from '../../controllers/EditsController'
+import { State } from '../../utils/Store'
 
 class ProfileEditPage extends Block {
   constructor(props: ProfileEditProps = {} as ProfileEditProps) {
@@ -29,7 +30,11 @@ class ProfileEditPage extends Block {
             <div class="profile">
                 {{{SidebarReturn className="profile__sidebar"}}}
                 <div class="profile__content container">
-                    {{{ProfileIcon}}}
+                    {{{Avatar
+                            className="profile__avatar"
+                            src=user.avatar
+                            editable=true
+                    }}}
                     <div class="profile__subtitle-wrapper"></div>
                     {{{Form
                             className="profile__form"
@@ -45,7 +50,7 @@ class ProfileEditPage extends Block {
   }
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: State) => ({
  user: state.user?.data
 })
 

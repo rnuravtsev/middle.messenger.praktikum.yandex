@@ -5,6 +5,7 @@ enum UserAPIPath {
   Profile = '/profile',
   Password = '/password',
   Search = '/search',
+  Avatar = '/profile/avatar',
 }
 
 class UserAPI extends BaseAPI {
@@ -26,6 +27,10 @@ class UserAPI extends BaseAPI {
 
   getUserInfo(id: number): Promise<Response> {
     return this.http.get(`/${id}`)
+  }
+
+  updateAvatar(data: FormData): Promise<Response> {
+    return this.http.put(UserAPIPath.Avatar, { data })
   }
 
   create = undefined

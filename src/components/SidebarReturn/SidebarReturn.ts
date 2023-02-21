@@ -2,6 +2,7 @@ import Block from 'core/Block'
 import './sidebar-return.scss'
 import { SidebarReturnProps } from './types'
 import withRouter from '../../HOCs/withRouter'
+import { Routes } from '../../core/Router/types'
 
 class SidebarReturn extends Block {
   static componentName = 'SidebarReturn'
@@ -15,7 +16,11 @@ class SidebarReturn extends Block {
 
 
   handleButtonClick() {
-    this.props.router.back()
+    if (window.location.pathname === Routes.Profile) {
+      this.props.router.go(Routes.Messenger)
+    } else {
+      this.props.router.back()
+    }
   }
 
   render() {
