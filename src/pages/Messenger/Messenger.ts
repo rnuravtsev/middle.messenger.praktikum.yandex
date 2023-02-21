@@ -14,7 +14,7 @@ class Messenger extends Block<MainPageProps> {
   render() {
     // language=hbs
     return `
-        <main>
+        <div>
             <div class="messenger">
                 {{{Sidebar className="messenger__sidebar"}}}
                 {{#if activeChatId}}
@@ -23,8 +23,7 @@ class Messenger extends Block<MainPageProps> {
                     {{{EmptyChat className="messenger__empty-chat"}}}
                 {{/if}}
             </div>
-            {{{Alert}}}
-        </main>`
+        </div>`
   }
 }
 
