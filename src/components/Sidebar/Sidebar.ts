@@ -41,7 +41,6 @@ class Sidebar extends Block {
             <div class="sidebar__flex-wrapper">
                 {{{Input
                         className="sidebar__search input input_type_search"
-                        type="search"
                         placeholder="Поиск"
                 }}}
                 {{{Button
