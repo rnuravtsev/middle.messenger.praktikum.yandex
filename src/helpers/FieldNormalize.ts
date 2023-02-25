@@ -71,4 +71,6 @@ class FieldNormalize {
   }
 }
 
-export default new FieldNormalize()
+const fieldNormalize = new FieldNormalize()
+
+export default fieldNormalize

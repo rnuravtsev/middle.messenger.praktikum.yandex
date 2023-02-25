@@ -10,8 +10,8 @@ export function connect(mapStateToProps: (state: State) => Record<string, unknow
 
         super({ ...props, ...previousState })
 
-        store.on(StoreEvents.Updated, () => {
-          const stateProps = mapStateToProps(store.getState())
+        store.on(StoreEvents.Updated, (actualState) => {
+          const stateProps = mapStateToProps(actualState)
 
           if(isEqual(previousState, stateProps)) return
 

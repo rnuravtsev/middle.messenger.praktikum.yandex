@@ -40,6 +40,6 @@ class ProfilePage extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => ({ user: state?.user?.data })
+const mapStateToProps = (state: State) => ({ user: { ...state?.user?.data } })
 
 export default connect(mapStateToProps)(ProfilePage)

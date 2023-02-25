@@ -48,7 +48,7 @@ const mapStateToProps = (state: State) => {
   }
 
   return {
-    messages: state.messages?.[activeChatId] || [],
+    messages: { ...state.messages?.[activeChatId] || []},
     activeChatId: state.activeChatId,
     userId: state.user?.data?.id
   }
