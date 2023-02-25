@@ -11,7 +11,12 @@ class ChatPreview extends Block {
       ...props,
       events: {
         click: () => this.handleClick(),
+        contextmenu: (e: Event) => this.handleContextMenu(e),
       }
+    })
+
+    this.setState({
+      isContextMenuOpen : false
     })
   }
 
@@ -20,15 +25,25 @@ class ChatPreview extends Block {
     store.set('activeChatId', id)
   }
 
+  handleContextMenu(e: Event) {
+    e.preventDefault()
+    e.stopPropagation()
+    this.setState({
+      isContextMenuOpen: !this.state.isContextMenuOpen
+    })
+  }
+
   render() {
     // language=hbs
-    const { avatar, title } = this.props
     return `
         <div class="chat-preview">
-            <img class="chat-preview__avatar" src="${avatar}" alt="Аватар профиля">
+            <img
+                    class="chat-preview__avatar"
+                    src="{{avatar}}"
+                    alt="Аватар профиля">
             {{{MessagePreview
                     className="chat-preview__message"
-                    title="${title}"
+                    title=title
                     message=content
             }}}
             <div class="chat-preview__additional">
@@ -39,6 +54,11 @@ class ChatPreview extends Block {
                     <span class="chat-preview__counter">{{unread_count}}</span>
                 {{/if}}
             </div>
+            {{{ContextMenu
+                    className="chat-preview__context-menu"
+                    isShown=isContextMenuOpen
+                    chatId=id
+            }}}
         </div>
     `
   }

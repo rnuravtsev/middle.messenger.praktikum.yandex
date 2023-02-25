@@ -2,7 +2,8 @@ import ChatAPI from '../api/ChatAPI'
 import { isBadRequest, request, setDataToStore } from './utils'
 import MessagesController from './MessagesController'
 import {
-  ChatDeleteData,
+  BadRequestError, Chat,
+  ChatDeleteRequest, ChatDeleteResponse,
   CreateChatData,
   FindUserRequest,
   Misspelled,
@@ -10,6 +11,7 @@ import {
   UsersRequestData
 } from '../api/types'
 import UserAPI from '../api/UserAPI'
+import store from '../utils/Store'
 
 class ChatController {
   private api = ChatAPI
@@ -49,10 +51,20 @@ class ChatController {
     })
   }
 
-  async deleteChat(id: ChatDeleteData) {
+  async deleteChat(chatId: ChatDeleteRequest) {
     await request(this.namespace, async () => {
-      await this.api.delete(id)
-      setDataToStore(this.namespace, id)
+      const response = await this.api.delete(chatId)
+
+      if (isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
+
+      const deletedChatId = response.result.id
+      const chats = store.getState().chats?.data
+
+      const filteredChats = chats?.filter((chat: Chat) => chat.id !== deletedChatId)
+
+      setDataToStore(this.namespace, filteredChats)
     })
   }
 
