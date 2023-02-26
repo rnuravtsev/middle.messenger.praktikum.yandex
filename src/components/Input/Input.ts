@@ -5,6 +5,7 @@ import { FORM_GRID_COLUMN_CSS_CLASS } from '../Form/consts'
 import { InputProps } from './types'
 
 class Input extends Block {
+  static componentName = 'Input'
   private readonly focusCallback: (evt: FocusEvent) => void
   private readonly blurCallback: (evt: FocusEvent) => void
 
@@ -17,11 +18,9 @@ class Input extends Block {
       },
     })
 
-      // FIXME: Создаю ссылку на событие focus, приходящее из родителя
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    this.focusCallback = this.props.events.focus || (() => {})
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    this.blurCallback = this.props.events.blur || (() => {})
+    // FIXME: Создаю ссылку на событие focus, приходящее из родителя
+    this.focusCallback = this.props.events.focus
+    this.blurCallback = this.props.events.blur
 
     this.setProps({
       events: {
@@ -32,9 +31,7 @@ class Input extends Block {
     })
   }
 
-  static componentName = 'Input'
-
-    toggleLabelClass() {
+  toggleLabelClass() {
     const input = this._element as HTMLInputElement
     const label = input.parentElement
     const form = input.form

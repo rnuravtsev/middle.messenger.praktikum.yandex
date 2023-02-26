@@ -2,8 +2,8 @@ import ChatAPI from '../api/ChatAPI'
 import { isBadRequest, request, setDataToStore } from './utils'
 import MessagesController from './MessagesController'
 import {
-  BadRequestError, Chat,
-  ChatDeleteRequest, ChatDeleteResponse,
+  Chat,
+  ChatDeleteRequest,
   CreateChatData,
   FindUserRequest,
   Misspelled,

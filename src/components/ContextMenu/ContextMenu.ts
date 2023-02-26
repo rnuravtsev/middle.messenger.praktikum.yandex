@@ -9,11 +9,13 @@ class ContextMenu extends Block {
   constructor(props: ContextMenuProps = {} as ContextMenuProps) {
     super({
       ...props,
-      handleDeleteChat: () => this.handleDeleteChat(),
+      handleDeleteChat: (e: Event) => this.handleDeleteChat(e),
     })
   }
 
-  async handleDeleteChat() {
+  async handleDeleteChat(e:  Event) {
+    e.stopPropagation()
+
     const { chatId } = this.props
     await ChatController.deleteChat(chatId)
   }

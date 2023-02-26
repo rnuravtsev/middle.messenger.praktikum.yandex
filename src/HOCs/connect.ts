@@ -3,10 +3,11 @@ import store, { State, StoreEvents } from '../utils/Store'
 
 export function connect(mapStateToProps: (state: State) => Record<string, unknown>) {
   return function wrap(Component: BlockClass){
+      let previousState = {}
     return class Connect extends Component {
 
       constructor(props: any) {
-        let previousState = mapStateToProps(store.getState())
+        previousState = mapStateToProps(store.getState())
 
         super({ ...props, ...previousState })
 

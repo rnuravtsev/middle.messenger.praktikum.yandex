@@ -16,7 +16,7 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  z-index: 1000;
+  z-index: $tooltip-z;
 }
 
 .context-menu_open {

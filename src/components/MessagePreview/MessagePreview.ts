@@ -15,12 +15,12 @@ class MessagePreview extends Block {
         <div class="{{className}} message-preview">
             <h4 class="message-preview__title">{{title}}</h4>
             <p class="message-preview__text-wrapper">
-                {{#if message-preview.prefix}}
+                {{#if prefix}}
                     <span class="message-preview__prefix">
                         Вы:
                     </span>
                 {{/if}}
-                <span class="message-preview__text">{{message.text}}</span>
+                <span class="message-preview__text">{{message}}</span>
         </div>
     `
   }

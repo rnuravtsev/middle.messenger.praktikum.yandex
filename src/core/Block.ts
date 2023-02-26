@@ -8,8 +8,6 @@ interface BlockMeta<P = any> {
   props: P;
 }
 
-type Events = Values<typeof Block.EVENTS>;
-
 export default class Block<P extends Indexed = any> {
   static EVENTS = {
     INIT: 'init',
@@ -26,13 +24,13 @@ export default class Block<P extends Indexed = any> {
   protected readonly props: P
   protected children: { [id: string]: Block } = {}
 
-  eventBus: () => EventBus<Events>
+  eventBus: () => EventBus
 
   protected state: any = {}
   protected refs: { [key: string]: Block } = {}
 
   public constructor(props?: P) {
-    const eventBus = new EventBus<Events>()
+    const eventBus = new EventBus()
 
     this._meta = {
       props,
@@ -42,7 +40,7 @@ export default class Block<P extends Indexed = any> {
 
     // TODO: Доработать типизацию
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
+    // @ts-ignore
     this.props = this._makePropsProxy(props || {} as P)
     this.state = this._makePropsProxy(this.state)
 
@@ -53,7 +51,7 @@ export default class Block<P extends Indexed = any> {
     eventBus.emit(Block.EVENTS.INIT, this.props)
   }
 
-  _registerEvents(eventBus: EventBus<Events>) {
+  _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this))
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
     eventBus.on(Block.EVENTS.FLOW_SCU, this._shouldComponentUpdate.bind(this))

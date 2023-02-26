@@ -21,9 +21,9 @@ class ChatList extends Block<ChatListProps> {
                         id=id
                         avatar=avatar
                         title=title
-                        message=message
+                        message=last_message
                         time=time
-                        count=count
+                        count=unread_count
                 }}}
             {{/each}}
         </ul>
@@ -32,7 +32,7 @@ class ChatList extends Block<ChatListProps> {
 }
 
 const mapStateToProps = (state: State) => ({
-  chats: { ...state?.chats?.data },
+  chats: state?.chats?.data,
   chatLoading: state?.chats?.isLoading
 })
 export default connect(mapStateToProps)(ChatList)

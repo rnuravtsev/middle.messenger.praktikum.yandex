@@ -1,7 +1,28 @@
 import Block from 'core/Block'
 import './chat-preview.scss'
 import { ChatProps } from './types'
-import store from '../../utils/Store'
+import store, { State } from '../../utils/Store'
+import { dateToHumanHoursAndMinutes } from '../../helpers/helpers'
+import connect from '../../HOCs/connect'
+
+const renderAvatar = (avatar: string, title: string) => {
+  if (avatar) {
+    return `
+        <img
+                class="chat-preview__avatar"
+                src="https://ya-praktikum.tech/api/v2/resources${avatar}"
+                alt="Аватар профиля">
+    `
+  }
+
+  //language=hbs
+  return `
+      {{{EmptyAvatar
+              className="chat-preview__avatar"
+              userName="${title}"
+      }}}
+    `
+}
 
 class ChatPreview extends Block {
   static componentName = 'ChatPreview'
@@ -16,7 +37,7 @@ class ChatPreview extends Block {
     })
 
     this.setState({
-      isContextMenuOpen : false
+      isContextMenuOpen: false
     })
   }
 
@@ -28,27 +49,34 @@ class ChatPreview extends Block {
   handleContextMenu(e: Event) {
     e.preventDefault()
     e.stopPropagation()
+
     this.setState({
       isContextMenuOpen: !this.state.isContextMenuOpen
     })
   }
 
   render() {
+    const { message, title, id, activeChatId, currentUserLogin } = this.props
+    const { content, time, user } = message || {}
+    const { avatar, login } = user || {}
+
+    const isActive = id === activeChatId
+
+    const isMessagePreviewPrefix = login === currentUserLogin
+
     // language=hbs
     return `
-        <div class="chat-preview">
-            <img
-                    class="chat-preview__avatar"
-                    src="{{avatar}}"
-                    alt="Аватар профиля">
+        <div class="chat-preview ${isActive && 'chat-preview_active'}">
+            ${renderAvatar(avatar, title)}
             {{{MessagePreview
+                    prefix=${isMessagePreviewPrefix}
                     className="chat-preview__message"
                     title=title
-                    message=content
+                    message="${content ? content : ''}"
             }}}
             <div class="chat-preview__additional">
-                {{#if time}}
-                    <span class="chat-preview__time">{{time}}</span>
+                {{#if message.time}}
+                    <span class="chat-preview__time">${dateToHumanHoursAndMinutes(time)}</span>
                 {{/if}}
                 {{#if unread_count}}
                     <span class="chat-preview__counter">{{unread_count}}</span>
@@ -64,4 +92,9 @@ class ChatPreview extends Block {
   }
 }
 
-export default ChatPreview
+const mapStateToProps = (state: State) => ({
+  activeChatId: state?.activeChatId,
+  currentUserLogin: state?.user?.data?.login,
+})
+
+export default connect(mapStateToProps)(ChatPreview)

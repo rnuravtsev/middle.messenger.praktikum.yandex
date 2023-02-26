@@ -34,7 +34,7 @@ class Extra extends Block {
                     onClick=handleExtraClick
             }}}
             {{{DropdownAddUser
-                    className="chat-page__dropdown"
+                    className="extra__dropdown"
                     isOpen=isExtraDropdownOpen
             }}}
 

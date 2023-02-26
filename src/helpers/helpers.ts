@@ -117,8 +117,18 @@ export function debounce(cb: (...args: unknown[]) => unknown, timeout = 2000) {
 
 export const dateToHumanHoursAndMinutes = (string: string): string => {
   let date: string | Date = new Date(string)
+  let hours: number | string = date.getHours()
+  let minutes: number | string = date.getMinutes()
 
-  date = `${date.getHours()}:${date.getMinutes()}`
+  if (hours < 10) {
+    hours = `0${hours}`
+  }
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`
+  }
+
+  date = `${hours}:${minutes}`
 
   return date
 }
