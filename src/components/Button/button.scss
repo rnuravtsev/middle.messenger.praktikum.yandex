@@ -41,6 +41,10 @@
     @include btn-color($main, transparent, transparent, transparent, true)
   }
 
+  &_color_negative {
+    @include btn-color($negative, transparent, transparent, transparent, true);
+  }
+
   &_type_round {
     padding: 0;
     width: 28px;

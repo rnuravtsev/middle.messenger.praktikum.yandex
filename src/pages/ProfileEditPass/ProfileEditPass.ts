@@ -11,7 +11,6 @@ class ProfileEditPass extends Block {
   constructor(props: ProfileEditPassProps = {} as ProfileEditPassProps) {
     super({
       ...props,
-      fields: FieldNormalize.createFields(['oldPassword', 'newPassword', 'repeatedNewPassword']),
       onSubmit: (data: ChangePasswordRequest) => this.onSubmit(data)
     })
   }
@@ -21,6 +20,7 @@ class ProfileEditPass extends Block {
   }
 
   render() {
+    this.props.fields = FieldNormalize.createFields(['oldPassword', 'newPassword', 'repeatedNewPassword'])
     // language=hbs
     return `
         <main>
@@ -49,7 +49,7 @@ class ProfileEditPass extends Block {
 }
 
 const mapStateToProps = (state: State) => ({
-  user: state.user?.data
+  user: { ...state.user?.data }
 })
 
 

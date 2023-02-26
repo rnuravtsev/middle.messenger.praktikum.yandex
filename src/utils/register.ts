@@ -28,6 +28,8 @@ import Loader from '../components/Loader/Loader'
 import AddUser from '../components/Modal/AddUser/AddUser'
 import DeleteUser from '../components/Modal/DeleteUser/DeleteUser'
 import Alert from '../components/Alert/Alert'
+import ContextMenu from '../components/ContextMenu/ContextMenu'
+import EmptyAvatar from '../components/EmptyAvatar/EmptyAvatar'
 
 registerComponent(Button)
 registerComponent(ChatList)
@@ -58,3 +60,5 @@ registerComponent(Loader)
 registerComponent(AddUser)
 registerComponent(DeleteUser)
 registerComponent(Alert)
+registerComponent(ContextMenu)
+registerComponent(EmptyAvatar)

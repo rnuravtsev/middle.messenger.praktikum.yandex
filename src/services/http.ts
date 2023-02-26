@@ -47,7 +47,7 @@ export default class HTTPTransport {
 
   public delete: HTTPMethod = (url, options) => {
     return this.request(`${this.endpoint}${url}`, {
-      ...options,
+      data: options?.data,
       method: METHODS.DELETE
     }, options?.timeout)
   }

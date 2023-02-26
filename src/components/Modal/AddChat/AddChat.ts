@@ -35,6 +35,7 @@ class AddChat extends Block {
 
   async handleSubmit({ new_chat_name }: AddChatPayload) {
     await ChatController.createChat({ title: new_chat_name })
+    await ChatController.getChats()
   }
 
   render() {

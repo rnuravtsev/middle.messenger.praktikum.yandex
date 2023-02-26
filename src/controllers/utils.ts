@@ -26,6 +26,5 @@ export const request = async (namespace: string, cb: () => unknown) => {
 }
 
 export const isBadRequest = (obj: object): obj is BadRequestError => {
-  console.trace()
   return 'reason' in obj
 }

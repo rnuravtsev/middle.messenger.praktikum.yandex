@@ -1,6 +1,6 @@
-import { ChatNew } from '../ChatPreview/types'
+import { Chat } from '../../api/types'
 
 export type ChatListProps = {
-  chats?: ChatNew[]
+  chats?: Chat[]
   chatLoading?: boolean
 }

@@ -37,15 +37,10 @@ export class Store extends EventBus {
     return this.state
   }
 
-  removeState() {
-    this.state = {}
-    this.emit(StoreEvents.Updated)
-  }
-
   set(path: string, value: unknown) {
     set(this.state, path, value)
 
-    this.emit(StoreEvents.Updated)
+    this.emit(StoreEvents.Updated, this.getState())
     return this
   }
 }

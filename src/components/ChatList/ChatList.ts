@@ -21,9 +21,9 @@ class ChatList extends Block<ChatListProps> {
                         id=id
                         avatar=avatar
                         title=title
-                        message=message
+                        message=last_message
                         time=time
-                        count=count
+                        count=unread_count
                 }}}
             {{/each}}
         </ul>

@@ -10,6 +10,10 @@ type MessageProps = {
   owner: boolean,
 }
 
+const renderIsReadIcon = () => {
+    return '<span class="message__icon"><i class="icon icon-2check"></i></span>'
+}
+
 
 class Message extends Block {
   static componentName = 'Message'
@@ -18,7 +22,7 @@ class Message extends Block {
   }
 
   render() {
-    const { time, messageUserId, userId } = this.props
+    const { time, isRead, messageUserId, userId } = this.props
 
     const isOwnerMessage = messageUserId === userId
 
@@ -29,11 +33,11 @@ class Message extends Block {
                 {{#if content}}
                     <p class="message__text">
                         {{content}}
-                        <span class="message__time">${dateToHumanHoursAndMinutes(time)}</span>
+                      <span class="message__adornments">
+                            ${isOwnerMessage && isRead ? renderIsReadIcon() : ''}
+                            <span class="message__time">${dateToHumanHoursAndMinutes(time)}</span>
+                      </span>
                     </p>
-                {{else if image}}
-                    <img class="message__img" src="{{image}}" alt="{{image}}">
-                    <span class="message__time message__time_dark">{{time}}</span>
                 {{/if}}
             </div>
         </div>

@@ -18,7 +18,6 @@ class Chat extends Block {
     // language=hbs
     return `
         <div class="chat {{className}}">
-            <time datetime="2022-06-19" class="chat__day">19 июня</time>
             <div class="chat__messages">
                 {{#each messages}}
                     {{{Message
@@ -27,6 +26,7 @@ class Chat extends Block {
                             time=time
                             messageUserId=user_id
                             userId=${userId}
+                            isRead=is_read
                     }}}
 
                 {{/each}}

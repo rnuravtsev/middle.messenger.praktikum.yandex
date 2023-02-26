@@ -33,6 +33,7 @@ export interface SignInData {
 
 export interface User {
   [key: string]: unknown
+
   id: number,
   first_name: string,
   second_name: string,
@@ -63,21 +64,30 @@ export interface Message {
 export type CreateChatData = {
   title: string,
 }
-export type ChatDeleteData = {
+
+export type ChatDeleteRequest = {
   chatId: number,
 }
 
+export type ChatDeleteResponse = {
+  userId: number,
+  result: {
+    id: number,
+    title: string,
+    avatar: string
+  }
+}
 export type UserRequest = {
-  first_name:	string
-  second_name:	string
+  first_name: string
+  second_name: string
 
-  display_name:	string
+  display_name: string
 
-  login:	string
+  login: string
 
-  email:	string
+  email: string
 
-  phone:	string
+  phone: string
 }
 
 export type UsersRequestData = {
@@ -86,17 +96,17 @@ export type UsersRequestData = {
 }
 
 export type FindUserRequest = {
-  login:	string
+  login: string
 }
 
 export type CreateChatRequest = {
-  title:	string
+  title: string
 }
 
 export type ChangePasswordRequest = {
   oldPassword: string,
 
-  newPassword:string
+  newPassword: string
 }
 
 export type BadRequestError = {

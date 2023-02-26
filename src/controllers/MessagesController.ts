@@ -13,8 +13,8 @@ class MessagesController {
     const userId = store.getState()?.user?.data?.id
     const socket = new WSTransport(`wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${token}`)
 
-    if (!token || !userId) {
-      console.error('No token or userId')
+    if (!token || !userId || !socket) {
+      console.error('Connection error')
       return
     }
 

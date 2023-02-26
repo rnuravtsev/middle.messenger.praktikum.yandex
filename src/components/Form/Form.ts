@@ -4,14 +4,27 @@ import { validateForm, ValidateRuleType } from '../../utils/validateForm'
 import { escapeHtml } from '../../helpers/helpers'
 import { FormProps } from './types'
 
+const ENTER_KEY_CODE = 13
+
 class Form extends Block {
   static componentName = 'Form'
   constructor(props: FormProps) {
     super({
       ...props,
       handleButtonSubmit: (evt: Event) => this.handleButtonSubmit(evt),
+      events: {
+        keydown: (evt: KeyboardEvent) => this.onKeyDown(evt),
+      }
     })
   }
+
+  onKeyDown(evt: KeyboardEvent) {
+    if (evt.keyCode === ENTER_KEY_CODE) {
+      evt.preventDefault()
+      return
+    }
+  }
+
 
 
   validate(inputs: HTMLInputElement[]): boolean {
@@ -68,7 +81,7 @@ class Form extends Block {
     } = this.props
     // language=hbs
     return `
-        <form id="form"
+        <form id="form" method="post"
               class="form form_grid_{{#if gridType}}{{gridType}}{{else}}column{{/if}} {{className}}">
             {{#each fields}}
                 {{{Field

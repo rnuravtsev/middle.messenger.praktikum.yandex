@@ -1,5 +1,12 @@
 import BaseAPI from './BaseAPI'
-import { Chat, User, ChatDeleteData, CreateChatData, UsersRequestData, Misspelled } from './types'
+import {
+  Chat,
+  User,
+  ChatDeleteRequest,
+  CreateChatData,
+  UsersRequestData,
+  Misspelled, ChatDeleteResponse,
+} from './types'
 
  enum ChatAPIPath {
   Chats = '/',
@@ -24,8 +31,8 @@ class ChatAPI extends BaseAPI {
     return this.http.post(ChatAPIPath.Chats, { data })
   }
 
-  async delete(id: ChatDeleteData): Promise<Misspelled<Response>> {
-    return this.http.delete(`/${id}`)
+  async delete(id: ChatDeleteRequest): Promise<Misspelled<ChatDeleteResponse>> {
+    return this.http.delete('/', { data: { chatId: id } })
   }
 
   async addUsers(data: UsersRequestData): Promise<Misspelled<Response>> {

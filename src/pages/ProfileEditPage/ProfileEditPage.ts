@@ -9,13 +9,9 @@ import { State } from '../../utils/Store'
 
 class ProfileEditPage extends Block {
   constructor(props: ProfileEditProps = {} as ProfileEditProps) {
-    super(props)
-
-    this.setProps({
-      fields: FieldNormalize.createFields(undefined, props.user as User),
-      events: {
-        submit: (evt: SubmitEvent) => this.onSubmit(evt),
-      }
+    super({
+        ...props,
+        onSubmit: (evt: SubmitEvent) => this.onSubmit(evt),
     })
   }
 
@@ -24,6 +20,7 @@ class ProfileEditPage extends Block {
   }
 
   render() {
+    this.props.fields = FieldNormalize.createFields(undefined, this.props.user as User)
     // language=hbs
     return `
         <main>
@@ -41,7 +38,7 @@ class ProfileEditPage extends Block {
                             fields=fields
                             gridType="row"
                             buttonText="Cохранить"
-                            onSubmit=events.submit
+                            onSubmit=onSubmit
                     }}}
                 </div>
             </div>
@@ -52,7 +49,7 @@ class ProfileEditPage extends Block {
 }
 
 const mapStateToProps = (state: State) => ({
- user: state.user?.data
+  user: { ...state.user?.data }
 })
 
 export default connect(mapStateToProps)(ProfileEditPage)

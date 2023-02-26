@@ -9,6 +9,7 @@ export type IconsId =
   | "loupe"
   | "menu"
   | "square-and-pencil"
+  | "trash"
   | "xmark";
 
 export type IconsKey =
@@ -22,6 +23,7 @@ export type IconsKey =
   | "Loupe"
   | "Menu"
   | "SquareAndPencil"
+  | "Trash"
   | "Xmark";
 
 export enum Icons {
@@ -35,6 +37,7 @@ export enum Icons {
   Loupe = "loupe",
   Menu = "menu",
   SquareAndPencil = "square-and-pencil",
+  Trash = "trash",
   Xmark = "xmark",
 }
 
@@ -49,5 +52,6 @@ export const ICONS_CODEPOINTS: { [key in Icons]: string } = {
   [Icons.Loupe]: "61704",
   [Icons.Menu]: "61705",
   [Icons.SquareAndPencil]: "61706",
-  [Icons.Xmark]: "61707",
+  [Icons.Trash]: "61707",
+  [Icons.Xmark]: "61708",
 };

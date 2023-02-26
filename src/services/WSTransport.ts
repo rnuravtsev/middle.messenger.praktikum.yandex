@@ -71,7 +71,12 @@ export class WSTransport extends EventBus {
     })
 
     socket.addEventListener('message', (message) => {
-      const data = JSON.parse(message.data)
+      let data
+      try {
+        data = JSON.parse(message.data)
+      } catch (e) {
+        throw new Error('Bad message format')
+      }
 
       if (data?.type === 'pong') {
         return
