@@ -1,0 +1,17 @@
+@import "src/scss/variables";
+
+.extra {
+  position: relative;
+  opacity: 1;
+}
+
+.extra__dropdown {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  z-index: $dropdown-z;
+}
+
+.btn.extra__button {
+  padding: 5px;
+}

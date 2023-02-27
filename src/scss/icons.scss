@@ -3,8 +3,9 @@
 i[class^="icon-"],
 i[class*=" icon-"] {
   display: block;
-  max-width: 32px;
-  max-height: 32px;
+  max-width: 22px;
+  max-height: 22px;
+  font-size: 22px;
 }
 
 .icon-clip {
@@ -20,8 +21,31 @@ i[class*=" icon-"] {
   background-image: url("../static/icons/loupe.svg");
   background-repeat: no-repeat;
   background-position: center;
+
+  &::before {
+    display: none;
+  }
 }
 
-.icon-loupe::before {
-  display: none;
+.icon-square-and-pencil {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url("../static/icons/square-and-pencil.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &::before {
+    display: none;
+  }
+}
+
+.icon.icon-xmark {
+  font-size: 14px;
+  color: #999999;
+}
+
+.icon.icon-chevron-forward {
+  font-size: 12px;
+  max-height: 8px;
 }

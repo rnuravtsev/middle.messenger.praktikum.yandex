@@ -10,21 +10,39 @@
   text-align: center;
   font-family: 'Inter', sans-serif;
   border: none;
-  border-radius: $radius-default;
+  border-radius: $radius-m;
   cursor: pointer;
   transition: $transition-default;
 
   &_color_primary {
     @include btn-color($white, $primary-300, $primary-200, $primary-400);
+    .icon {
+      color: $primary-300;
+    }
+  }
+
+  &_color_main {
+    color: $main;
   }
 
   &_color_tertiary {
     @include btn-color($primary-300, transparent, $primary-200, $primary-400);
   }
 
+  &_color_gray {
+    @include btn-color($gray-500, transparent, $gray-600, $gray-600, true);
+  }
+
   &_type_icon {
     padding: 0;
-    @include btn-color($gray-400, transparent, transparent, transparent, true)
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    @include btn-color($main, transparent, transparent, transparent, true)
+  }
+
+  &_color_negative {
+    @include btn-color($negative, transparent, transparent, transparent, true);
   }
 
   &_type_round {

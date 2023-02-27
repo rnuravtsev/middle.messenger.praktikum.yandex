@@ -3,13 +3,19 @@
 .message-preview__title {
   margin-top: 0;
   margin-bottom: 4px;
+  max-width: 180px;
   font-size: 13px;
   line-height: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .message-preview__text-wrapper {
   margin-top: 0;
   margin-bottom: 0;
+  display: flex;
+  gap: 5px;
 }
 
 .message-preview__prefix {
@@ -20,7 +26,12 @@
 .message-preview__text {
   margin-top: 0;
   margin-bottom: 0;
+  max-width: 180px;
+  display: inline-block;
   font-size: 12px;
   line-height: 15px;
   color: $gray-500;
+  white-space: pre;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

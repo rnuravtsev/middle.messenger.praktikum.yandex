@@ -1,19 +1,22 @@
-import Block from './Block';
-import Handlebars, { HelperOptions } from 'handlebars';
+import Block from './Block'
+import Handlebars, { HelperOptions } from 'handlebars'
 
-interface IBlockConstructable<Props = any> {
+export interface IBlockConstructable<Props = any> {
   new(props: Props): Block;
   componentName: string;
 }
 
-export default function registerComponent<Props>(Component: IBlockConstructable<Props>) {
-  Handlebars.registerHelper(Component.componentName || Component.name, function (this: Props, { hash: { ref, ...hash }, data, fn }: HelperOptions) {
+export default function registerComponent<Props extends object>(Component: BlockClass<Props>) {
+  Handlebars.registerHelper(
+    Component.componentName
+    || Component.name,
+    function (this: Props, { hash: { ref, ...hash }, data, fn }: HelperOptions) {
     if (!data.root.children) {
-      data.root.children = {};
+      data.root.children = {}
     }
 
     if (!data.root.refs) {
-      data.root.refs = {};
+      data.root.refs = {}
     }
 
     const { children, refs } = data.root;
@@ -26,20 +29,20 @@ export default function registerComponent<Props>(Component: IBlockConstructable<
       if (this[key] && typeof this[key] === 'string') {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        hash[key] = hash[key].replace(new RegExp(`{{${key}}}`, 'i'), this[key]);
+        hash[key] = hash[key].replace(new RegExp(`{{${key}}}`, 'i'), this[key])
       }
-    });
+    })
 
-    const component = new Component(hash);
+    const component = new Component(hash)
 
-    children[component.id] = component;
+    children[component.id] = component
 
     if (ref) {
-      refs[ref] = component;
+      refs[ref] = component
     }
 
-    const contents = fn ? fn(this): '';
+    const contents = fn ? fn(this): ''
 
-    return `<div data-id="${component.id}">${contents}</div>`;
+    return `<div data-id="${component.id}">${contents}</div>`
   })
 }

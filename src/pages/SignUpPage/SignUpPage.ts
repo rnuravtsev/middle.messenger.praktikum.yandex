@@ -1,16 +1,28 @@
-import Block from "core/Block";
-import './signup-page.scss';
-import { signUpFields } from "../../mock/fields";
-import { SignUpPageProps } from "./types";
+import Block from 'core/Block'
+import './signup-page.scss'
+import { signUpFields } from '../../mock/fields'
+import { SignUpPageProps } from './types'
+import AuthController from '../../controllers/AuthController'
+import { SignUpData } from '../../api/types'
 
 
 class SignUpPage extends Block {
   constructor(props: SignUpPageProps = {} as SignUpPageProps) {
-    super(props);
+    super(props)
 
     this.setProps({
       fields: signUpFields,
+      events: {
+        submit: (data: SignUpData) => this.onSubmit(data)
+      }
     })
+  }
+
+  onSubmit(data: SignUpData) {
+    return AuthController.signUp({
+      ...data,
+      display_name: data['first_name']
+    } as SignUpData)
   }
 
   render() {
@@ -28,14 +40,16 @@ class SignUpPage extends Block {
                                 className="paper__form"
                                 fields=fields
                                 buttonText="Зарегистрироваться"
+                                onSubmit=events.submit
                         }}}
-                        {{{Link className="link paper__link" href="/login" text="Войти"}}}
+                        {{{Link className="link paper__link" href="/login" label="Войти"}}}
                     </div>
                 </div>
             </main>
+            {{{Alert}}}
         </div>
       `
   }
 }
 
-export default SignUpPage;
+export default SignUpPage

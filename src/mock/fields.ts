@@ -1,16 +1,16 @@
-import { ValidateRuleType } from "../utils/validateForm";
+import { ValidateRuleType } from '../utils/validateForm'
 
 export const fields = [
   {
     id: 1,
-    labelText: "Логин",
-    name: "login",
+    labelText: 'Логин',
+    name: 'login',
   },
   {
     id: 2,
-    labelText: "Пароль",
-    type: "password",
-    name: "password",
+    labelText: 'Пароль',
+    type: 'password',
+    name: 'password',
   },
 ]
 

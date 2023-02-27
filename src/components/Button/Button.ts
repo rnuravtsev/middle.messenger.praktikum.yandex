@@ -1,5 +1,5 @@
-import Block from "core/Block";
-import './button.scss';
+import Block from 'core/Block'
+import './button.scss'
 
 type ButtonProps = {
   className: string,
@@ -11,6 +11,7 @@ type ButtonProps = {
 }
 
 class Button extends Block {
+  static componentName = 'Button'
   constructor({ className, icon, color, label, onClick, type }: ButtonProps) {
     super({
       label,
@@ -21,9 +22,8 @@ class Button extends Block {
         click: onClick,
       },
       type,
-    });
+    })
   }
-  static componentName = 'Button';
 
   render() {
     // language=hbs
@@ -35,7 +35,7 @@ class Button extends Block {
                 type="button"
         >
             {{#if icon}}
-                <i class="icon icon-{{icon}}"/>
+                <i class="icon icon-{{icon}}"></i>
             {{/if}}
             {{label}}
         </button>
@@ -43,4 +43,4 @@ class Button extends Block {
   }
 }
 
-export default Button;
+export default Button

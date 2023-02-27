@@ -1,35 +1,37 @@
-import Block from "core/Block";
-import './link.scss';
-
-type LinkProps = {
-  className: string,
-  color: string,
-  href: string,
-  target: '_self' | '_blank',
-  text: string,
-}
-
+import Block from 'core/Block'
+import withRouter from '../../HOCs/withRouter'
+import './link.scss'
+import { LinkProps } from './types'
 
 class Link extends Block {
+  static componentName = 'Link'
   constructor(props: LinkProps) {
-    super(props);
+    super({
+      ...props,
+      events: {
+        click: () => this.navigate()
+      }
+    })
   }
 
-  static componentName = 'Link';
+  navigate() {
+    const { router, href } = this.props
+    router.go(href)
+  }
 
-    render() {
+  render() {
     // language=hbs
     return `
-        <a
-                class="link {{className}} {{#if color}}link_{{color}}{{else}}{{/if}} "
-                href="{{href}}"
-                target="_{{#if target}}{{target}}{{else}}self{{/if}}"
-                rel="noopener nofollow"
-        >
-            {{text}}
-        </a>
+        <button class="link {{className}} {{#if color}}link_{{color}}{{else}}{{/if}}">
+            {{label}}
+            {{#if icon}}
+                <i class="icon icon-{{icon}}"></i>
+            {{/if}}
+        </button>
     `
   }
 }
 
-export default Link;
+export { Link }
+
+export default withRouter(Link)

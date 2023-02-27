@@ -1,0 +1,9 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+.empty-avatar {
+  @include avatar-circle(47);
+  display: grid;
+  place-items: center;
+  font-size: 25px;
+  color: $main;
+}

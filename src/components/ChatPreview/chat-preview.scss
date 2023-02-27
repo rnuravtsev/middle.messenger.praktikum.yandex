@@ -2,6 +2,7 @@
 @import "src/scss/mixins";
 
 .chat-preview {
+  position: relative;
   padding-top: 12px;
   padding-bottom: 12px;
   display: grid;
@@ -55,4 +56,10 @@
   color: $white;
   background-color: $primary-300;
   border-radius: 50%;
+}
+
+.chat-preview__context-menu {
+  position: absolute;
+  top: -20px;
+  right: 0;
 }
