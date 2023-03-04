@@ -36,9 +36,9 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
   return merge(object as Indexed, result)
 }
 
-export function omit(
-  obj: Record<string, unknown>,
-  args: unknown[]) {
+export function omit<T extends Record<string, unknown>>(
+  obj: T,
+  args: (keyof T)[]) {
 
   return Object.keys(obj).reduce((acc: Indexed, key) => {
     if (args.indexOf(key) === -1) {
