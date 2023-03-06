@@ -1,3 +1,4 @@
 scss
 server.js
 src/static
+jest.config.js

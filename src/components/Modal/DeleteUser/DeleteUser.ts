@@ -1,7 +1,7 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './delete-user.scss'
 import { DeleteUserProps } from './types'
-import store, { State } from '../../../utils/Store'
+import store, { AppState } from '../../../core/Store/Store'
 import connect from '../../../HOCs/connect'
 import ChatController from '../../../controllers/ChatController'
 import { FindUserRequest } from '../../../api/types'
@@ -70,7 +70,7 @@ class DeleteUser extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: AppState) => ({
   modalDeleteUser: state.modalDeleteUser,
   activeChatId: state.activeChatId,
 })

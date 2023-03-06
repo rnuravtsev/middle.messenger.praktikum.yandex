@@ -1,7 +1,7 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './add-chat.scss'
 import { AddChatProps } from './types'
-import store, { State } from '../../../utils/Store'
+import store, { AppState } from '../../../core/Store/Store'
 import connect from '../../../HOCs/connect'
 import ChatController from '../../../controllers/ChatController'
 
@@ -73,7 +73,7 @@ class AddChat extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: AppState) => ({
   modalAddChat: state.modalAddChat,
 })
 

@@ -4,7 +4,7 @@ import { Routes } from './types'
 const APP_ROOT_SELECTOR = '#app'
 
 class Router {
-  public readonly routes: Route[] | undefined
+  public routes: Route[] = []
   private _history: History | undefined
   private _currentRoute: Nullable<Route> | undefined
   private readonly _rootQuery: string | undefined
@@ -28,6 +28,11 @@ class Router {
     this.routes?.push(route)
 
     return this
+  }
+
+  public reset() {
+    this.routes = []
+    this._currentRoute = null
   }
 
   start() {
@@ -58,6 +63,10 @@ class Router {
   public go(pathname: string) {
     this._history?.pushState({}, '', pathname)
     this._onRoute(pathname)
+  }
+
+  public forward() {
+    this._history?.forward()
   }
 
   public back() {

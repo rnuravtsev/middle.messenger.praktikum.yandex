@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './logout.scss'
 import { LogoutProps } from './types'
 import AuthController from '../../controllers/AuthController'

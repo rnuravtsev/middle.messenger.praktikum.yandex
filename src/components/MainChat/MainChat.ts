@@ -1,9 +1,9 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './main-chat.scss'
 import { ChatPageProps } from './types'
 import connect from '../../HOCs/connect'
 import MessagesController from '../../controllers/MessagesController'
-import store, { State } from '../../utils/Store'
+import store, { AppState } from '../../core/Store/Store'
 import { Chat } from '../../api/types'
 
 const fields = [
@@ -96,7 +96,7 @@ class MainChat extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: AppState) => ({
   activeChatId: state.activeChatId,
 })
 

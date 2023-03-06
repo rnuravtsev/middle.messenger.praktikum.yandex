@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import withRouter from '../../HOCs/withRouter'
 import './link.scss'
 import { LinkProps } from './types'
@@ -15,7 +15,7 @@ class Link extends Block {
   }
 
   navigate() {
-    const { router, href } = this.props
+    const { href, router } = this.props
     router.go(href)
   }
 

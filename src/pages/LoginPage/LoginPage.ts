@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './login-page.scss'
 import { fields as mockFields } from '../../mock/fields'
 import { LoginPageProps } from './types'

@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './sidebar-return.scss'
 import { SidebarReturnProps } from './types'
 import withRouter from '../../HOCs/withRouter'

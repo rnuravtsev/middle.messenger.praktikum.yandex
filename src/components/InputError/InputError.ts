@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './input-error.scss'
 import { InputErrorProps } from './types'
 
