@@ -13,7 +13,7 @@ import AuthController from './controllers/AuthController'
 import './controllers/MessagesController'
 import { Routes } from './core/Router/types'
 
-window.addEventListener('DOMContentLoaded', async () => {
+const initRouter = async (router: typeof Router, checkIsUserAuthorized: () => void) => {
   Router
     .use(Routes.Home, LoginPage)
     .use(Routes.Messenger, Messenger)
@@ -35,18 +35,26 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    await AuthController.fetchUser()
+    await checkIsUserAuthorized()
 
-    Router.start()
+    router.start()
 
     if (!isProtectedRoute) {
-      Router.go(Routes.Messenger)
+      router.go(Routes.Messenger)
     }
   } catch (e) {
-    Router.start()
+    router.start()
 
     if (isProtectedRoute) {
-      Router.go(Routes.Home)
+      router.go(Routes.Home)
     }
   }
+}
+
+const initApp = () => {
+  initRouter(Router, AuthController.fetchUser)
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  initApp()
 })

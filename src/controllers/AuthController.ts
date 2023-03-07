@@ -44,6 +44,8 @@ class AuthController {
       }
 
       setDataToStore(this.namespace, response)
+
+    return response
   }
 }
 
