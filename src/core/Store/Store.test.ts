@@ -1,5 +1,4 @@
 import { Store } from './Store'
-// import { setDataToStore } from '../../controllers/utils'
 import { StoreEvents } from './Store'
 
 
@@ -8,8 +7,6 @@ describe('core/Store', () => {
 
   it('should set state', () => {
     store.set('userId', 123)
-    console.log(store.getState())
-
     expect(store.getState()).toEqual({ userId: 123 })
   })
 

@@ -6,16 +6,18 @@
     "main": false
   },
   "scripts": {
-    "build": "webpack --mode=production --node-env=production",
-    "eslint": "eslint src --ext .ts,.js --fix",
-    "test": "jest",
-    "stylelint": "stylelint src/**/*.scss --fix",
-    "start": "npm run generate-icons && npm run build && node ./server.js",
-    "generate-icons": "fantasticon",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
+    "build": "webpack --mode=production --node-env=production",
+    "serve": "webpack serve",
     "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "start": "npm run generate-icons && npm run build && node ./server.js",
+    "eslint": "eslint src --ext .ts,.js --fix",
+    "stylelint": "stylelint src/**/*.scss --fix",
+    "test:static": "npm run eslint && npm run stylelint",
+    "test": "jest",
+    "generate-icons": "fantasticon",
+    "prepare": "husky install"
   },
   "alias": {
     "core": "./src/core",
@@ -76,6 +78,7 @@
     "fantasticon": "2.0.0",
     "handlebars": "4.7.7",
     "html-webpack-plugin": "5.5.0",
+    "husky": "8.0.3",
     "identity-obj-proxy": "3.0.0",
     "jest": "27.5.1",
     "mini-css-extract-plugin": "2.7.3",
