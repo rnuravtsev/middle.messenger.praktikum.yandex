@@ -70,7 +70,7 @@ class MainChat extends Block {
     return `
         <section class="main-chat {{className}}">
             <header class="main-chat__header">
-                ${renderAvatar(chatAvatar, chatName)}
+                ${renderAvatar(chatAvatar || '', chatName || '')}
                 <h3 class="main-chat__title">${chatName}</h3>
                 {{{Extra
                         className="main-chat__extra"

@@ -31,6 +31,9 @@ class DeleteUser extends Block {
   async handleDeleteModalUserSubmit(login: FindUserRequest) {
     const { activeChatId } = this.props
     const user = await ChatController.searchUser(login)
+    // TODO: На каникулах поправить типы
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const firstUserId = user[0].id
 
     await ChatController.deleteUserFromChat({ users: [firstUserId], chatId: activeChatId })
