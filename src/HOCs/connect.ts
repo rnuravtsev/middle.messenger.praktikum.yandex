@@ -1,7 +1,7 @@
 import { isEqual } from '../helpers/helpers'
-import store, { State, StoreEvents } from '../utils/Store'
+import store, { AppState, StoreEvents } from '../core/Store/Store'
 
-export function connect(mapStateToProps: (state: State) => Record<string, unknown>) {
+export function connect(mapStateToProps: (state: AppState) => Record<string, unknown>) {
   return function wrap(Component: BlockClass){
       let previousState = {}
     return class Connect extends Component {

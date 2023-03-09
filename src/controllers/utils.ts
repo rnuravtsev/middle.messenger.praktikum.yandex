@@ -1,4 +1,4 @@
-import store from '../utils/Store'
+import store from '../core/Store/Store'
 import { BadRequestError } from '../api/types'
 
 export const setDataToStore = (namespace: string, data: unknown) => {

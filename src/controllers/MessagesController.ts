@@ -1,4 +1,4 @@
-import store from '../utils/Store'
+import store from '../core/Store/Store'
 import { SocketEvents, WSTransport } from '../services/WSTransport'
 import { Message } from '../api/types'
 

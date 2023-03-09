@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './table.scss'
 import { omit } from 'helpers/helpers'
 import { LabelName } from '../../helpers/FieldNormalize'

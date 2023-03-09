@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid'
 import Handlebars from 'handlebars'
-import { EventBus } from './EventBus'
+import { EventBus } from '../EventBus'
 import { isEqual } from 'helpers/helpers'
 
 
@@ -21,7 +21,7 @@ export default class Block<P extends Indexed = any> {
   protected readonly _meta: BlockMeta
 
   protected _element: Nullable<HTMLElement> = null
-  protected readonly props: P
+  readonly props: P
   protected children: { [id: string]: Block } = {}
 
   eventBus: () => EventBus

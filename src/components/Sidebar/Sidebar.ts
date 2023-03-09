@@ -1,6 +1,6 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './sidebar.scss'
-import store from '../../utils/Store'
+import store from '../../core/Store/Store'
 import { SidebarProps } from './types'
 
 const inputs = [{
