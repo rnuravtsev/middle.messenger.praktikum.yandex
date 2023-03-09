@@ -61,3 +61,5 @@ const initApp = async () => {
 window.addEventListener('DOMContentLoaded', async () => {
   await initApp()
 })
+
+// husky test
