@@ -1,0 +1,7 @@
+.git
+.cache
+node_modules
+dist
+package-lock.json
+README.md
+.parcel-cache
