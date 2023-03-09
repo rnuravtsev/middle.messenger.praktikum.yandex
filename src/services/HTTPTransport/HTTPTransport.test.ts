@@ -54,7 +54,7 @@ describe('HTTPTransport', () => {
   })
 
   it('.request() should contain correct headers, when data is not FormData', () => {
-    // FIXME: Это добавляет фейковый xhr
+    // NOTE : Это добавляет фейковый xhr
     const HEADER_TAIL = ';charset=utf-8'
 
     instance.post('', {

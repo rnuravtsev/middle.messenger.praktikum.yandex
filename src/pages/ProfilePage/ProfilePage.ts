@@ -15,7 +15,7 @@ class ProfilePage extends Block {
     // language=hbs
     return `
         <main>
-            <div class="profile">
+            <div class="profile" {{#if testId}}data-testid="{{testId}}"{{/if}}>
                 {{{SidebarReturn className="profile__sidebar"}}}
                 <div class="profile__content container">
                     {{{Avatar className="profile__avatar" src=user.avatar}}}

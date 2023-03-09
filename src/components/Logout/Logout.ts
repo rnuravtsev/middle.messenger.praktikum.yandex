@@ -8,6 +8,7 @@ class Logout extends Block {
   constructor(props: LogoutProps = {} as LogoutProps) {
     super({
       ...props,
+      dataTestId: 'logout-btn',
       events: {
         click: () => this.logout()
       },
@@ -26,6 +27,7 @@ class Logout extends Block {
                 className="logout__button {{className}}"
                 color=color
                 label=label
+                dataTestId="{{dataTestId}}"
         }}}
     `
   }

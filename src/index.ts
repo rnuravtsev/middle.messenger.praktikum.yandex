@@ -1,5 +1,4 @@
 import 'normalize.css/normalize.css'
-import './utils/register'
 import './scss/main.scss'
 import LoginPage from './pages/LoginPage/LoginPage'
 import SignUpPage from './pages/SignUpPage/SignUpPage'
@@ -12,8 +11,12 @@ import Router from 'core/Router/Router'
 import AuthController from './controllers/AuthController'
 import './controllers/MessagesController'
 import { Routes } from './core/Router/types'
+import registerComponent from './core/registerComponent'
 
-const initRouter = async (router: typeof Router, checkIsUserAuthorized: () => void) => {
+import * as components from './components/exports'
+Object.values(components).forEach((Component: any) => registerComponent(Component))
+
+const initRouter = async (router: typeof Router) => {
   Router
     .use(Routes.Home, LoginPage)
     .use(Routes.Messenger, Messenger)
@@ -35,7 +38,7 @@ const initRouter = async (router: typeof Router, checkIsUserAuthorized: () => vo
   }
 
   try {
-    await checkIsUserAuthorized()
+    await AuthController.fetchUser()
 
     router.start()
 
@@ -51,10 +54,10 @@ const initRouter = async (router: typeof Router, checkIsUserAuthorized: () => vo
   }
 }
 
-const initApp = () => {
-  initRouter(Router, AuthController.fetchUser)
+const initApp = async () => {
+  await initRouter(Router)
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
-  initApp()
+  await initApp()
 })

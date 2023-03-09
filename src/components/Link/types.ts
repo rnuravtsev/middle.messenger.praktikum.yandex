@@ -7,4 +7,5 @@ export type LinkProps = {
   target?: '_self' | '_blank',
   label: string,
   router: typeof Router,
+  dataTestId?: string
 }

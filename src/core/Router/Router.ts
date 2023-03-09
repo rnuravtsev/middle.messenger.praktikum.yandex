@@ -78,6 +78,8 @@ class Router {
   }
 }
 
+export { Router }
+
 const router = new Router(APP_ROOT_SELECTOR)
 
 export default router

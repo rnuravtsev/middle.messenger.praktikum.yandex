@@ -1,6 +1,6 @@
 import Block from 'core/Block/Block'
 import './login-page.scss'
-import { fields as mockFields } from '../../mock/fields'
+import { fields as stubFields } from '../../mock/fields'
 import { LoginPageProps } from './types'
 import AuthController from '../../controllers/AuthController'
 import { SignInData } from '../../api/types'
@@ -8,10 +8,9 @@ import withRouter from '../../HOCs/withRouter'
 
 class LoginPage extends Block {
   constructor(props: LoginPageProps = {} as LoginPageProps) {
-    super(props)
-
-    this.setProps({
-      fields: mockFields,
+    super({
+      ...props,
+      fields: stubFields,
       onSubmit: (data: SignInData) => this.onSubmit(data),
     })
   }
@@ -25,7 +24,7 @@ class LoginPage extends Block {
     return `
         <div>
             <div class="container">
-                <main class="login">
+                <main class="login" data-testid="login-page">
                     <div class="container">
                         <div class="paper paper_auth login__paper">
                             {{{Subtitle
@@ -51,5 +50,7 @@ class LoginPage extends Block {
     `
   }
 }
+
+export { LoginPage }
 
 export default withRouter(LoginPage)

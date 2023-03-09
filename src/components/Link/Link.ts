@@ -22,7 +22,9 @@ class Link extends Block {
   render() {
     // language=hbs
     return `
-        <button class="link {{className}} {{#if color}}link_{{color}}{{else}}{{/if}}">
+        <button
+            {{#if dataTestId}}data-testid="{{dataTestId}}"{{/if}}
+                class="link {{className}} {{#if color}}link_{{color}}{{else}}{{/if}}">
             {{label}}
             {{#if icon}}
                 <i class="icon icon-{{icon}}"></i>
