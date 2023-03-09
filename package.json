@@ -14,7 +14,7 @@
     "start": "npm-run-all clean generate-icons build server",
     "eslint": "eslint src --ext .ts,.js --fix",
     "stylelint": "stylelint src/**/*.scss --fix",
-    "test:static": "npm run eslint && npm run stylelint",
+    "test:static": "npm-run-all eslint stylelint",
     "test": "jest",
     "server": "node ./server.js",
     "clean": "rimraf dist",
