@@ -2,9 +2,11 @@ FROM node:16.18.1
 
 WORKDIR /var/www/app
 
-COPY package*.json ./
+COPY package.json ./
 
 RUN npm install
+
+RUN npm run clean
 
 COPY . .
 
