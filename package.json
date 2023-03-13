@@ -53,6 +53,10 @@
   "bugs": {
     "url": "https://github.com/rnuravtsev/messenger/issues"
   },
+  "lint-staged": {
+    "*.ts": "eslint --fix",
+    "*.scss": "stylelint --fix"
+  },
   "homepage": "https://github.com/rnuravtsev/messenger#readme",
   "devDependencies": {
     "@babel/core": "7.21.0",
@@ -83,6 +87,7 @@
     "husky": "8.0.3",
     "identity-obj-proxy": "3.0.0",
     "jest": "27.5.1",
+    "lint-staged": "13.2.0",
     "mini-css-extract-plugin": "2.7.3",
     "mocha": "10.2.0",
     "msw": "1.1.0",
