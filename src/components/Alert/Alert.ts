@@ -1,8 +1,8 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './alert.scss'
 import { AlertProps } from './types'
 import connect from '../../HOCs/connect'
-import { State } from '../../utils/Store'
+import { AppState } from '../../core/Store/Store'
 
 class Alert extends Block {
   static componentName = 'Alert'
@@ -24,7 +24,7 @@ class Alert extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: AppState) => ({
   errorItem: Object.values(state).find((item: any) => item?.error)
 })
 

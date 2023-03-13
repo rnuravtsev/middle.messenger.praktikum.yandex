@@ -1,8 +1,8 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './messenger.scss'
 import { MainPageProps } from './types'
 import connect from '../../HOCs/connect'
-import { State } from '../../utils/Store'
+import { AppState } from '../../core/Store/Store'
 import ChatController from '../../controllers/ChatController'
 
 class Messenger extends Block<MainPageProps> {
@@ -29,7 +29,7 @@ class Messenger extends Block<MainPageProps> {
 }
 
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: AppState) => ({
   activeChatId: state?.activeChatId
 })
 

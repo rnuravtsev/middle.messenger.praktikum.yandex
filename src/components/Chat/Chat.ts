@@ -1,7 +1,7 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import connect from '../../HOCs/connect'
 import './chat.scss'
-import { State } from '../../utils/Store'
+import { AppState } from '../../core/Store/Store'
 
 type ChatProps = {
   className: string,
@@ -36,7 +36,7 @@ class Chat extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => {
+const mapStateToProps = (state: AppState) => {
   const { activeChatId } = state
 
   if (!activeChatId) {

@@ -11,7 +11,7 @@ import {
   UsersRequestData
 } from '../api/types'
 import UserAPI from '../api/UserAPI'
-import store from '../utils/Store'
+import store from '../core/Store/Store'
 
 class ChatController {
   private api = ChatAPI

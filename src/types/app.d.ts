@@ -1,4 +1,4 @@
-import Block from '../core/Block'
+import Block from '../core/Block/Block'
 
 declare global {
   export type Indexed <T = any> = {

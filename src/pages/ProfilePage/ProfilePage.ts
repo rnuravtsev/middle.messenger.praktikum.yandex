@@ -1,8 +1,8 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './profile-page.scss'
 import { ProfilePageProps } from './types'
 import connect from '../../HOCs/connect'
-import { State } from '../../utils/Store'
+import { AppState } from '../../core/Store/Store'
 import { Routes } from '../../core/Router/types'
 
 class ProfilePage extends Block {
@@ -15,7 +15,7 @@ class ProfilePage extends Block {
     // language=hbs
     return `
         <main>
-            <div class="profile">
+            <div class="profile" {{#if testId}}data-testid="{{testId}}"{{/if}}>
                 {{{SidebarReturn className="profile__sidebar"}}}
                 <div class="profile__content container">
                     {{{Avatar className="profile__avatar" src=user.avatar}}}
@@ -40,6 +40,6 @@ class ProfilePage extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => ({ user: { ...state?.user?.data } })
+const mapStateToProps = (state: AppState) => ({ user: { ...state?.user?.data } })
 
 export default connect(mapStateToProps)(ProfilePage)

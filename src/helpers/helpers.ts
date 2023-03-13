@@ -36,9 +36,9 @@ export function set(object: Indexed | unknown, path: string, value: unknown): In
   return merge(object as Indexed, result)
 }
 
-export function omit(
-  obj: Record<string, unknown>,
-  args: unknown[]) {
+export function omit<T extends Record<string, unknown>>(
+  obj: T,
+  args: (keyof T)[]) {
 
   return Object.keys(obj).reduce((acc: Indexed, key) => {
     if (args.indexOf(key) === -1) {
@@ -53,6 +53,7 @@ export function isEmpty<T extends Indexed | string | boolean>(value: T): boolean
   if (typeof value === 'boolean') {
     return false
   }
+
   if (typeof value === 'string') {
     return value.trim().length === 0
   }
@@ -60,6 +61,7 @@ export function isEmpty<T extends Indexed | string | boolean>(value: T): boolean
   if (typeof value === 'object') {
     return Object.keys(value).length === 0
   }
+
   // TODO: Доработать для других типов
   return false
 }
@@ -183,4 +185,9 @@ export function escapeHtml(value: string) {
   return String(value).replace(/[&<>"'`=/]/g, function(s) {
     return entityMap[s]
   })
+}
+
+
+export const sleep = (time = 2000) => {
+  return new Promise(res => setTimeout(res, time))
 }

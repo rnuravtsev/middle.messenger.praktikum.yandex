@@ -1,7 +1,7 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './chat-list.scss'
 import connect from '../../HOCs/connect'
-import { State } from '../../utils/Store'
+import { AppState } from '../../core/Store/Store'
 import { ChatListProps } from './types'
 
 class ChatList extends Block<ChatListProps> {
@@ -31,7 +31,7 @@ class ChatList extends Block<ChatListProps> {
   }
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: AppState) => ({
   chats: state?.chats?.data,
   chatLoading: state?.chats?.isLoading
 })

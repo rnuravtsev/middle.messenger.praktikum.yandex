@@ -1,4 +1,4 @@
-import { queryStringify } from '../helpers/helpers'
+import { queryStringify } from '../../helpers/helpers'
 
 const METHODS = {
   GET: 'GET',

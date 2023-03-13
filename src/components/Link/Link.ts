@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import withRouter from '../../HOCs/withRouter'
 import './link.scss'
 import { LinkProps } from './types'
@@ -15,14 +15,16 @@ class Link extends Block {
   }
 
   navigate() {
-    const { router, href } = this.props
+    const { href, router } = this.props
     router.go(href)
   }
 
   render() {
     // language=hbs
     return `
-        <button class="link {{className}} {{#if color}}link_{{color}}{{else}}{{/if}}">
+        <button
+            {{#if dataTestId}}data-testid="{{dataTestId}}"{{/if}}
+                class="link {{className}} {{#if color}}link_{{color}}{{else}}{{/if}}">
             {{label}}
             {{#if icon}}
                 <i class="icon icon-{{icon}}"></i>

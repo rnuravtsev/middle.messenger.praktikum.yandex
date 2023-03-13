@@ -1,7 +1,7 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './chat-preview.scss'
 import { ChatProps } from './types'
-import store, { State } from '../../utils/Store'
+import store, { AppState } from '../../core/Store/Store'
 import { dateToHumanHoursAndMinutes } from '../../helpers/helpers'
 import connect from '../../HOCs/connect'
 
@@ -92,7 +92,7 @@ class ChatPreview extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: AppState) => ({
   activeChatId: state?.activeChatId,
   currentUserLogin: state?.user?.data?.login,
 })

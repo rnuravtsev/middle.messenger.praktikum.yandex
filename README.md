@@ -2,20 +2,22 @@
 
 ### Описание
 ___
-Веб-приложение-мессенджер на TS
+Веб-приложение-мессенджер
 
 Основные возможности:
+- Общение в чатах
 - Регистрация и авторизация
 - Редактирование профиля
 - Поиск пользователей
 - Добавление пользователей в чат
 - Удаление пользователей из чата
 
-Развёрнутый проект в [Netlify](https://dancing-bavarois-ce034b.netlify.app)
+Развёрнутый проект в [Render](https://onizuka.onrender.com/)
 
 ### Технологии
 ___
-#html #ts #handlebars #express #scss #npm
+#ts #handlebars #express #scss #npm #docker #webpack #jest
+#husky #eslint #stylelint
 
 ### Макет
 ___
@@ -23,11 +25,15 @@ ___
 
 ### Команды для запуска приложения:
 ___
-**npm run dev** — приложение будет развёрнуто с помощью Parcel в dev режиме
+**npm run build** — приложение будет развёрнуто с помощью Parcel в dev режиме
 
-**npm run start** — приложение будет развёрнуто с помощью Parcel и NodeJS в production режиме
+**npm run start** — запуск приложения с использованием express сервера
+
+**npm run serve** — запуск приложения с использованием севера от webpack
 
 **npm run eslint** — запуск статистического анализа для TypeScript файлов
 
 **npm run stylelint** — запуск статистического анализа для SCSS файлов
+
+**npm test** — запуск тестов
 

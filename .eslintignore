@@ -1,3 +1,5 @@
 scss
 server.js
 src/static
+jest.config.js
+webpack.config.js

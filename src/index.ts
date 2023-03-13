@@ -1,5 +1,4 @@
 import 'normalize.css/normalize.css'
-import './utils/register'
 import './scss/main.scss'
 import LoginPage from './pages/LoginPage/LoginPage'
 import SignUpPage from './pages/SignUpPage/SignUpPage'
@@ -12,8 +11,12 @@ import Router from 'core/Router/Router'
 import AuthController from './controllers/AuthController'
 import './controllers/MessagesController'
 import { Routes } from './core/Router/types'
+import registerComponent from './core/registerComponent'
 
-window.addEventListener('DOMContentLoaded', async () => {
+import * as components from './components/exports'
+Object.values(components).forEach((Component: any) => registerComponent(Component))
+
+const initRouter = async (router: typeof Router) => {
   Router
     .use(Routes.Home, LoginPage)
     .use(Routes.Messenger, Messenger)
@@ -37,16 +40,26 @@ window.addEventListener('DOMContentLoaded', async () => {
   try {
     await AuthController.fetchUser()
 
-    Router.start()
+    router.start()
 
     if (!isProtectedRoute) {
-      Router.go(Routes.Messenger)
+      router.go(Routes.Messenger)
     }
   } catch (e) {
-    Router.start()
+    router.start()
 
     if (isProtectedRoute) {
-      Router.go(Routes.Home)
+      router.go(Routes.Home)
     }
   }
+}
+
+const initApp = async () => {
+  await initRouter(Router)
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  await initApp()
 })
+
+// husky test

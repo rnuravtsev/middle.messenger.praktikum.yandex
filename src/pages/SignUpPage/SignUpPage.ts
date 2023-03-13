@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './signup-page.scss'
 import { signUpFields } from '../../mock/fields'
 import { SignUpPageProps } from './types'

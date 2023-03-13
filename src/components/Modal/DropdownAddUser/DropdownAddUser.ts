@@ -1,8 +1,8 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './dropdown-add-user.scss'
 import { DropdownAddUserProps } from './types'
 import connect from '../../../HOCs/connect'
-import store, { State } from '../../../utils/Store'
+import store, { AppState } from '../../../core/Store/Store'
 
 class DropdownAddUser extends Block {
   static componentName = 'DropdownAddUser'
@@ -50,7 +50,7 @@ class DropdownAddUser extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: AppState) => ({
   activeChatId: state.activeChatId,
 })
 

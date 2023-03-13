@@ -1,11 +1,11 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './profile-edit.scss'
 import { ProfileEditProps } from './types'
 import connect from '../../HOCs/connect'
 import FieldNormalize from '../../helpers/FieldNormalize'
 import { User } from '../../api/types'
 import EditsController from '../../controllers/EditsController'
-import { State } from '../../utils/Store'
+import { AppState } from '../../core/Store/Store'
 
 class ProfileEditPage extends Block {
   constructor(props: ProfileEditProps = {} as ProfileEditProps) {
@@ -48,7 +48,7 @@ class ProfileEditPage extends Block {
   }
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: AppState) => ({
   user: { ...state.user?.data }
 })
 

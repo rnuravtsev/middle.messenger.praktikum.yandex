@@ -31,8 +31,15 @@ class AuthController {
 
   async logout() {
     await request(this.namespace, async () => {
-      await this.api.logout()
+      const response = await this.api.logout()
 
+      if(isBadRequest(response)) {
+        throw new Error(response.reason)
+      }
+
+      console.log('911.', response)
+
+      setDataToStore(this.namespace, null)
       Router.go(Routes.Home)
     })
   }
@@ -44,6 +51,8 @@ class AuthController {
       }
 
       setDataToStore(this.namespace, response)
+
+    return response
   }
 }
 
