@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './chat-view.scss'
 
 type ChatViewProps = {

@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './avatar.scss'
 import { ProfileIconProps } from './types'
 import EditsController from '../../controllers/EditsController'

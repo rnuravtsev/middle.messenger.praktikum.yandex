@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './message-preview.scss'
 import { MessageProps } from './types'
 

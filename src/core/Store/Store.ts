@@ -1,11 +1,11 @@
 import { EventBus } from 'core/EventBus'
-import { Chat, Message, User } from '../api/types'
-import { set } from '../helpers/helpers'
+import { Chat, Message, User } from '../../api/types'
+import { set } from 'helpers/helpers'
 
 export const enum StoreEvents {
   Updated = 'updated',
 }
-export interface State {
+export interface AppState {
   user?: {
     data: Nullable<User>,
     error: string,
@@ -26,11 +26,11 @@ export interface State {
 
 
 export class Store extends EventBus {
-  state: Indexed = {}
+  private readonly state: AppState = {}
 
-  constructor() {
+  constructor(state: AppState) {
     super()
-    this.state = {}
+    this.state = state
   }
 
   getState() {
@@ -45,6 +45,6 @@ export class Store extends EventBus {
   }
 }
 
-const store = new Store()
+const store = new Store({})
 
 export default store

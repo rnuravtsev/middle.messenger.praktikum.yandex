@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './context-menu.scss'
 import { ContextMenuProps } from './types'
 import ChatController from '../../controllers/ChatController'

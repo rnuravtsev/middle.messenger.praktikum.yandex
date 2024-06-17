@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import '../page-error.scss'
 import { Page404Props } from './types'
 import { Routes } from '../../../core/Router/types'

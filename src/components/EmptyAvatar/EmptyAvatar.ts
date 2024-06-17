@@ -1,4 +1,4 @@
-import Block from 'core/Block'
+import Block from 'core/Block/Block'
 import './empty-avatar.scss'
 import { EmptyAvatarProps } from './types'
 
